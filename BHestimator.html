@@ -1,0 +1,22 @@
+<h1>Beam Hardening Estimator &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <a href="index.html" target="_self"><em><strong>Home</strong></em></a></h1>
+
+<p>&nbsp;</p>
+
+<p>Beam hardening is the shifting of the broad spectrum of a conventional x-ray source toward higher average (hard) energies as it passes through filters, samples and detectors.&nbsp;This results in an over-estimate of attenuation in thinner portions of the sample.&nbsp; It produces the well-known cupping artifact in tomographic images.</p>
+
+<p>The ImageJ Beam Hardening Estimator plugin is built upon the <a href="MuMassCalculatorLib.html">Mu Mass Calculator</a> library.&nbsp; It provides an interactive way to estimate the severity of beam hardening artifact when acquiring radiographs or tomography data.</p>
+
+<figure class="easyimage easyimage-full"><img alt="" src="Images/BH_Estimator_All.png" width="500" />
+<figcaption>ImageJ Plugin Beam Hardening Estimator&nbsp;</figcaption>
+</figure>
+
+<p>The figure shows the Dialog Box(left), a schematic of a simple radiography or CT scanner layout(top), a plot of intensity vs X-ray energy at five sampling points along the beam path(middle), and the report issued for each trial configuration(bottom).&nbsp;In the schematic, the arrow colors correspond to the plot colors, the arrow widths indicate spectral width and the length indicates intensity.</p>
+
+<p>The goal of this plugin is to quickly optimize the source, filter, and detector configuration to obtain good contrast and high count rates.&nbsp; A user makes appropriate selections in the non-modal dialog and clicks the <strong>Update Plot</strong> button.&nbsp; The spectral dependencies are displayed and the report is updated with the configuration and beam hardening metrics obtained from detected intensities with and without the specimen in the x-ray beam.</p>
+
+<p>Simple thresholding of tomographic reconstructions typically requires less than 5% beam hardening over the entire image for successful segmentation of components.&nbsp; This may vary depending on materials contrast.</p>
+
+<p>Special Note:&nbsp; This is <strong>NOT</strong> a detective quantum efficiency (DQE) calculator, the detector is modeled as ideal with the exception of a correction for photons that pass through the scintillator without being detected. Real detectors vary considerably in design, construction and response.</p>
+
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
