@@ -1,20 +1,17 @@
-<p>&nbsp;</p>
+<h1><strong>DistanceLib</strong></h1>
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<h1><strong>DistanceLib&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-  </strong><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h1>
-
-<p><strong>This page gives a basic description of the methods in the Distance library.&nbsp; All methods support asymetric pixels/voxel sizes and physical dimensions. A detailed description of the functions can be found <a href="C:\Users\John\Desktop\CKEditor_Test\DistanceLibDoc\index.html" target="_blank">here</a>.  See the ImageJ plugins pages for examples.</strong></p>
+<p><strong>This page gives a basic description of the methods in the Distance library.&nbsp; All methods support asymmetric pixels/voxel sizes and physical dimensions. A detailed description of the functions can be found <a href="C:\Users\John\Desktop\CKEditor_Test\DistanceLibDoc\index.html" target="_blank">here</a>.  See the ImageJ plugins pages for examples.</strong></p>
 
 <h2><strong>ExactEuclideanDistanceMap&nbsp; </strong>2D and 3D</h2>
 
 <p>In a segmented image, the EDM calculates the shortest distance between each pixel in component &quot;A&quot; to its nearest connected neighbor in component &quot;B&quot; using <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.322.7605&rep=rep1&type=pdf" target="_blank">Danielsson's algorithm</a>. In this implementation the input image must have one component set to zero. The EDM is calculated in either the zero or non-zero component as selected by the user.&nbsp; To improve performance, I have done a few optimizations on Danielsson&rsquo;s original 2D algorithm and extended those to 3D.</p>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCells.png" width="300" />
+<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCells.png" width="600" />
 <figcaption>Segmented 2D Image</figcaption>
 </figure>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCellsEDM.png" width="300" />
+<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCellsEDM.png" width="600" />
 <figcaption>2D Euclidean Distance Map</figcaption>
 </figure>
 
@@ -28,12 +25,12 @@
 
 <p>To improve performance, this GDT draws a box of the non-flood component around the exterior of the image.&nbsp; The box values are set to zero when the routine exits.</p>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCells.png" width="300" />
+<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCells.png" width="600" />
 <figcaption>2D Segmented Image<br />
 &nbsp;</figcaption>
 </figure>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCellsGDT.png" width="300" />
+<figure class="easyimage easyimage-full"><img alt="" src="Images\SegCellsGDT.png" width="600" />
 <figcaption>GDT of the 2D image with a point seed at far right of colored region.<br />
 The points labeled -1 are not connected.</figcaption>
 </figure>
@@ -42,7 +39,7 @@ The points labeled -1 are not connected.</figcaption>
 
 <p>This method finds the shortest distance between a selected point or points in a geodesic image and the nearest seed point or surface.</p>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images\ShortestPath.png" width="400" />
+<figure class="easyimage easyimage-full"><img alt="" src="Images\ShortestPath.png" width="600" />
 <figcaption>2D Shortest Path example.<br />
 Seed is BLUE Destination is GREEN</figcaption>
 </figure>
@@ -57,7 +54,7 @@ Seed is BLUE Destination is GREEN</figcaption>
 
 <p>Cutoff values &lt; 1 flood all connected resolved pores and unresolved pores up to the cutoff value. In unresolved pores, the porosity is used as a proxy for length3.&nbsp; The resolved (fully flooded), unresolved (partially flooded) voxel volumes, are returned in the report. If the flood has reached the back slice (breakthrough) an estimated tortuosity is also reported.</p>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images/SyntheticRockAtBreakthroughGray.png" width="400" />
+<figure class="easyimage easyimage-full"><img alt="" src="Images/SyntheticRockAtBreakthroughGray.png" width="600" />
 <figcaption>Shape of invading fluid at breakthrough during simulated MICP in a random porous medium.<br />
 The fluid is injected from the bottom.<br />
 The medium is rendered transparent to reveal the invading fluid.</figcaption>
