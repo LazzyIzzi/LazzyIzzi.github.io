@@ -1,31 +1,69 @@
-<title>Beam Hardening Estimator</title>
+<title>Beam Hardening Workbench</title>
 <link rel="icon" type="image/x-icon" href="Images/LazzyIzzi.jpg"> 
-<h1>Beam Hardening Estimator</h1> 
-<h3>Requires ImageJ 1.53k or higher and MuMassCalculatorLib.jar</h3> 
+<h1>Beam Hardening Workbench</h1> 
+<h3>Requires ImageJ 1.53k or higher, ToolsForTomographers.jar and MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<p>&nbsp;</p>
-
-<p>Beam hardening is the shifting of the broad spectrum of a conventional x-ray source toward higher average (hard) energies as it passes through filters, samples and detectors.&nbsp;This results in an over-estimate of attenuation in thinner portions of the sample.&nbsp; It produces the well-known cupping artifact in tomographic images.</p>
-
-<p>The ImageJ Beam Hardening Estimator plugin is built upon the <a href="MuMassCalculatorLib.html">Mu Mass Calculator</a> library.&nbsp; It provides an interactive way to estimate the severity of beam hardening artifact when acquiring radiographs or tomography data.</p>
+<h3>What is Beam Hardening</h3>
+<p>Beam hardening is the shifting of the broad spectrum of a conventional x-ray source toward higher average (hard) energies as it passes through a material.&nbsp;Lower energy X-rays are preferentially attenuated leaving the higher energy, more penetrating X-rays for detection. It is mostly evident in the photoelectric energy range where the attenuation of materials changes rapidly with photon energy.</p>
+<h3>Why is Beam Hardening Important</h3>
+<p>Beam Hardening results in an over-estimate of attenuation in thinner portions of the sample.&nbsp; It produces the well-known cupping and streak artifacts in tomographic images.</p>
+<h3>What can be done to reduce Beam Hardening</h3>
+<p>There are primarily two ways to minimize beam hardening artifacts.</p>
+<ul>
+<li>The first is to pre-harden the X-ray beam before it reaches the sample. This is often done by using a filter, usually a metal foil, located at the X-ray source. Occasionally the accelerating potential of the X-ray source is increased to offset the decreased intensity caused by the filter absorbance.</li>
+<li>The second is to apply a correction to the observed attenuations so that a plot of attenuation vs sample thickness becomes linear. The linearization function is usually a polynomial that is determined either by simply observing the quality of the corrected images&#x1F616; or by careful calibration&#x1F601;. Linearization is most successful when the sample is relatively homogeneous, when all rays passing through the sample see about the same average composition. We will discuss linearization on a separate page. When samples are not relatively homogeneous, more advanced methods beyond the current scope of my plugins are required.</li>
+</ul>
+<h3>The ImageJ plugin</h3>
+<p>The <strong>Beam Hardening Workbench</strong> helps to fine-tune the pre-hardening technique. It helps selection of the operating conditions that will give good contrast and accurate attenuation measurements for your sample.  The plugin is built upon the <a href="MuMassCalculatorLib.html">Mu Mass Calculator</a> library.&nbsp; It provides an interactive way to minimize the severity of beam hardening.</p>
 
 <figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSchematicSideView791.png" width="797" />
-<figcaption>Schematic of a typical radiography/tomography experimental setup</figcaption>
+<figcaption><strong><center>Schematic of a typical radiography/tomography experimental setup</center></strong></figcaption></figure>
+
+<p>The above figure shows a schematic of a simple radiography or CT scanner. The arrow colors correspond to the plot colors(below), the arrow widths indicate spectral width and the length indicates intensity. </p>
+<h3>The User Interface</h3>
+<figure class="easyimage easyimage-full"><img alt="" src="Images/BHworkbenchInitial.png" width="791" />
+<figcaption><strong><center>ImageJ Plugin Beam Hardening Workbench, Initial</center></strong></figcaption>
 </figure>
 
-<p>The above figure shows a schematic of a simple radiography or CT scanner. The arrow colors correspond to the plot colors(below), the arrow widths indicate spectral width and the length indicates intensity.</p>
+<h3>Step 1, Initial setup</h3>
+<li>Replace the current values in the dialog(left) with your sample's average composition and your system's configuration. The dialog values should be clear to persons familiar with conventional X-ray sources with the exception of the <strong>Formula</strong> which is entered as atom1:count1:atom2:count2... as required by MuMassCalculator.</li>
+<li>The detector is modeled by counting photons absorbed by a screen of a the entered composition, thickness, and density. Real detectors vary considerably in design, construction and response. Click the <strong>Update Plot</strong> to create/update the three results windows(right).</li>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images/BH_Estimator_Windows.png" width="791" />
-<figcaption>ImageJ Plugin Beam Hardening Estimator&nbsp;</figcaption>
+<p>The top plot shows the relationship between sample thickness and attenuation. It should look like a nearly straight line if the incident photon beam is approximately monochromatic.</p>
+<p>The middle plot shows intensity vs X-ray energy at five sampling points along the beam path.</p>
+<p>The window at the bottom shows the results for each trial configuration.</p>
+
+<h3>Step 2, Evaluation</h3>
+In the BH Workbench Results window:
+<li>The sample attenuation <q>S Tau</q>, the product of <big><em>&mu;&rho;x</em></big>, is 2.58, it <a href="https://doi.org/10.1016/0167-5087(83)90393-9" target="_blank">should be &cong; 2.</a></li>
+<li>The beam hardening <q>BH%</q> is 28%, ideally it should be &lt;10%.</li>
+<li>The <q>Photon Use</q> is 15.4%.</li>
+<br>Moving down stream and looking at the X-ray Spectra we see:
+<li>The source emits a broad spectrum of photons from just below 160 KeV, peaking at 80KeV and falling off at lower energies(blue curve).</li>
+<li>The filter reduces the low energies but still transmits a large fraction of photons below 50 KeV(red curve).</li>
+<li>The detected filter spectrum is heavily low-energy weighted due to poor detector performance at high energies(gray curve).</li> <li>The detected filter spectrum contains features from the detector's Cesium and Iodine absorbance edge jumps(gray curve).</li>
+<li>The sample does not transmit any of the filtered photons less than 50KeV(green curve).</li>
+<li>The detected sample spectrum has no photons less than 50KeV(black curve)</li>
+<br>Conclusion: The filter pre-hardening is not sufficient. When we measure the incident intensity without the sample in the beam <q><em><strong>Io</strong></em></q> we are counting many low energy photons that will be completely absorbed by the thicker portions of the specimen but will be transmitted by the thinner regions leading to significant beam hardening artifacts. This is also seen in the top Attenuation vs Thickness curve. 
+
+<h3>Step 3, Optimization</h3>
+
+Add filter thickness and observe the changes in the curves. Removing the low energy X-rays will:
+<li>Raise the Eeff, the effective energy*</li>
+<li>Lower the sample attenuation. If reduced too far you may want to lower the Source KV</li>
+<li>Reduce the beam hardening.</li>
+<li>Reduce the photon use, increasing exposure time.</li>
+ Achieving a proper balance between photon use and acceptable beam hardening often depends on the sample composition and structure, the effectiveness of post-acquisition beam hardening corrections, and the information to be obtained from the image.
+
+<figure class="easyimage easyimage-full"><img alt="" src="Images/BHworkbenchFinal.png" width="791" />
+<figcaption><strong><center>ImageJ Plugin Beam Hardening Workbench, Final</center></strong></figcaption>
 </figure>
 
-<p>This figure shows the user dialog(left) and two windows(right) that are created or updated when the <strong>Update Plot</strong> button is clicked, (top) a plot of intensity vs X-ray energy at five sampling points along the beam path, and (bottom) the report issued for each trial configuration. The dialog values should be clear to persons familiar with conventional X-ray sources with the exception of the <strong>Formula</strong> which is entered as atom1:count1:atom2:count2... as required by MuMassCalculator.</p>
-
-<p>Simple thresholding of tomographic reconstructions typically requires less than 5% beam hardening over the entire image to successfully segment the components.&nbsp; This may vary depending on materials contrast. The goal of this plugin is to quickly select a source, filter, and detector configuration that minimizes beam hardening while optimizing contrast and count rate using the sample <a href="https://doi.org/10.1016/0167-5087(83)90393-9" target="_blank">attenuation&cong;2 criterion</a> .&nbsp; A user makes appropriate selections in the non-modal dialog and clicks the <strong>Update Plot</strong> button.&nbsp; The spectral dependencies are displayed and the report is updated with the configuration and beam hardening metrics.</p>
-
-
-<p>Special Note:&nbsp; This is <strong>NOT</strong> a detective quantum efficiency (DQE) calculator, the detector is modeled as ideal with the exception of a correction for photons that pass through the scintillator without being detected. Real detectors vary considerably in design, construction and response.</p>
+<p>In this example we accepted some beam hardening in exchange for a shorter exposure time.**</p>
+<p>*Effective photon energy - The effective energy of an x-ray spectrum is the energy of a mono-energetic beam of photons that has the same penetrating ability as the spectrum of photons.</p>
+<p>**My Excel Beam Hardening Add-in uses the <em>Solver</em> to maximize <q>Photon Use%</q> while constraining sample tau and beam hardening.</p>
+<p>Special Note:&nbsp; The simplified detector in this example is cesium iodide and is relatively thin for high energy applications. The detector model and is noiseless for photons absorbed by the scintillator. Real detectors vary considerably in design, construction and response. Be sure to configure the detector to match your system before proceeding.</p>
 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 

@@ -1,0 +1,29 @@
+<title>CT Scan Simulator</title>
+<link rel="icon" type="image/x-icon" href="Images/LazzyIzzi.jpg"> 
+<h1>CT Scan Simulator</h1> 
+<h3>Requires ImageJ 1.53k or higher, ToolsForTomographers.jar and MuMassCalculatorLib.jar</h3> 
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<p>Using a 2D segmented image as input, CT Scan Simulator creates fan-beam or parallel-beam sinograms with either monochromatic or conventional (bremsstrahlung) X-ray sources.</p>
+<figure class="easyimage easyimage-full"><img alt="" src="Images/BremsScanSetup.png" width="450" />
+<figcaption><strong><center>Fan-beam Bremsstrahlung Source CT Scan Simulator User Dialog and Segmented Image</center></strong></figcaption></figure>
+
+<p>The source, filter, and detector settings are similar to those in the <a href="BHestimator.html" target="_blank"><em><strong>Beam Hardening Workbench</strong></em></a> tool. The main differences are the "KeV Bins"  in the X-ray Source settings and the "Materials" and "360 degree Scan" settings. Select the "Scale to 16-bit" checkbox to multiply the sinogram by 6000 and convert to 16-bit integers reduce the size of the sinogram image file.  Select the "Pad Image" checkbox if the image has data in the corners.  Padding the image keeps the corners in the field of view during sample rotation.
+
+<h3>KeV Bins</h3>
+Bremsstrahlung versions of the simulator chop the source spectrum into energy bins.  The counts for each fan-beam ray are computed and summed for all energy bins.  These counts are used to compute the attenuation sinogram. Monochromatic versions compute the sinograms at a single energy.
+<h3>360 degree Scan</h3>
+Enter a source to detector distance in centimeters and a magnification.  The sample rotation axis to detector distance and the required detector width are computed for you. An editable suggested number of view angles is also calculated for you.
+<h3>Materials</h3>
+Bremsstrahlung versions of the simulator must compute the attenuation coefficients at each KeV bin for all materials in the sample image.  It does this using integer "tagged" image components. The top image on the right side of the figure shows a tagged image in which all pixels in the gray material have the value of 1 and all of the pixels in the white material have a value of 2.  All other pixels are 0 and are ignored. <strong>Important:</strong> All tagged pixels in the image must have an assiciated tag material description or an error will occur.
+<br>The dialog box below the image shows the materials properties associated with each tag.  In this example material 1 is quartz and material 2 is calcite. The materials lists are read from either text or csv files by clicking the "Load Materials File" button.
+ 
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/MaterialsTXT.png" width="250" />
+<figcaption><strong>A Materials Text file example</strong></figcaption></figure></center>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/MaterialsCSV.png" width="250" />
+<figcaption><strong>A Materials CSV file example</strong></figcaption></figure></center>
+<br>Monochromatic versions of the plugin assume that the pixel values are the linear attenuation coefficients in cm-1.
+
+<p>Click the "OK" button to create the sinogram. Bremsstrahlung images may take some time since each energy bin is scanned.  Parallel, monochromatic scans are pretty quick.</p>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Sinogram.png" width="250" />
+<figcaption><strong>A Sinogram example</strong></figcaption></figure></center>
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
