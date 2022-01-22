@@ -4,25 +4,40 @@
 <h3>Requires ImageJ 1.53k or higher and MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<p>&nbsp;</p>
+<h3>This plugin provides a non-modal dialog that allows the user to look up, while working with tomographic images, the X-ray energy that will produce an experimentally observed cross-section or cross-section ratio for atoms and compounds.</h3>
 
-<p>This plugin provides a non-modal dialog that allows the user to look up the X-ray energy that has will produce an experimentally observed cross-section or cross-section ratio for atoms and compounds while working with other images. </p>
+<center><figure class="easyimage easyimage-full"><img alt="LookUp Gui" src="Images/Barite-QuartzLookup.png" width="700" />
+<figcaption><strong>X-ray Calculator Dialog and Results Windows.</strong></figcaption>
+</figure></center>
 
-<p>The X-ray Lookup plugin is built upon the <a href="MuMassCalculatorLib.html">Mu Mass Calculator</a> library.</p>
-<p>Before we begin, a few words of caution. Chemical elements can have the same attenuation at more than one photon energy. This is most evident in the photoelectric regime of heavier elements with absorption edge discontinuities in their absorption spectra.  Examining the plot on the X-ray Calculator page, the attenuation of lead chromate is the nearly the same at 10 and 14 KeV. At higher energies, particularly the pair production regime, the total attenuation is nearly independent of photon energy. <ins>When attenuation is obtained quantitatively, the X-Ray Lookup plugin will report all energies that will produce that attenuation.</ins> </p>
+<p>This figure shows the user dialog and the results window created and updated by X-Ray Lookup.</p>
 
-<p>Frequently, images have been scaled prior to display and the attenuations are no longer in cm<small></small><sup>2</sup></small>/gm units.  This condition can also occur when correcting tomographic images for beam hardening using a linearization technique. In this case, the ratio of the attenuations of two or more components can be used to determine the effective energy for the CT scan.   When obtaining the energy using the ratio method, it is important to note that the sensitivity can vary significantly depending on the &mu;<sub>lin</sub> ratio of the components vs photon energy. The method gives best results when comparing compounds of different average atomic number.</p>
+<p>The top portion of the dialog <u>directly</u> obtains the photon energies that produce an observed linear attenuation. Use the pull-down menu to select a material or enter an image material's atomic abbreviation if it is a pure element or, if it is a compound, enter its formula as atom1:count1:atom2:count2.... Enter the observed linear attenuation in cm<small><sup>2</sup></small>/gm and the density of the component in gm/cm<small><sup>3</sup></small> in the dialog field and click the <strong>Get KeV</strong> button. The energy solutions will be listed in the <strong>KeV Solutions</strong> window.</p>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images/XrayLookup.png" width="801" />
-<figcaption>X-ray Calculator Dialog and Results Windows.</figcaption>
-</figure>
+<p>The bottom portion of the dialog <u>indirectly</u> obtains the photon energies from a contrast ratio. It is assumed that brighter features are more attenuating. Use the pull-down menu to select materials or enter the two material's atomic abbreviations if they are a pure elements or, if they are compounds, enter the formulas as atom1:count1:atom2:count2.... Enter the observed brightness and the density of the components in gm/cm<small><sup>3</sup></small> in the dialog fields and click the <strong>Get KeV from ratio</strong> button. The energy solutions will be listed in the <strong>KeV Solutions</strong> window.</p>
 
-<p>This figure shows the user dialog and the results window that is created or updated by X-Ray Lookup.</p>
-<p>The top portion of the dialog is for obtaining the photon energy that produces an observed linear attenuation. Enter an image component's atomic abbreviation if it is a pure element or, if it is a compound, enter its formula as atom1:count1:atom2:count2... as required by MuMassCalculator. Enter the observed linear attenuation in cm<small><sup>2</sup></small>/gm and the density of the component in gm/cm<small><sup>3</sup></small> in the dialog field and click the <strong>Get KeV</strong> button. The energy solutions will be listed in the <strong>KeV Solutions</strong> window.</p>
+<h3>Limitations.</h3>
 
-<p>The bottom portion of the dialog is for obtaining the photon energy that produces an observed image brightness ratio. It is assumed that brighter features are more attenuating. Enter the two image component's atomic abbreviations if they are a pure elements or, if they are compounds, enter the formulas as atom1:count1:atom2:count2... as required by MuMassCalculator. Enter the observed brightness and the density of the components in gm/cm<small><sup>3</sup></small> in the dialog fields and click the <strong>Get KeV from ratio</strong> button. The energy solutions will be listed in the <strong>KeV Solutions</strong> window.</p>
+<p>The look-up methods are intended to be used with internal standards of known composition and density. The standards should be placed at strategic locations on and within the CT scan specimen and each standard's attenuations measured in the reconstructed slices. These measurements are used to guide beam hardening corrections, if needed, and quantitative analysis of component concentrations. If standards cannot be used, then the specimen's materials can sometimes be used with limited success if the compositions and densities of the measured regions can be confirmed by independent analysis.</p>
 
-<p>Note: The results and plot window do not necessarily appear in the locations shown in the figure.</p>
+<p>Neither the direct or indirect method is reliable above 500keV (see below)</p>  
+
+<p>The direct method is the best choice provided that the reconstruction algorithm used to produce the CT slice is quantitative, i.e. it gives the correct linear attenuation of a known material<sup>1</sup>.  The direct method may return more than one energy if the material contains an absorption edges.</p>
+
+<p>The indirect or ratio method is contrast dependent. The plots below compare the barite/quartz and calcite/quartz contrast ratios as a function of photon energy.
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Barite-Calcite-QuartzRatioPlot.png" width="600" />
+<figcaption><strong>(left) Calcite/Quartz contrast, (right) Barite/Quartz contrast.</strong></figcaption>
+</figure></center>
+
+<p>The heavy gray lines are the contrast ratios of (left) calcite (CaCO<sub>3</sub>) and quartz (SiO<sub>2</sub>) and right barite (BaSO<sub>4</sub>) and quartz (SiO<sub>2</sub>) as a function of x-ray energy. For reference, the blue lines are the linear attenuations of calcite and barite and the red lines are the linear attenuation of quartz. (The sharp discontinuity in barite is the K absorption edge).</p>
+
+<p>Casual inspection shows that contrast ratios like the ones shown by the blue dashed lines are nearly independent of photon energy above about 500keV and have no solution below(not very useful).  Contrast ratios like the green dashed lines have a weak dependence below about 30keV, are multi-valued(use with caution). Ratios like the red lines are in the "sweet spot" with contrast-energy dependencies that can give meaningful results. Solutions near absorption edge energies should be treated with caution since this region can sensitive to the chemical environment of the material.</p>
+
+<p>Some of the energy solutions are easily eliminated if they are outside the x-ray source's operational range. At this point it should be clear why carefully chosen internal "witness" standards are important to accurate analysis.</p>
+
+<P><small>1. A simple test is to create a synthetic digital image and scan it with a monochromatic projector.  Reconstruct the sinogram with your reconstruction package. It should return the synthetic image plus some noise. A more severe test is to scan it with a bremsstrahlung scanner and apply a beam hardening correction during reconstruction.</small></P>
+
 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 

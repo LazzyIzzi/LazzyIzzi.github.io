@@ -4,22 +4,23 @@
 <h3>Requires ImageJ 1.53k or higher and MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<p>&nbsp;</p>
 
-<p>This plugin provides a non-modal dialog that allows the user to call up X-ray attenuation data for atoms and compounds while working with other images. </p>
+<p><h3>This plugin provides a non-modal dialog that allows the user to call up X-ray attenuation data for atoms and compounds while working with other images.</h3> </p>
 
-<p>The X-ray Calculator plugin is built upon the <a href="MuMassCalculatorLib.html">Mu Mass Calculator</a> library.</p>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/XrayCalculatorExample.png" width="700" />
+<figcaption><strong>X-ray Calculator Dialog and Results Windows.</strong></figcaption>
+</figure></center>
 
-<figure class="easyimage easyimage-full"><img alt="" src="Images/XrayCalculator.png" width="801" />
-<figcaption>X-ray Calculator Dialog and Results Windows.</figcaption>
-</figure>
+<p>This figure shows the user dialog and the three windows that are created or updated by X-Ray Calculator.</p>
+<p>The top portion of the dialog is for obtaining the absorption cross sections in cm<sup>2</sup>/gm for a specific photon energy. Select a material from the "Material Name" pull down menu or, alternatively enter:
+<ul>
+	<li>an atomic abbreviation for a single atom or enter a formula as atom1:count1:atom2:count2...
+	<li>a density of the material.
+</ul>
 
-<p>This figure shows the user dialog(A) and the three windows that are created or updated by X-Ray Calculator.</p>
-<p>The top portion of the dialog is for obtaining the absorption cross sections in cm<sup>2</sup>/gm for a specific photon energy. Enter an atomic abbreviation for a single atom or enter a formula as atom1:count1:atom2:count2... as required by MuMassCalculator. Enter a photon energy in MeV in the dialog field and click the <strong>Calculate button</strong>. The cross sections will be listed in the <strong>QuickCalc</strong> window(B).</p>
+Enter a photon energy in KeV in the dialog field and click the <strong>Calculate</strong> button. The cross sections will be listed in the <strong>QuickCalc</strong> window.</p>
 
-<p>The bottom portion of the dialog is for plotting attenuation spectra from 1KeV to 100GeV or anywhere in between for the formula entered at (A) above. The user can select the energy range, the cross-sections to plot, and log or linear axes. Optionally, the absorption edge energies for the elements in the formula can be listed(C). Clicking the <strong>Update Plot</strong> button will create/update the windows C and D. The plot window(D) is ImageJ native with its set of built-in tools for expanding, listing and fitting the attenuation data.</p>
-
-<p>Note: The results and plot window do not necessarily appear in the locations shown in the figure.</p>
+<p>The bottom portion of the dialog is for plotting attenuation spectra from 1KeV to 100GeV or anywhere in between for the formula entered above. The user can select the energy range, the cross-sections to plot, and log or linear axes. Optionally, the absorption edge energies for the elements in the formula can be listed. Clicking the <strong>Update Plot</strong> button will create/update the results. The plot window is ImageJ native with built-in tools for expanding, listing and fitting the attenuation data.</p>
 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 

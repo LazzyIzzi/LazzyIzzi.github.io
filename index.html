@@ -4,32 +4,45 @@
 
 
 <figure class="easyimage easyimage-full"><img alt="" src="Images\3D_EDM.png" width="800" />
-<figcaption>3D Euclidean Distance of a sandstone</figcaption>
+<center><figcaption><Strong>3D Euclidean Distance of a sandstone</Strong></figcaption></center>
 </figure>
 
 <h1><img src="Images/LazzyIzzi.jpg" alt="LazzyIzzi Cartoon" width="40"/>LazzyIzzi&#39;s Projects</h1>
-<h3>This site is currently under construction. 11/20/21</h3>
+<h3>This site is currently under construction. 1/20/22</h3>
+<h4>My projects are mainly centered around ImageJ plugins and Excel Add-ins for quantitative x-ray microtomography and 3d image processing . There is also an Excel Application for managing car shows and a few other diversions.</h4>
 <ul>
 	<li>
 	<h2>Java Libraries</h2>
-
 	<ul>
-		<li><a href="MuMassCalculatorLib.html" target="_self">MuMassCalculatorLib</a> - A NIST-XCOM derived Java library for photon cross-section and other X-ray calculations</li>
-		<li><a href="MuMassCalculatorDocs/index.html" target="_blank">MuMassCalculator JavaDocs</a></li>
-		<li><a href="DistanceLib.html">DistanceLib</a> - 2D and 3D Euclidean and geodesic transforms&nbsp;and single pressure simulation of mercury injection capillary pressure</li>
-		<li><a href="DistanceLibDocs/index.html" target="_blank">DistanceLib JavaDocs</a></li>
+		<li><a href="MuMassCalculatorLib.html" target="_self">MuMassCalculatorLib</a> - A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100). Additional methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers </a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
+		<li><a href="DistanceLib.html">DistanceLib</a> - Methods for computing 2D and 3D Euclidean and geodesic transforms that support physical dimensions. This library also includes a closely related single pressure simulation of mercury injection capillary pressure</li>
 	</ul>
 	</li>
+	
+
 	<li>
-	<h2>ImageJ plugins <small>(MuMassCalculatorLib examples)</small></h2>
+	<h2>ImageJ MuMassCalculatorLib plugins</h2>
 
 	<ul>
-		<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - plot photon cross-sections for formulas and atoms..</li>
+		<li><a href="MaterialsEditor.html" target="_self">Materials Editor</a> - Read me First! View and edit the default list of tags and their respective formulas and densities. See the <a href="XrayCalculator.html" target="_self">X-ray Calculator</a> for an example of a plugin that uses the materials list.
+		<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - Plot photon cross-sections for formulas and atoms using tabulated XCOM data. Interpolates cross-sections at intermediate single energies.</li>
 		<li><a href="XrayLookup.html" target="_self">X-ray Lookup</a> - Look-up X-ray energies that produce a measured cross-section or cross-section ratio for formulas and atoms.</li>
-		<li><a href="BHestimator.html" target="_self">Beam Hardening Workbench</a> - An interactive tool for optimizing radiographic and tomographic image acquisition.</li>
-		<li><a href="CTsimulator.html" target="_self">CT Scan Simulator</a> - Create mono or polychromatic X-ray attenuation sinograms by reprojecting 2D images&nbsp;</li>
+		<li><a href="BHestimator.html" target="_self">Scanner Setup</a> - An interactive tool for optimizing radiographic and tomographic image acquisition conditions.</li>
+		<li> 2D Scanners - Create total attenuation monochromatic or bremsstrahlung sinograms from 2D images of linear attenuation or tagged<sup>1</sup> compositions and densities.
+		<ul>
+			<li><a href="CTsimulator.html" target="_self">Single Energy Parallel Beam scan</a></li>
+			<li><a href="CTsimulator.html" target="_self">Single Energy Fan Beam scan</a></li>
+			<li><a href="CTsimulator.html" target="_self">Bremsstrahlung Parallel Beam scan</a></li>
+			<li><a href="CTsimulator.html" target="_self">Bremsstrahlung Fan Beam scan</a></li>
+		</ul>
+		<li>Beam Hardening linearization - Compares a beam hardened reconstructed slice to an ideal model of the same slice and uses ImageJ's curve fitting methods to obtain polynomial coefficients for correcting the original sinogram attenuations.</li>
+		<li>Apply linearization - Correct beam hardened sinogram attenuations using the best linearization fit.</li>
+		<li>Image Tagger - Convert ranges of image brightness to tag values of materials of known composition and density.
+		<li>Tags to MuLin - Convert tagged images to total linear attenuation at a single x-ray energy.
 	</ul>
-	</li>
+	
+	
+	
 	<li>
 	<h2>ImageJ plugins <small>(DistanceLib examples)</small></h2>
 
@@ -45,10 +58,12 @@
 	<h2>Excel VBA Projects</h2>
 
 	<ul>
-		<li>MuMassCalculator.xlam - An Excel Add-in for NIST-XCOM derived photon cross-sections and other X-ray calculations</li>
-		<li>CarShowHelper - An Excel application for managing car shows.</li>
+		<li>MuMassCalculator.xlam - An Excel Add-in for NIST-XCOM derived photon cross-sections and other X-ray calculations. It's pretty handy for routine calculations and testing ideas.</li>
+		<li>CarShowHelper - An Excel application for managing car shows. A menu-driven record keeper for registration, classification, judging, and tally that maintains a ever-green contact list of show participants. </li>
 	</ul>
 	</li>
 </ul>
+
+<small>1. Simulating bremsstrahlung sinograms from a digital image requires calculating the linear attenuation of each material in the image at many different energies. Tags are unique integer values assigned to a material and are used to create a look-up table of that material's properties.</small>
 
 <a href="AboutLazzyIzzi.html" target="_self">About LazzyIzzi</a>
