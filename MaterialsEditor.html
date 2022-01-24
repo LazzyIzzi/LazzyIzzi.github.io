@@ -10,11 +10,12 @@
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images\MaterialsEditor.png" width="527" />
 <figcaption><Strong>The Materials Editor UI</Strong></figcaption></center>
 
-<p>Most of the ImageJ plugins that use the MuMassCalculator library use a list of materials saved in a file "DefaultMaterials.csv" in the ImageJ~/plugins/DialogData folder. It contains a header followed by a list containing a unique integer identifier or tag for each material, the material's common name, formula, density. The list can be created or modified by any text editor or spreadsheet application that handles comma separated value (csv) files. This plugin provides the convenience of a simple editor that can be called from the ImageJ Plugins menu. The buttons have Tool Tips that explain their function.
-<br>
-<br>An example text materials csv file:
-<br>
-<br>Tag,Name,Formula,Density
+<h3>What's s "Tag" list?</h3>
+
+<p>Most of the ImageJ plugins that use the MuMassCalculator library use a list of materials saved in a file "DefaultMaterials.csv" in the ImageJ~/plugins/DialogData folder. It contains a header followed by a list containing a unique integer identifier or tag for each material, the material's common name, formula, and density. The list can be created or modified by any text editor or spreadsheet application that handles comma separated value (csv) files. This plugin provides the convenience of a simple editor that can be called from the ImageJ Plugins menu. The buttons have Tool Tips that explain their function.
+
+<h3>A Tag list example csv file</h3>
+Tag,Name,Formula,Density
 <br>89,Actinium,AC,10.07
 <br>101,Albite,Na:1:Al:1:Si:3:O:8,2.62
 <br>102,Alumina,Al:2:O:3,3.7
@@ -23,10 +24,9 @@
 <br>104,Ankerite,Fe:1:Ca:1:C:2:O:6,3.0
 <br>105,Anorthite,Ca:1:Si:2:Al:2:O:8,2.76
 <br>106,Anthracite,C:1,1.5
-<br>
-<br>
-The requirements for a materials file are:
-<ol type="a">
+
+<h3>Tag list requirements</h3>
+<ol type="1">
 	<li>DefaultMaterials.csv is the only material list recognized by the ImageJ plugins<sup>1</sup>.</li>
 	<li>Must have "Tag" as the first column header.</li>
 	<li>A unique integer tag for each formula.</li>
@@ -35,10 +35,10 @@ The requirements for a materials file are:
 	<li>Do not edit the DefaultMaterials.csv file while running a dependent plugin.</li>
 </ol></p>
 
-The features of a materials file are:
-<ol type="a">
+<h3>Tag list features</h3>
+<ol type="1">
 	<li>Tags are not required to be sorted in numerical order or numbered continuously.</li>
-	<li>The header "Name" can be modified to indicate the lists contents e.g. "Minerals" or "Alloys".</li>
+	<li>The header "Name" can be modified to indicate the lists contents or list owner etc. e.g. "Minerals" or "Alloys" or "Fred's List</li>
 </ol></p>
 
 <p>The materials list saves a lot of tedious typing of formulas and densities needed by the plugins.</p>
