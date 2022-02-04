@@ -1,0 +1,35 @@
+<title>Material Tagger</title>
+<link rel="icon" type="image/x-icon" href="Images/MaterialTagger/LazzyIzzi.jpg"> 
+<h1>Material Tagger</h1> 
+<h3>Requires MuMassCalculatorLib.jar</h3>
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<h3>A plugin for creating a "tag" image using thresholding.</h3>
+<h4>A tag image contains pixel values that point to a particular compound's name, formula and density in the DefaultMaterials.csv file. These properties are used by other plugins to compute the linear attenuation at that pixel position for any x-ray energy. Although they contain only whole number values, Tag images are 32-bit.  See the <a href="MaterialsEditor.html" target="_self">MaterialsEditor</a> page for more information about tags.</h4>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/MaterialTagger/MaterialTagger.png" width="300" />
+<figcaption><strong>Material Tagger Dialog</strong></figcaption></figure></center>
+
+<ol>
+	<li>Click on the image that you want to tag to make it the active window.</li>
+	<li>Select the Material Tagger plugin from the ImageJ plugins menu. A blank window will appear next to the active window.</li>
+	<li>Use the pull-down menu to select a specimen material from the Materials List.</li>
+	<li>Use the sliders to threshold select the range of pixel values to tag as the chosen material.</li>
+	<li>Click the "Add Material to Tag Image" to add the material to the tag image. Continue until all of the materials are tagged.  Untagged materials are set to 0, "empty space" in the tag image.</li>
+</ol>
+
+<h1>Tags to MuLin</h1> 
+<h3>Requires MuMassCalculatorLib.jar</h3>
+<h3>A plugin for converting a "tag" image to linear attenuation.</h3>
+<h4>This plugin creates a new 32-bit image of linear attenuation from a tag image.</h4>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/MaterialTagger/TagsToMuLin.png" width="200" />
+<figcaption><strong>Tags To MuLin Dialog</strong></figcaption></figure></center>
+
+<ol>
+	<li>Click on the tag image that you want to convert to make it the active window.</li>
+	<li>Select the Tags To MuLin plugin from the ImageJ plugins menu.</li>
+	<li>Enter the x-ray energy for the conversion.</li>
+	<li>Click OK to create a new image of linear attenuation.</li>
+</ol>
+
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>

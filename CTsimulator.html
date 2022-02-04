@@ -1,11 +1,11 @@
 <title>CT Scan Simulators</title>
-<link rel="icon" type="image/x-icon" href="Images/LazzyIzzi.jpg"> 
+<link rel="icon" type="image/x-icon" href="Images/CTsimulator/LazzyIzzi.jpg"> 
 <h1>CT Scan Simulators</h1> 
 <h3>Requires ImageJ 1.53k or higher, MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 <h3>These plugins create sinograms from square 2D 32-bit images.</h3>
-<p>This set of four individual quantitative plugins vary from simple monochromatic parallel projection to polychromatic fan beam projection.
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CTscanners.png" width="700" />
+<p>This set of four individual quantitative<sup>1</sup> plugins vary from simple monochromatic parallel projection to polychromatic fan beam projection.
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CTsimulator/CTscanners.png" width="700" />
 <figcaption><strong>CT Scan Simulator Dialogs</strong></figcaption></figure></center>
 
 <h4>General</h4>
@@ -16,7 +16,7 @@
 </ul>
 
 <h3>Description of the dialog fields</h3> 
-</ul>		
+	
 <ul>
 	<li>Target - the x-ray source target(anode),
 	<li>KV  - the x-ray source accelerating potential.</li>
@@ -33,17 +33,22 @@
 	<li>Pad Image - embeds non-square images in a square zero-filled field.</li>
 	<li>Scale to 16-bit - multiply the sinogram by 6000 and convert from float to 16-bit.</li>
 </ul>
-	
+<p>Note: The dialog field information is preserved in the header of sinograms saved as tiff files. Use ImageJ Image->Show Info to view or use the "Sinogram Properties" plugin to write the field data to a results window.</p>
+		
 <h3>Additional Information</h3>
 <ul>
-	<li>Monochromatic projectors use ray sums through the image data to produce the projection at each angle. A transformation is applied to rotate the source point(s) and detector points about the center of the 2D image when computing the ray sums. The image data is not interpolated.</li>
-	<li>Polychromatic projectors simulate a bremsstrahlung intensity distribution by breaking the scan into a series of monochromatic scans with the appropriate source intensity for each energy interval. The resulting scans are combined to create a polychromatic result. Characteristic x-ray emission lines are neglected.</li>
+	<li>All projectors compute total attenuation, the sum of attenuations from coherent, incoherent, photoelectric, and pair-production processes.  The "detected" intensity does not include that from scatter, fluorescence or other processes.</li>
+	<li>Monochromatic projectors use ray sums through the image linear attenuation data to produce the projection at each angle. A transformation is applied to rotate the source point(s) and detector points about the center of the 2D image when computing the ray sums. The image data is not interpolated.</li>
+	<li>Polychromatic projectors operate on tagged images, each tag is a reference to a material composition and density. The projectors simulate a bremsstrahlung intensity distribution by breaking the scan into a series of monochromatic scans with the appropriate source intensity for each energy interval. The resulting scans are combined to create a polychromatic result. Characteristic x-ray emission lines are neglected.</li>
 	<li>Fan beam projectors neglect regions outside the input 2D image i.e. the source to detector "air" path.</li>
 </ul>
 
 <h3>Output</h3>
 <p>Click the "OK" button to create the sinogram with the requested number of view angles. Bremsstrahlung images may take some time since each energy bin is scanned.  Parallel, monochromatic scans are pretty quick.</p> 
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Sinogram.png" width="250" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CTsimulator/Sinogram.png" width="250" />
 <figcaption><strong>A Sinogram example</strong></figcaption></figure></center>
+
+<small>1. Proper reconstruction of a monochromatic sinogram will return the original 2D slice attenuations plus some noise. Quantitative reconstruction of a bremsstrahlung sinogram will depend on sample composition, experimental technique and <a href="Linearization.html" target="_self">carefully applied</a> post-processing sinogram beam-hardening correction.</small>
+
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>

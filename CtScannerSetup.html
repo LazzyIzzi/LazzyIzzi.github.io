@@ -1,11 +1,11 @@
 <title>CT Scanner Setup</title>
-<link rel="icon" type="image/x-icon" href="Images/LazzyIzzi.jpg"> 
+<link rel="icon" type="image/x-icon" href="Images/CtScannerSetup/LazzyIzzi.jpg"> 
 <h1>CT Scanner Setup</h1> 
 <h3>Requires ImageJ 1.53k or higher,  MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<h3>This plugin provides a non-modal dialog to aid in selecting optimal CT scanner operating conditions to improve signal-to-noise and reduce beam hardening artifact. </h3>
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSchematicSideView791.png" width="700" />
+<h4>Scanner Setup  is a 1-D attenuation model that displays x-ray intensity distributions at important points along the ray path.  The plugin provides a non-modal dialog to aid in selecting optimal CT scanner operating conditions to improve signal-to-noise and reduce beam hardening artifact. </h4>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/ScannerSchematicSideView791.png" width="700" />
 <figcaption><strong>Schematic of a typical radiography/tomography experimental setup</strong></figcaption></figure></center>
 
 <p>The above figure shows a schematic of a simple radiography or CT scanner. The arrow widths indicate spectral width and the length indicates intensity. </p>
@@ -15,12 +15,12 @@
 <p>Beam hardening is the shifting of the broad spectrum of a conventional x-ray source toward higher average (hard) energies as it passes through a material.&nbsp;Lower energy (longer wavelength) X-rays are preferentially attenuated leaving the higher energy, more penetrating X-rays for detection. It is mostly evident in the photoelectric energy range where the attenuation of materials changes rapidly with photon energy. The plot below illustrates this energy shift (plotted as wavelength for dramatic effect) caused by the beam passing through different thicknesses of copper.</p>
 
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/EffectiveEnergySourceFilters.png" width="500" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/EffectiveEnergySourceFilters.png" width="500" />
 <figcaption><strong><center>Source intensity distribution with copper filters</center></strong></figcaption></figure></center>
 
 
 <p> When measuring attenuation of a specimen using a conventional bremsstrahlung x-ray source, we first measure the incident beam intensity "<em>I<sub>0</sub></em>". Then we put a specimen in the beam and repeat the measurement "<em>I</em> ".  We know the thickness and density of the specimen so we can calculate the linear attenuation <big><em>&mu;</em></big> using the equation.
-<center><figure class="easyimage easyimage-full"><strong><img alt="" src="Images/AttenuationEqn.png" width="300" /> </strong></figure></center>
+<center><figure class="easyimage easyimage-full"><strong><img alt="" src="Images/CtScannerSetup/AttenuationEqn.png" width="300" /> </strong></figure></center>
 
  With <big><em>&mu;</em></big> in hand and if we know the the specimen's composition we can <a href="XrayLookup.html" target="_self">look-up</a> the "<em>Effective</em>" x-ray energy of the incident x-ray beam.
 <br>
@@ -28,20 +28,23 @@
 <br>
 <br>But the distribution is changing as it passes through the specimen!  So we try again with a thinner specimen and sure enough, we get a different effective energy. The plot below shows the use of different thickness copper filters to remove a portion of the low-energy (soft) x-rays incident on different thickness aluminum specimens. Unfiltered(red), the effective energy changes from about 45keV in the 0.01cm specimen to 72keV for the 2.5cm thick one. By removing the soft x-rays from the incident beam with a 0.1cm copper filter the average energy shifts to about 90keV and remains nearly constant for all thicknesses of of aluminum.
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/EffectiveEnergyBeamHardening.png" width="500" />
-<figcaption><strong><center>Pre-hardening using filters</center></strong></figcaption></figure></center>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/EffectiveEnergyBeamHardening.png" width="500" />
+<figcaption><strong>Pre-hardening using filters</strong></figcaption></figure></center>
 
 
 
 
-<h3>Why is Beam Hardening Important</h3>
-<p>Beam Hardening results in an over-estimate of attenuation in thinner portions of the sample.&nbsp; It produces the well-known cupping and streak artifacts in reconstructed tomographic images.</p>
-<h3>What can be done to reduce Beam Hardening</h3>
-<p>There are primarily two ways to minimize beam hardening artifacts.</p>
+<h3>Why is Beam Hardening Important?</h3>
+<p>Beam Hardening results in an over-estimate of attenuation by shorter paths through the specimen.&nbsp; It produces the well-known cupping and streak artifacts in reconstructed tomographic images. Cupping makes the image brighter at the thinner edges, streaks appear as brighter regions between more x-ray absorbing higher atomic number features in the specimen(streaks can also be caused by non-linear detector response).</p>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/CuppingImage.png" width="256" />
+<figcaption><strong>Cupping Artifact in a Simulated Sandstone<br> Calcite cement Z contrast is not sufficient to cause detectable streaks.</strong></figcaption></figure></center>
+
+<h3>What can be done to reduce Beam Hardening?</h3>
+<p> Apart from absorption edges, beam hardening is always present, lower energy x-rays are more strongly absorbed. But we can reduce the effect, hopefully below detection, by experimental technique and post-processing.</p>
 
 <ol type="1">
 	<li>Pre-harden the X-ray beam using a filter, usually a metal foil, located at the X-ray source. This can result in a substantial loss of x-ray intensity. If not already at maximum, the x-ray source current can be increased to offset the loss. Occasionally the accelerating potential of the X-ray source is increased to offset the decreased intensity caused by the filter absorbance. This is usually not a good idea. It raises the effective energy and lowers the sample attenuation an may result in additional noise in reconstructed slices.</li>
-	<li>Apply a correction to the observed attenuations so that a plot of attenuation vs sample thickness becomes linear. The linearization function is usually a polynomial that is determined either by simply observing the quality of the corrected images&#x1F616; or by careful calibration&#x1F601;. Linearization is most successful when the sample is relatively homogeneous, i.e. when all rays passing through the sample see about the same average composition. We will discuss linearization <a href="Linearization.html" target="_self"><em>here</em></a>. After correction by linearization the reconstructed image linear attenuations will be at a single <u><b>effective energy</b></u>. When samples are not relatively homogeneous, more advanced methods beyond the current scope of my plugins are required.</li>
+	<li>Apply a correction to the observed attenuations so that a plot of attenuation vs sample thickness becomes linear. The linearization function is usually a polynomial that is determined, depending on the information being sought, either by simply observing the quality of the corrected images or by careful calibration. Linearization is most successful when the sample is relatively homogeneous, i.e. when all rays passing through the sample see about the same average composition. We will discuss linearization <a href="Linearization.html" target="_self"><em>here</em></a>. After correction by linearization the reconstructed image linear attenuations will be at a single effective energy. When samples are not relatively homogeneous, more advanced methods beyond the current scope of my plugins are required.</li>
 </ol>
 
 
@@ -50,7 +53,7 @@
 
 
 <h3>The User Interface</h3>
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/BHworkbenchInitial.png" width="700" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/BHworkbenchInitial.png" width="700" />
 <figcaption><strong><center>ImageJ Plugin CT Scanner Setup, Initial</center></strong></figcaption></figure></center>
 
 <h3><center>Example</center></h3>
@@ -103,7 +106,7 @@ Add filter thickness and observe the changes in the curves. Removing the low ene
 </ul>
 Achieving a proper balance between photon use and acceptable beam hardening often depends on the sample composition and structure, the effectiveness of post-acquisition beam hardening corrections, and the information to be obtained from the image.
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/BHworkbenchFinal.png" width="700" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/BHworkbenchFinal.png" width="700" />
 <figcaption><strong>ImageJ Plugin Beam Hardening Workbench, Final</strong></figcaption>
 </figure></center>
 
