@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"jhd.DistanceMaps.libJ8"},{"l":"jhd.FloodFill.libJ8"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"jhd.DistanceMaps.libJ8"}];updateSearchResults();
