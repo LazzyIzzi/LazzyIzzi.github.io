@@ -13,7 +13,7 @@
 
 <h3>Multi-Material specimens</h3>
 
-<p>Quantitative correction of beam hardening in multi-material specimens with high Z contrast is more complex and various solutions are described in the literature<sup>1</sup>. Generally, the attenuations measured from the image will not be correct for a single effective energy and the image may contain streak artifacts. It is sometimes possible to significantly reduce attenuation errors and streak artifacts in reconstructed slices by adding more filtration in addition to linearization post-processing. For now I'll just discuss the plugins.</p>
+<p>Quantitative correction of beam hardening in multi-material specimens with high Z contrast is more complicated and various solutions are described in the literature<sup>1</sup>. Generally, the attenuations measured from each material in the image will not be consistent with a single effective energy and the image may contain streak artifacts. In addition to linearization post-processing, it may be possible to reduce attenuation errors and artifacts by using additional filtration. For now I'll just discuss the plugins.</p>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Linearization/BereaFilterStudy.png" width="600" />
 <figcaption><strong> Copper 0.005cm Filtered Sandstone Reconstructions  Uncorrected(left) Linearized(right) </strong></figcaption></figure></center>
@@ -38,12 +38,13 @@
 	<li>Enter the x-ray energy found in step 3 in the Est keV Field and Click OK.</li>
 </ol>
 
-<p>The "Finder" will output two windows</p>
+<p>The "Finder" will output a plot of the model vs image attenuations and a list of several polynomial fits to the plot data.  </p>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Linearization/LinearizationPlot.png" width="600" />
 <figcaption><strong>Linearization "Finder" Output</strong></figcaption></figure></center>
 
-<p>The "Add Fit" in the Plot window's Data menu can be used to examine the appropriateness of the fits listed in the "Fit Params" table.</p> 
+<p>The "Add Fit" in the Plot window's Data menu can be used to examine the appropriateness of the fits listed in the "Fit Params" table. Leave the Fit Params window open for use in the "Apply" plugin.</p> 
+
 <p>The second "apply" plugin corrects the original sinogram using the selected polynomial coefficients.</p>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Linearization/LinearizationApply.png" width="250" />

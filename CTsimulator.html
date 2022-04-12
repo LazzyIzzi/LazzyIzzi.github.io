@@ -27,13 +27,15 @@
 	<li>Filter Thickness - the foil thickness, can be zero.</li>
 	<li>Source to detector(cm) - the distance in centimeters between the x-ray source and the detector.
 	<li>Magnification - the desired magnification, must be greater than 1. Magnifications slightly greater than 1 will produce sinograms of slightly greater than half of the input 2D image. The other half is behind the detector!
-	<li>Detector Formula - the detector scintillator material.
+	<li>Detector Formula - the detector scintillator material as Atom1:Count1:Atom2:Count2... e.g. Cs:1:I:1 for Cesium Iodide.
 	<li>Detector Thickness - the detector scintillator thickness in centimeters.
 	<li>Detector Density - the detector density in gm/cc.
 	<li>Pad Image - embeds non-square images in a square zero-filled field.</li>
 	<li>Scale to 16-bit - multiply the sinogram by 6000 and convert from float to 16-bit.</li>
 </ul>
-<p>Note: The dialog field information is preserved in the header of sinograms saved as tiff files. Use ImageJ Image->Show Info to view or use the "Sinogram Properties" plugin to write the field data to a results window.</p>
+<p>Note: The dialog field information is preserved in the header of sinograms saved as tiff files. Use ImageJ Image->Show Info(ctrl-i) to view or use the "Sinogram Properties" plugin to write the field data to a results window.</p>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CTsimulator/SinoProperties.png" width="600" />
+<figcaption><strong>A Sinogram example</strong></figcaption></figure></center>
 		
 <h3>Additional Information</h3>
 <ul>
