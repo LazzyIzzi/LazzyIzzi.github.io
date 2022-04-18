@@ -51,7 +51,7 @@ Click OK to begin processing.
 <ol>
 <li>Select a "binarized" image or stack slice.</li>
 <li>Run the Geodesic Transform plugin with one of the 2D options.</li>
-<li>Select one or more points in one or more 2D GDT images.</li>
+<li>Select one or more points in one or more 2D GDT slices.</li>
 <li>Run Geodesic Path 2D from the plugins menu.</li>
 </ol>
 The shortest path from the selected points to the nearest "0" in the GDT will be added to the ROI Manager.
@@ -63,14 +63,14 @@ The shortest path from the selected points to the nearest "0" in the GDT will be
 <ol>
 <li>Select a "binarized" image or stack slice.</li>
 <li>Run the Geodesic Transform plugin with one of the 3D options.</li>
-<li>Select one or more points in one or more 3D GDT images.</li>
+<li>Select one or more points in the 3D GDT image.</li>
 <li>Run Geodesic Path 3D from the plugins menu.</li>
 </ol>
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/GeodesicPath3DDialog.png" width="300" />
 <figcaption><strong>Geodesic Path 3D Dialog</strong></figcaption></figure></center>
-The shortest path from the selected points to the nearest "0" in the 3D GDT will be drawn as points.
-<br>Show Path(s) option creates an new image with the path voxels set to 100 plus the point selection index.
-<br>Write Path(s) to Roi Manager adds the path points an names each path.
+The shortest path from the selected points to the nearest "0" in the 3D GDT will be drawn as points. You may need to scroll through the stack to find the path points.
+<br>Show Path(s) option creates an new image with the path voxels set to 100 plus the point selection index. The 3D Project plugin is useful for visualizing the path.
+<br>Write Path(s) to Roi Manager adds the path points and assigns a hopefully meaningful name to each each path.
 
 
 <h3>Get GDT Path Points </h3>
@@ -89,6 +89,24 @@ For example, starting with a 3D image of a pore network containing a varying con
 <li>Run "Get GDT Path Points" to get the substance concentration along that path.</li>
 </ol>
 
-Similarly, the distances along the path can be obtained by applying the ROI manager path to the pore network GDT image.  The concentration can then be plotted as a function of distance. At this writing, the ImageJ Plot tools are not well suited for combining data in this way.  Copy the two sets of path data to a spreadsheet application.
+Similarly, the distances along the path can be obtained by applying the ROI manager path to the pore network GDT image.  The concentration can then be plotted as a function of distance. At this writing, this is easily accomplished using a macro.
+<br>After the GDT and Geodesic Path plugins have created one or more Rois in the ROI manager...
+<br>Example Macro:
+<br>
+<br>selectWindow("Geodesic Distance_3D");
+<br>roiManager("Select", 0);  // Change the 0 index to the path you want to measure
+<br>run("Get_Points_And_Values");
+<br>Table.rename("Point Value Results", "Distance Results");
+<br>selectWindow("DryBereaSandstone-256x256x512.tif"); // obviously your image name goes here
+<br>roiManager("Select", 0);  // Change the 0 index to the same path above
+<br>run("Get_Points_And_Values");
+<br>Table.rename("Point Value Results", "Gray Results");
+<br>gray = Table.getColumn("Val","Gray Results");
+<br>dist =  Table.getColumn("Val","Distance Results");
+<br>Plot.create("Gray Vs Distance","Distance","Gray Level");
+<br>Plot.setColor("red","red");
+<br>Plot.add("circle",dist,gray);
+<br>Plot.show;
+
 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
