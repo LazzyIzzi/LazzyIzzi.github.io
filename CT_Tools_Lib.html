@@ -1,0 +1,33 @@
+<title>CT Tools Lib</title>
+<link rel="icon" type="image/x-icon" href="Images/CT_Tools_Lib/LazzyIzzi.jpg"> 
+<h1><strong>CT_Tools_Lib</strong></h1>
+
+<h2><strong><a href="index.html" target="_self"><em><strong>Home</strong></em></a></strong></h2>
+
+<p><strong><strong>CT_Tools_Lib is derived from the NIST <a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database" target="_blank">XCOM</a> database and published atom physical data.</strong></strong></p>
+
+<p><strong><strong>XCOM is an excellent tool but my lab computer didn't have internet access. This project began as an Excel add-in that I used to calculate attenuation coefficients without going to my office.  I did most of my image processing in ImageJ and thought about migrating the Excel data to that platform. I'm just getting around to it all these years later. CT_Tools_Lib.jar&nbsp;</strong>is available for download <a href="https://github.com/LazzyIzzi/MuMassCalculator/blob/master/CT_Tools_Lib.jar" target="_blank">here</a>.  Please refer to the <a href="MuMassCalculatorDocs/index.html" target="_blank">javadocs</a> for a detailed description of the methods in the library. The source codes for the library and dependent ImageJ plugins are included in their respective jar files.</strong></p>
+
+<p><strong>True to its NIST roots, CT_Tools_Lib has methods that return total attenuation, coherent and incoherent scatter, photoelectric absorption, and pair production in nuclear and electric fields for elements and compounds. CT_Tools_Lib also contains methods that return atom properties, formula weights, x-ray absorption edge energies etc. It also has methods to compute the output intensity of a continuum X-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers </a>equation, and to create fan-beam or parallel-beam total attenuation sinograms using conventional and monochromatic X-ray sources. See the imageJ plugins pages for examples.</strong></p>
+
+<p><strong>This library gets its name from the mass attenuation coefficient, also known as the absorption cross section, written by convention as <big>&mu;</big><small>mass </small>or<small>&nbsp;</small><big>&mu;</big><small>m</small>. The mass attenuation coefficient<small>&nbsp;</small>is a fundamental property of an atom.&nbsp; It characterizes an atom&#39;s capacity to <a href="https://en.wikipedia.org/wiki/Absorption_cross_section" target="_blank">interact</a> with electromagnetic radiation as a function of photon energy. There are many web <a href="https://www.spectroscopyonline.com/view/tutorial-attenuation-x-rays-matter" target="_blank">tutorials </a>available for the measurment and use of <big>&mu;</big><small>mass</small>.&nbsp; The equation for the attenuation of an X-ray beam is shown below.&nbsp; It is a Beer-Lambert relation where the attenuation coefficient is the product of&nbsp;<big>&mu;</big><small>mass</small>, the density of the material <em><big>&rho;</big></em>, and the thickness <big><em>x</em></big>. In this library, the units are thickness in cm, density in gm&sol;cc and <big>&mu;</big><small>mass</small> in cm<sup>2</sup>&sol;gm.  The product <big><em>&mu;&rho;x</em></big> is unitless and is sometimes represented using the Greek letter <big>&tau;</big>.</strong></p>
+
+<center><figure class="easyimage easyimage-full"><strong><img alt="" src="Images/CT_Tools_Lib/AttenuationEqn.png" width="300" /> </strong></figure></center>
+
+<figcaption><center><strong>Computing transmitted intensity <em><strong>I</strong> </em>from the initial intensity <strong><em>Io</em></strong>, &mu;mass, density and thickness</strong></center></figcaption>
+
+
+<Center><figure class="easyimage easyimage-full"><strong><img alt="" src="Images/CT_Tools_Lib/Attenuation.png" width="600" /> </strong></figure></Center>
+
+<figcaption><center><strong>&nbsp;Attenuation of 1000000 0.6MeV photons by 0.2 cm of copper</strong></center></figcaption>
+
+
+<p><strong>CT_Tools_Lib&#39;s <em>GetMuMass</em> function returned the value of <big>&mu;</big><small>mass&nbsp; </small>for copper <small>at 0.06MeV of 1.593</small>cm2/gm.</strong></p>
+
+<p><strong>The <em>GetAtomDensity</em> function returned a density of 8.92gm/cc for copper at standard temperature and pressure.&nbsp; The attenuation coefficient is 1.593*8.920*0.2 = 2.842. To get the transmitted intensity, 1000000*Exp(-2.842) = 58314 photons.</strong></p>
+
+
+<h2><strong><a href="index.html" target="_self"><em><strong>Home</strong></em></a></strong></h2>
+
+<p><strong>&nbsp;</strong></p>
+

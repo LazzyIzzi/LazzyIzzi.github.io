@@ -1,10 +1,10 @@
-<title>Geodesic Distances</title>
+<title>Geodesic Transform</title>
 
 <link rel="icon" type="image/x-icon" href="Images/CTsimulator/LazzyIzzi.jpg"> 
-<h1>Geodesic Distance</h1> 
-<h3>Requires DistanceLib.jar</h3> 
+<h1>Geodesic Transform and associated plugins</h1> 
+<h3>Requires Flood_Tools_Lib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
-<h3>This plugin creates 2D and 3D geodesic distance maps by ordered propagation. See the <a href="DistanceLib.html" target="_self">DistanceLib</a> page for more information.</h3>
+<h3>Geodesic Transform creates 2D and 3D geodesic distance maps by ordered propagation. See the <a href="Flood_Tools_Lib.html" target="_self">Flood_Tools_Lib</a> page for more information.</h3>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/GeodesicDialog.png" width="300" />
 <figcaption><strong>Geodesic Map Dialog</strong></figcaption></figure></center>
@@ -41,8 +41,54 @@ Click OK to begin processing.
 <figcaption><strong>Binarized Image(left), Geodesic Map Dialog(center), resulting GDT from left slice(right)</strong></figcaption></figure></center>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/Tortuosity_3D.png" width="300" />
-<figcaption><strong>Tortuosity 1(dark blue) to 1.75(white)</strong></figcaption></figure></center>
+<figcaption><strong>Tortuosity from left volume face 1(dark blue) to 1.75(white)</strong></figcaption></figure></center>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/Tortuosity_3D.gif" width="400" />
 <figcaption><strong>Tortuosity Visualization</strong> <small>made with Volume Viewer 2.01</small></figcaption></figure></center>
+
+<h3>Geodesic Path 2D </h3>
+<p>There is no user dialog for Geodesic Path 2D. It operates on 2D GDT images made with the Geodesic Transform plugin.
+<ol>
+<li>Select a "binarized" image or stack slice.</li>
+<li>Run the Geodesic Transform plugin with one of the 2D options.</li>
+<li>Select one or more points in one or more 2D GDT images.</li>
+<li>Run Geodesic Path 2D from the plugins menu.</li>
+</ol>
+The shortest path from the selected points to the nearest "0" in the GDT will be added to the ROI Manager.
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/GeodesicPath2D.png" width="600" />
+<figcaption><strong>Slice 31 in a binarised Stack with point selection(left), Image after Geodesic Path 2D(center),Roi Manager(right)</strong></figcaption></figure></center>
+
+<h3>Geodesic Path 3D </h3>
+<p> Geodesic Path 3D operates on 3D GDT images made with the Geodesic Transform plugin.
+<ol>
+<li>Select a "binarized" image or stack slice.</li>
+<li>Run the Geodesic Transform plugin with one of the 3D options.</li>
+<li>Select one or more points in one or more 3D GDT images.</li>
+<li>Run Geodesic Path 3D from the plugins menu.</li>
+</ol>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/GeodesicPath3DDialog.png" width="300" />
+<figcaption><strong>Geodesic Path 3D Dialog</strong></figcaption></figure></center>
+The shortest path from the selected points to the nearest "0" in the 3D GDT will be drawn as points.
+<br>Show Path(s) option creates an new image with the path voxels set to 100 plus the point selection index.
+<br>Write Path(s) to Roi Manager adds the path points an names each path.
+
+
+<h3>Get GDT Path Points </h3>
+<p>There is no user dialog for Get GDT Path Points.
+<ol>
+<li>Run a 2D or 3D geodesic path plugin on a GDT image. The 2D and 3D path plugins only operate on 2D and 3D GDT images respectively.The path point ROIs appear in the ROI manager.</li>
+<li>The resulting paths can be applied to any image.</li> 
+</ol>
+For example, starting with a 3D image of a pore network containing a varying concentration of a substance.
+<ol>
+<li>Segment the pore network.</li>
+<li>Compute the GDT of the network from some source point(s) or volume surface.</li> 
+<li>Select test points in the GDT mapped pore network.</li>
+<li>Run the shortest path plugin to obtain the shortest paths from the test points through the network to the source point(s) or surface.</li>
+<li>Apply a path from the ROI manager to the original image.</li>
+<li>Run "Get GDT Path Points" to get the substance concentration along that path.</li>
+</ol>
+
+Similarly, the distances along the path can be obtained by applying the ROI manager path to the pore network GDT image.  The concentration can then be plotted as a function of distance. At this writing, the ImageJ Plot tools are not well suited for combining data in this way.  Copy the two sets of path data to a spreadsheet application.
+
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>

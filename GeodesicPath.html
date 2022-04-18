@@ -1,0 +1,48 @@
+<title>Geodesic Distances</title>
+
+<link rel="icon" type="image/x-icon" href="Images/CTsimulator/LazzyIzzi.jpg"> 
+<h1>Geodesic Distance</h1> 
+<h3>Requires Flood_Tools_Lib.jar</h3> 
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<h3>This plugin creates 2D and 3D geodesic distance maps by ordered propagation. See the <a href="Flood_Tools_Lib.html" target="_self">Flood_Tools_Lib</a> page for more information.</h3>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/GeodesicDialog.png" width="300" />
+<figcaption><strong>Geodesic Map Dialog</strong></figcaption></figure></center>
+
+<p>Geodesic Distance operates on 2D and 3D images that have been "binarized" into "zero" and "non-zero" components.
+Select "Map 0" or "Map !0" to select the component to map.</p>
+<p>The "Output" pull down menu provides several options:</p>
+<ul>
+	<li>3D new Image - creates a 3D GDT new output stack.</li>
+	<li>3D in Place - converts the current stack to a 32-bit 3D GDT</li>
+	<li>2D new Image - creates a new stack of 32-bit 2D GDTs</li>
+	<li>2D in Place - converts the current stack to a new stack of 32-bit 2D GDTs</li>
+	<li>2D this slice new image - creates a 2D GDT of the current slice</li>
+</ul>
+Check the "Use Pixel Sizes" to map in physical pixel size units.  The default is unit pixels.
+<p>The "Seed" pull down menu provides several options for the source points:</p>
+<ul>
+	<li>Left Slice - the GDT seed points are the entire left side of the 3D volume</li>
+	<li>Right Slice - </li>
+	<li>Top Slice - </li>
+	<li>Bottom Slice - </li>
+	<li>Front Slice - </li>
+	<li>Back Slice - </li>
+	<li>Point(s) - Use the ImageJ Roi Point tool to define one or more GDT source points.</li>
+</ul>
+<p>Select Geodesic Distance or Tortuosity radio button.
+<br>For tortuosity from a volume surface, the tortuosity is the GDT distance from the surface divided by the straight line distance from the surface.
+<br>For tortuosity from Point(s) sources,the tortuosity is the GDT distance from the nearest source point  divided by the straight line distance from the nearest source point.
+<br> Note that the tortuosity using the "Point(s)" option is relatively slow.</p>
+
+Click OK to begin processing.
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/Geodesic Distance_3D_Example.png" width="700" />
+<figcaption><strong>Binarized Image(left), Geodesic Map Dialog(center), resulting GDT from left slice(right)</strong></figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/Tortuosity_3D.png" width="300" />
+<figcaption><strong>Tortuosity 1(dark blue) to 1.75(white)</strong></figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/Geodesic/Tortuosity_3D.gif" width="400" />
+<figcaption><strong>Tortuosity Visualization</strong> <small>made with Volume Viewer 2.01</small></figcaption></figure></center>
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
