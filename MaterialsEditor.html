@@ -9,11 +9,11 @@
 <h3>This plugin provides a non-modal dialog that allows the user to edit materials tag lists.</h3>
 
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/MaterialsEditor/MaterialsEditor.png" width="527" />
-<figcaption><Strong>The Materials Editor UI</Strong></figcaption></center>
+<figcaption><Strong>The Materials Editor UI</Strong></figcaption></figure></center>
 
 <h3>What's a "Tag" list?</h3>
 
-<p>Most of the ImageJ plugins that use the MuMassCalculator library use a list of materials saved in a file "DefaultMaterials.csv" in the ImageJ~/plugins/DialogData folder. It contains a header followed by a list containing a unique integer identifier or tag for each material, the material's common name, formula, and density. The list can be created or modified by any text editor or spreadsheet application that handles comma separated value (csv) files. This plugin provides the convenience of a simple editor that can be called from the ImageJ Plugins menu. The buttons have Tool Tips that explain their function.
+<p>Most of the ImageJ plugins that use the MuMassCalculator library use a list of materials saved in a file "DefaultMaterials.csv" in the ImageJ~/plugins/<a href="https://drive.google.com/drive/folders/1b5IS9sUp78nbLnh0oj5rwr6PR-4F80cL?usp=sharing" target="_blank">DialogData</a> folder. It contains a header followed by a list containing a unique integer identifier or tag for each material, the material's common name, formula, and density. The list can be created or modified by any text editor or spreadsheet application that handles comma separated value (csv) files. This plugin provides the convenience of a simple editor that can be called from the ImageJ Plugins menu. The buttons have Tool Tips that explain their function.
 
 <h3>A Tag list example csv file</h3>
 Tag,Name,Formula,Density
@@ -26,6 +26,7 @@ Tag,Name,Formula,Density
 <br>105,Anorthite,Ca:1:Si:2:Al:2:O:8,2.76
 <br>106,Anthracite,C:1,1.5
 
+https://drive.google.com/drive/folders/1b5IS9sUp78nbLnh0oj5rwr6PR-4F80cL?usp=sharing
 <h3>Tag list requirements</h3>
 <ol type="1">
 	<li>DefaultMaterials.csv is the only material list recognized by the ImageJ plugins<sup>1</sup>.</li>
@@ -34,13 +35,13 @@ Tag,Name,Formula,Density
 	<li>Formulas for example CaCO<sub>3</sub>, Calcium Carbonate, formatted as Ca:1:C:1:O:3.</li>
 	<li>Densities in grams/cc.</li>
 	<li>Do not edit the DefaultMaterials.csv file while running a dependent plugin.</li>
-</ol></p>
+</ol>
 
 <h3>Tag list features</h3>
 <ol type="1">
 	<li>Tags are not required to be sorted in numerical order or numbered continuously.</li>
 	<li>The header "Name" can be modified to indicate the lists contents or list owner etc. e.g. "Minerals" or "Alloys" or "Fred's List"</li>
-</ol></p>
+</ol>
 
 <p>The materials list saves a lot of tedious typing of formulas and densities needed by the plugins.</p>
 
