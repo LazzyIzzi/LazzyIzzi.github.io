@@ -14,57 +14,56 @@
 	<li>
 	<h2>Java Libraries</h2>
 	<ul>
-		<li> <a href="CT_Tools_Lib.html">CT_Tools_Lib</a>- A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100). Additional methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers </a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
-		<li><a href="Flood_Tools_Lib.html">Flood_Tools_Lib</a> - Methods for computing 2D and 3D Euclidean and geodesic transforms that support physical dimensions. This library also includes a closely related single pressure simulation of mercury injection capillary pressure</li>
-	</ul>
-	</li>
-	
+		<li> <a href="MuMassCalculatorLib.html">MuMassCalculatorLib</a>- A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100). Additional methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers </a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
+		<li><a href="DistanceMapLib.html">DistanceMapLib</a> - Methods for computing 2D and 3D Euclidean and geodesic transforms that support physical dimensions. This library also includes a closely related single pressure simulation of mercury injection capillary pressure</li>
+</ul>
+<br><strong>DistanceMapLib.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1I2Zrt58bVKn1voTMelnGeprEIw9uQMWx/view?usp=sharing" target="_blank">here</a>.
+<br><strong>MuMassCalculatorLib.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1RVZi4Z37xAENpIlVf6ZsuSWWc99Z3kVY/view?usp=sharing" target="_blank">here</a>.
 
-	<li>
-	<h2>CT_Tools_Lib<sup>1</sup> based ImageJ plugins</h2>
+<h2>CT_Tools_Plugins, a collection of MuMassCalculatorLib<sup>1</sup> based ImageJ plugins</h2>
 
+<ul>
+	<li><a href="MaterialsEditor.html" target="_self">Materials Editor</a> - Read me First! View and edit the default list of tags and their respective formulas and densities. See the <a href="XrayCalculator.html" target="_self">X-ray Calculator</a> for an example of a plugin that uses the materials list.
+	<li><a href="MaterialTagger.html" target="_self">Material Tagger</a> - Convert ranges of image brightness to tag<sup>2</sup> values of materials of known composition and density.
+	<li><a href="TagsToMuLin.html" target="_self">TagSlice to MuLin</a> - Convert tagged images to total linear attenuation at a single x-ray energy.
+	<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - Plot photon cross-sections for formulas and atoms using tabulated XCOM data. Interpolates cross-sections at intermediate single energies.</li>
+	<li><a href="XrayLookup.html" target="_self">X-ray Lookup</a> - Look-up X-ray energies that produce a measured cross-section or cross-section ratio for formulas and atoms.</li>
+	<li><a href="CtScannerSetup.html" target="_self">Scanner Setup</a> - An interactive tool for optimizing radiographic and tomographic image acquisition conditions.</li>
+	<li> <a href="CTsimulator.html" target="_self">2D Scanners</a> - A suite of four plugins to create total attenuation monochromatic or bremsstrahlung sinograms from 2D images of linear attenuation or tagged<sup>1</sup> compositions and densities.
+	<li><a href="Linearization.html" target="_self">Linearization</a> - A pair of plugins for finding and applying attenuation linearization.
 	<ul>
-		<li><a href="MaterialsEditor.html" target="_self">Materials Editor</a> - Read me First! View and edit the default list of tags and their respective formulas and densities. See the <a href="XrayCalculator.html" target="_self">X-ray Calculator</a> for an example of a plugin that uses the materials list.
-		<li><a href="MaterialTagger.html" target="_self">Material Tagger</a> - Convert ranges of image brightness to tag<sup>2</sup> values of materials of known composition and density.
-		<li><a href="TagsToMuLin.html" target="_self">TagSlice to MuLin</a> - Convert tagged images to total linear attenuation at a single x-ray energy.
-		<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - Plot photon cross-sections for formulas and atoms using tabulated XCOM data. Interpolates cross-sections at intermediate single energies.</li>
-		<li><a href="XrayLookup.html" target="_self">X-ray Lookup</a> - Look-up X-ray energies that produce a measured cross-section or cross-section ratio for formulas and atoms.</li>
-		<li><a href="CtScannerSetup.html" target="_self">Scanner Setup</a> - An interactive tool for optimizing radiographic and tomographic image acquisition conditions.</li>
-		<li> <a href="CTsimulator.html" target="_self">2D Scanners</a> - A suite of four plugins to create total attenuation monochromatic or bremsstrahlung sinograms from 2D images of linear attenuation or tagged<sup>1</sup> compositions and densities.
-		<li><a href="Linearization.html" target="_self">Linearization</a> - A pair of plugins for finding and applying attenuation linearization.
-		<ul>
-			<li>Find Linearization - compares a beam hardened reconstructed slice to an ideal model of the same slice and uses ImageJ's curve fitting methods to obtain polynomial coefficients for correcting the original sinogram attenuations.</li>
-			<li>Apply linearization - Correct beam hardened sinogram attenuations using the best linearization fit.</li>
-		</ul>
+		<li>Find Linearization - compares a beam hardened reconstructed slice to an ideal model of the same slice and uses ImageJ's curve fitting methods to obtain polynomial coefficients for correcting the original sinogram attenuations.</li>
+		<li>Apply linearization - Correct beam hardened sinogram attenuations using the best linearization fit.</li>
 	</ul>
-	<strong>CT_Tools_Plugins.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1JLFF5SG_erRFbHjpUnXlvSsC_W9JrFaR/view?usp=sharing" target="_blank">here</a>.
-	
-	
-	
-	<li>
-	<h2>Flood_Tools_Lib based ImageJ plugins </h2>
+</ul>
+<strong>CT_Tools_Plugins.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1JLFF5SG_erRFbHjpUnXlvSsC_W9JrFaR/view?usp=sharing" target="_blank">here</a>.
 
-	<ul>
-		<!-- li><a href="Euclidean.html" target="_self">ExactEuclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li> -->
-		<li><a href="ExactEuclidean.html" target="_self">Exact Euclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li>
-		<li><a href="EuclideanSpheres.html" target="_self">Euclidean Spheres</a> - Draw single and multiple Euclidean spheres.</li>
-		<li><a href="Geodesic.html" target="_self">Geodesic Distance</a> - Geodesic distances, tortuosity and shortest path plugins for 2D and 3D segmented images using distance propagation</li>
-		<li><a href="FloodFill.html" target="_self">FloodFill 3D</a> - A simple gray scale flooder.</li>
-		<li><a href="HybridFloodFill.html" target="_self">HybridFlood</a> - Geometry based simulation of non-wetting imbibition in an image of a random porous medium.</li>
-		<li><a href="HybridFloodSearch.html" target="_self">HybridFlood Search</a> - Bisection Search to find the &quot;Breakthrough&quot; pore radius or porosity in an image of a random porous medium.</li>
-		<li><a href="HybridFloodScan.html" target="_self">HybridFlood Scan</a> - Floods an image of a random porous medium at incrementally decreasing pore radius or porosity.</li>
-	</ul>
-	<strong>Flood_Tools_Plugins.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1NyI_IbvL4C17z9uTJ-6Mtn91SF-NMNkM/view?usp=sharing
-" target="_blank">here</a>.
-	<h2>Excel VBA Projects</h2>
+<li>
+<h2>Flood_Tools_Plugins, a collection of DistanceMapLib based ImageJ plugins </h2>
 
-	<ul>
-		<li><a href="XrayCalculatorExcel.html" target="_self">MuMassCalculator.xlam</a> - An Excel Add-in for NIST-XCOM derived photon cross-sections and other X-ray calculations. It's pretty handy for routine calculations and testing ideas.</li>
-		<li>CarShowHelper - An Excel application for managing car shows. A menu-driven record keeper for registration, classification, judging, and tally that maintains a ever-green contact list of show participants. </li>
-	</ul>
-	</li>
+<ul>
+	<!-- li><a href="Euclidean.html" target="_self">ExactEuclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li> -->
+	<li><a href="ExactEuclidean.html" target="_self">Exact Euclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li>
+	<li><a href="EuclideanSpheres.html" target="_self">Euclidean Spheres</a> - Draw single and multiple Euclidean spheres.</li>
+	<li><a href="Geodesic.html" target="_self">Geodesic Distance</a> - Geodesic distances, tortuosity and shortest path plugins for 2D and 3D segmented images using distance propagation</li>
+	<li><a href="FloodFill.html" target="_self">FloodFill 3D</a> - A simple gray scale flooder.</li>
+	<li><a href="HybridFloodFill.html" target="_self">HybridFlood</a> - Geometry based simulation of non-wetting imbibition in an image of a random porous medium.</li>
+	<li><a href="HybridFloodSearch.html" target="_self">HybridFlood Search</a> - Bisection Search to find the &quot;Breakthrough&quot; pore radius or porosity in an image of a random porous medium.</li>
+	<li><a href="HybridFloodScan.html" target="_self">HybridFlood Scan</a> - Floods an image of a random porous medium at incrementally decreasing pore radius or porosity.</li>
 </ul>
 
+<strong>Flood_Tools_Plugins.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1NyI_IbvL4C17z9uTJ-6Mtn91SF-NMNkM/view?usp=sharing" target="_blank">here</a>.
+
+<h2>Excel VBA Projects</h2>
+
+<ul>
+	<li><a href="XrayCalculatorExcel.html" target="_self">NIST_XCOM.xlam</a> - An Excel Add-in for NIST-XCOM derived photon cross-sections and other X-ray calculations. It's pretty handy for routine calculations and testing ideas.</li>
+	<li><a href="CarShowHelper.html" target="_self">CarShowHelper</a> - An Excel application for managing car shows. A menu-driven record keeper for registration, classification, judging, and tally that maintains a ever-green contact list of show participants. </li>
+</ul>
+<strong>NIST_XCOM.xlam&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1rW9cgODtGdSxpX6HEDElakfirIEIL3Hx/view?usp=sharing" target="_blank">here</a>.
+<strong>CarShowHelper3.0_Beta&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1QFBiW4jQrqen-jZdnusaGCjEJCVC8sPh/view?usp=sharing" target="_blank">here</a>.
+<br>
+<br>
 <small>
 1. Why libraries? The libraries contain no ImageJ dependencies for better performance and can be used anywhere. Many thanks to all who built the ImageJ UI to plug into.
 <br>
