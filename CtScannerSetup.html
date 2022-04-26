@@ -4,7 +4,7 @@
 <h3>Requires ImageJ 1.53k or higher,  MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<h4>Scanner Setup  is a 1-D attenuation model that displays x-ray intensity distributions at important points along the ray path.  The plugin provides a non-modal dialog to aid in selecting optimal CT scanner operating conditions to improve signal-to-noise and reduce beam hardening artifact. </h4>
+<h4>Scanner Setup  is a 1-D attenuation model that displays x-ray intensity distributions at important points along the ray path.  The plugin provides a non-modal dialog to aid in selecting optimal CT scanner operating conditions to improve signal-to-noise and reduce beam hardening artifact.</h4>
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/ScannerSchematicSideView791.png" width="700" />
 <figcaption><strong>Schematic of a typical radiography/tomography experimental setup</strong></figcaption></figure></center>
 
@@ -31,9 +31,6 @@
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/EffectiveEnergyBeamHardening.png" width="500" />
 <figcaption><strong>Pre-hardening using filters</strong></figcaption></figure></center>
 
-
-
-
 <h3>Why is Beam Hardening Important?</h3>
 <p>Beam Hardening results in an over-estimate of attenuation by shorter paths through the specimen.&nbsp; It produces the well-known cupping and streak artifacts in reconstructed tomographic images. Cupping makes the image brighter at the thinner edges, streaks appear as brighter regions between more x-ray absorbing higher atomic number features in the specimen(streaks can also be caused by non-linear detector response).</p>
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/CuppingImage.png" width="256" />
@@ -49,7 +46,7 @@
 
 
 <h3>The ImageJ plugin</h3>
-<p>The <strong>Scanner Setup</strong> helps to fine-tune the pre-hardening technique. It helps selection of the operating conditions that will give good contrast and accurate attenuation measurements for your sample. It provides an interactive way to minimize the severity of beam hardening.</p>
+<p>The <strong>Scanner Setup</strong> helps to fine-tune the pre-hardening technique. It guides selection of the operating conditions that will give good contrast and accurate attenuation measurements for your sample. It provides an interactive way to minimize the severity of beam hardening. <em><strong>Scanner Setup</strong> is not a predictor of scanner performance.  The x-ray source intensity is calculated using the Kramers equation and neglects characteristic emission lines and source configuration.  The detector is "ideal" in that it returns at each energy the fraction of counts absorbed by the scintillator screen. Energy dependent fluorescent yield, collection efficiency, gain and other characteristics of real detectors are neglected.</em></p>
 
 
 <h3>The User Interface</h3>
