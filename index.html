@@ -8,19 +8,18 @@
 </figure></center>
 
 <h1><img src="Images/Index/LazzyIzzi.jpg" alt="LazzyIzzi Cartoon" width="40"/>LazzyIzzi&#39;s Projects</h1>
-<h3>This site is currently under construction. Last Updated 4/18/22</h3>
+<h3>This site is currently under construction. Last Updated 5/2/22</h3>
 <h4>My projects are mainly centered around ImageJ plugins and Excel Add-ins for quantitative x-ray microtomography and 3d image processing . There is also an Excel Application for managing car shows and a few other diversions.</h4>
+<h2>Java Libraries<sup>1</sup></h2>
 <ul>
-	<li>
-	<h2>Java Libraries</h2>
-	<ul>
-		<li> <a href="MuMassCalculatorLib.html">MuMassCalculatorLib</a>- A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100). Additional methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers </a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
-		<li><a href="DistanceMapLib.html">DistanceMapLib</a> - Methods for computing 2D and 3D Euclidean and geodesic transforms that support physical dimensions. This library also includes a closely related single pressure simulation of mercury injection capillary pressure</li>
+	<li> <a href="MuMassCalculatorLib.html">MuMassCalculatorLib</a>- A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100). Additional methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers </a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
+	<li><a href="DistanceMapLib.html">DistanceMapLib</a> - Methods for computing 2D and 3D Euclidean and geodesic transforms that support physical dimensions. This library also includes a geometry based simulation of mercury injection capillary pressure(MICP) measurements in a random porous network.</li>
 </ul>
+
 <br><strong>DistanceMapLib.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1I2Zrt58bVKn1voTMelnGeprEIw9uQMWx/view?usp=sharing" target="_blank">here</a>.
 <br><strong>MuMassCalculatorLib.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/12wgWCQoKM6b7Bg_ZwQl3AZyQ6wvpnkFO/view?usp=sharing" target="_blank">here</a>.
 
-<h2>CT_Tools_Plugins, a collection of MuMassCalculatorLib<sup>1</sup> based ImageJ plugins</h2>
+<h2>CT_Tools_Plugins, a collection of MuMassCalculatorLib based ImageJ plugins</h2>
 
 <ul>
 	<li><a href="MaterialsEditor.html" target="_self">Materials Editor</a> - Read me First! View and edit the default list of tags and their respective formulas and densities. See the <a href="XrayCalculator.html" target="_self">X-ray Calculator</a> for an example of a plugin that uses the materials list.
@@ -29,7 +28,7 @@
 	<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - Plot photon cross-sections for formulas and atoms using tabulated XCOM data. Interpolates cross-sections at intermediate single energies.</li>
 	<li><a href="XrayLookup.html" target="_self">X-ray Lookup</a> - Look-up X-ray energies that produce a measured cross-section or cross-section ratio for formulas and atoms.</li>
 	<li><a href="CtScannerSetup.html" target="_self">Scanner Setup</a> - An interactive tool for optimizing radiographic and tomographic image acquisition conditions.</li>
-	<li> <a href="CTsimulator.html" target="_self">2D Scanners</a> - A suite of four plugins to create total attenuation monochromatic or bremsstrahlung sinograms from 2D images of linear attenuation or tagged<sup>1</sup> compositions and densities.
+	<li> <a href="CTsimulator.html" target="_self">2D Scanners</a> - A suite of four plugins to create total attenuation monochromatic or bremsstrahlung sinograms from 2D images of linear attenuation or tagged<sup>2</sup> compositions and densities.
 	<li><a href="Linearization.html" target="_self">Linearization</a> - A pair of plugins for finding and applying attenuation linearization.
 	<ul>
 		<li>Find Linearization - compares a beam hardened reconstructed slice to an ideal model of the same slice and uses ImageJ's curve fitting methods to obtain polynomial coefficients for correcting the original sinogram attenuations.</li>
@@ -38,13 +37,15 @@
 </ul>
 <strong>CT_Tools_Plugins.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1JLFF5SG_erRFbHjpUnXlvSsC_W9JrFaR/view?usp=sharing" target="_blank">here</a>.
 <h3>Installation CT_Tools</h3>
-<p>Download CT_Tools_Plugins.jar and MuMassCalculatorLib.jar to the ImageJ/plugins folder. Create a "DialogData" folder in the ImageJ/plugins folder and download <a href="https://drive.google.com/drive/folders/1b5IS9sUp78nbLnh0oj5rwr6PR-4F80cL?usp=sharing" target="_blank">DefaultMaterials.csv</a> into that folder.  Launch ImageJ.
+<ol>
+	<li>Download <a href="https://drive.google.com/file/d/1JLFF5SG_erRFbHjpUnXlvSsC_W9JrFaR/view?usp=sharing" target="_blank">CT_Tools_Plugins.jar</a> and <a href="https://drive.google.com/file/d/12wgWCQoKM6b7Bg_ZwQl3AZyQ6wvpnkFO/view?usp=sharing" target="_blank">MuMassCalculatorLib.jar</a>  to the ImageJ/plugins folder.</li>
+	<li>Create a "DialogData" folder in the ImageJ/plugins folder and download <a href="https://drive.google.com/drive/folders/1b5IS9sUp78nbLnh0oj5rwr6PR-4F80cL?usp=sharing" target="_blank">DefaultMaterials.csv</a> into that folder.</li>
+	<li> Launch ImageJ.</li>
+</ol>
 
-<li>
 <h2>Flood_Tools_Plugins, a collection of DistanceMapLib based ImageJ plugins </h2>
-
+<p>All methods support asymmetric pixels/voxel sizes and physical dimensions.</p>
 <ul>
-	<!-- li><a href="Euclidean.html" target="_self">ExactEuclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li> -->
 	<li><a href="ExactEuclidean.html" target="_self">Exact Euclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li>
 	<li><a href="EuclideanSpheres.html" target="_self">Euclidean Spheres</a> - Draw single and multiple Euclidean spheres.</li>
 	<li><a href="Geodesic.html" target="_self">Geodesic Distance</a> - Geodesic distances, tortuosity and shortest path plugins for 2D and 3D segmented images using distance propagation</li>
@@ -57,7 +58,10 @@
 <strong>Flood_Tools_Plugins.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1NyI_IbvL4C17z9uTJ-6Mtn91SF-NMNkM/view?usp=sharing" target="_blank">here</a>.
 
 <h3>Installation Flood_Tools</h3>
-<p>Download Flood_Tools_Plugins.jar and DistanceMapLib.jar to the ImageJ/plugins folder. Launch ImageJ</p>
+<ol>
+<li>Download <a href="https://drive.google.com/file/d/1NyI_IbvL4C17z9uTJ-6Mtn91SF-NMNkM/view?usp=sharing" target="_blank">Flood_Tools_Plugins.jar</a> and <a href="https://drive.google.com/file/d/1I2Zrt58bVKn1voTMelnGeprEIw9uQMWx/view?usp=sharing" target="_blank">DistanceMapLib.jar</a> to the ImageJ/plugins folder.</li>
+<li>Launch ImageJ</li>
+</ol>
 
 <h2>Excel VBA Projects</h2>
 
