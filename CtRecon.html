@@ -1,0 +1,65 @@
+<title>CT Reconstruction</title>
+<link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
+<h1>CT Recon Parallel Beam</h1> 
+<h3>Requires ImageJ 1.53u or higher,  Base_Recon.exe</h3> 
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
+<h4>CT_Recon is a user interface to Base_Recon.exe, a Windows based executable for reconstructing 180 degree parallel-beam sinograms using <a href="https://www.science.org/doi/10.1126/science.237.4821.1439" target="_blank">direct Fourier inversion</a>(DFI). </h4>
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtRecon/CT_Recon_Montage.png" width="800" />
+<figcaption><strong>Sinogram(Left), CT_Recon User interface(Center), Reconstructed Slice(Right))</strong></figcaption></figure></center>
+
+	 	
+<h3>Description</h3>
+<p>Input sinograms are parallel-beam projected opacity <a href="MuMassCalculatorLib.html">(tau)</a> values acquired at equally spaced angles between 0 and 180 degrees of specimen rotation. Sinograms of this type can be obtained either by experiment or by digitally  scanning test images with the parallel projector plugins described on the <a href="CTsimulator.html" target="_self">Scan Simulators</a> page. Sinogram images have dimensions of length(cm) in the horizontal(x) dimension and angle(theta) in the vertical(y) dimension. The DFI algorithm first computes the 1D FT of each of the rows(angles) in the sinogram. The f(r,theta) polar transforms are interpolated onto a 2D Cartesian f(x,y) grid to form the 2D FT of the image. The output image is computed from the inverse 2D FT of the interpolated transform. DFI is inherently noisier than other reconstruction techniques and produces significant artifacts if the input sinogram data does not cover the full 0-180 degree angular range. However, it has a significant speed advantage that makes it well suited for digital simulations.</p>
+
+<h3>Using CT_Recon non-modal dialog</h3>
+<H4>Dialog Components</H4>
+<ul>
+<li>Data Source - The default data source is the active image or image stack. You may select another sinogram using the Data Source menu.</li>
+<li>Refresh - Click if the Data Source list gets out of sync with the displayed images.</li>
+<li>Rotation Axis - The default axis of rotation is the mid-point of the active image. Enter the actual value for your CT scan</li>
+<li>Shift Axis - A scan's axis of rotation is not always exactly centered on a pixel. Select a fractional shift and observe the reconstruction for any improvement.The image data is shifted by interpolation so some loss of resolution may occur.</li>
+<li>Cartesian Cutoff - 1 is the Nyquist frequency. Lower values reduce noise by blurring the image.</li>
+<li>Cartesian Filter - The usual suspects to reduce noise with minimal blurring. The cutoff is applied to the chosen filter.</li>
+<li>Extension Width - Minimize artifacts arising from a portion of the specimen rotating outside the field of view by pasting "wings" onto the sinogram edges that decay smoothly from the edge attenuation value to zero. Pick a shape that works best for your sinogram. </li>
+<li>Extension Shape - Like Extension Width, pick a shape that gives the best looking reconstruction. WARNING! Profile extended reconstructed attenuations will most likely be incorrect.</li>
+<li>Fix Severe Rings - Detector point defects can cause severe ring artifacts. This option uses a 1D median on the sinogram rows to try to suppress the artifact.</li>
+<li>Beam Harden - Applies a second order beam hardening correction to the sinogram attenuations. The slider adjusts the weight between the first and second order terms. Crude but effective on many relatively homogeneous specimens. Reconstructions may require rescaling to obtain correct linear attenuation values.</li>
+<li>Use Scale Factor - Check this box and enter a scale factor when reconstructing 16-bit sinograms. The scale factor should be the same a that used by your CT scanner or the  <a href="CTsimulator.html">plugin projectors</a>.</li>
+<li>Reconstruct Test Slice - Opens a "TestRecon"" reconstructed image. Change a setting and click again to observe the result.</li>
+<li>OK(reconstruct) - Creates a new image or image stack with the final reconstruction(s)</li>
+</ul>
+
+<h3>Notes about Base_Recon.exe</h3>
+<ul>
+<li>It's old, original in 1997, unchanged since 2007</li>
+<li>It uses <a href="http://fftw.org/" target="_blank">FFTW</a> to do the FFTs and does not require input sinograms to be a power of 2 in width.</li>
+<li>It expects signed 16-bit sinograms as input, i.e. absorbance*scaleConstant.
+<li>Both FFTW and Base_Recon.exe are written in native 'C' and may not be compatible with your ImageJ environment.</li>
+<li>It uses a command line interface for instructions and file IO for data transfer. </li>
+<li>The command line interface was programmed by a third party. LazzyIzzi wrote the DFI code.</li>
+<li>I still have the source codes for the reconstructions but the Base_Recon command line UI codes have been lost.</li>
+<li>The CT_Recon plugin communicates with Base_Recon.exe using the command-line interface by creating temporary files in the ImageJ "plugins"" folder.</li>
+</ul>
+
+https://www.mathworks.com/matlabcentral/fileexchange/43008-2-d-tomographic-reconstruction-demo
+<h3>Notes about CT_Recon plugin</h3>
+<ul>
+<li>It leverages an old reconstruction code. Better implementations may be available.</li>
+<li>It is unlikely to be updated because more recent implementations are available from <a href="https://www.mathworks.com/matlabcentral/fileexchange/43008-2-d-tomographic-reconstruction-demo" target="_blank">other sources</a>.</li>
+<li>32-bit sinograms are automatically scaled by 6000, i.e. absorbance*6000.</li>
+<li>The projector and reconstruction plugins allow for other scale constants.</li>
+<li>Auto-scaling 32-bit absorbances greater than <big>&tau;</big>=5.46<sup>1</sup> will cause ImageJ's unsigned 16-bit data to wrap when converted to Base_Recon's signed 16-bit<sup>2</sup>.  Use the same smaller scale factor when projecting and reconstructing. </li>
+<li>It is not suitable for fan-beam data.</li>
+<li>The image list may get out of sync with the displayed images.</li>
+<li>It leaves temporary files in your plugins directory. You may delete them at any time. </li>
+<li>Base_Recon.exe must be present in the plugins folder.</li>
+</ul>
+<small>
+<ol>
+<li>An absorbance greater than 5.46 are unlikely to be observable in routine practice but can be easily produced in simulation.</li>
+<li>Base_Recon uses signed 16-bit sinograms because negative absorbances can occur in real CT scans due to noise and X-ray scatter.</li>
+</ol>
+</small>
+<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+

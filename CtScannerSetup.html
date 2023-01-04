@@ -5,7 +5,7 @@
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
 <h4>Scanner Setup  is a 1-D attenuation model that displays x-ray intensity distributions at important points along the ray path.  The plugin provides a non-modal dialog to aid in selecting optimal CT scanner operating conditions to improve signal-to-noise and reduce beam hardening artifact.</h4>
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/ScannerSchematicSideView791.png" width="700" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSetup/ScannerSchematicSideView791.png" width="700" />
 <figcaption><strong>Schematic of a typical radiography/tomography experimental setup</strong></figcaption></figure></center>
 
 <p>The above figure shows a schematic of a simple radiography or CT scanner. The arrow widths indicate spectral width and the length indicates intensity. </p>
@@ -15,25 +15,26 @@
 <p>Beam hardening is the shifting of the broad spectrum of a conventional x-ray source toward higher average (hard) energies as it passes through a material.&nbsp;Lower energy (longer wavelength) X-rays are preferentially attenuated leaving the higher energy, more penetrating X-rays for detection. It is mostly evident in the photoelectric energy range where the attenuation of materials changes rapidly with photon energy. The plot below illustrates this energy shift (plotted as wavelength for dramatic effect) caused by the beam passing through different thicknesses of copper.</p>
 
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/EffectiveEnergySourceFilters.png" width="500" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSetup/EffectiveEnergySourceFilters.png" width="500" />
 <figcaption><strong><center>Source intensity distribution with copper filters</center></strong></figcaption></figure></center>
 
 
-<p> When measuring attenuation of a specimen using a conventional bremsstrahlung x-ray source, we first measure the incident beam intensity "<em>I<sub>0</sub></em>". Then we put a specimen in the beam and repeat the measurement "<em>I</em> ".  We know the thickness and density of the specimen so we can calculate the linear attenuation <big><em>&mu;</em></big> using the equation.
-<center><figure class="easyimage easyimage-full"><strong><img alt="" src="Images/CtScannerSetup/AttenuationEqn.png" width="300" /> </strong></figure></center>
+<p> When measuring attenuation of a specimen using a conventional bremsstrahlung x-ray source, we first measure the incident beam intensity "<em>I<sub>0</sub></em>". Then we put a specimen in the beam and repeat the measurement "<em>I</em> ".  We know the thickness of the specimen so we can calculate the linear attenuation <big><em>&mu;&rho;</em></big> using the equation.
 
- With <big><em>&mu;</em></big> in hand and if we know the the specimen's composition we can <a href="XrayLookup.html" target="_self">look-up</a> the "<em>Effective</em>" x-ray energy of the incident x-ray beam.
+<center><figure class="easyimage easyimage-full"><strong><img alt="" src="Images/ScannerSetup/AttenuationEqn.png" width="300" /> </strong></figure></center>
+
+ With <big><em>&mu;&rho;</em></big> in hand and if we know the the specimen's composition we can <a href="XrayLookupMuLin.html" target="_self">look-up</a> the "<em>Effective</em>" x-ray energy of the incident x-ray beam.
 <br>
 <br> Definition: The Effective Energy is the monochromatic x-ray energy that will produce the same attenuation as that measured with a given polychromatic x-ray energy distribution.
 <br>
 <br>But the distribution is changing as it passes through the specimen!  So we try again with a thinner specimen and sure enough, we get a different effective energy. The plot below shows the use of different thickness copper filters to remove a portion of the low-energy (soft) x-rays incident on different thickness aluminum specimens. Unfiltered(red), the effective energy changes from about 45keV in the 0.01cm specimen to 72keV for the 2.5cm thick one. By removing the soft x-rays from the incident beam with a 0.1cm copper filter the average energy shifts to about 90keV and remains nearly constant for all thicknesses of of aluminum.
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/EffectiveEnergyBeamHardening.png" width="500" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSetup/EffectiveEnergyBeamHardening.png" width="500" />
 <figcaption><strong>Pre-hardening using filters</strong></figcaption></figure></center>
 
 <h3>Why is Beam Hardening Important?</h3>
 <p>Beam Hardening results in an over-estimate of attenuation by shorter paths through the specimen.&nbsp; It produces the well-known cupping and streak artifacts in reconstructed tomographic images. Cupping makes the image brighter at the thinner edges, streaks appear as brighter regions between more x-ray absorbing higher atomic number features in the specimen(streaks can also be caused by non-linear detector response).</p>
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/CuppingImage.png" width="256" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSetup/CuppingImage.png" width="256" />
 <figcaption><strong>Cupping Artifact in a Simulated Sandstone<br> Calcite cement Z contrast is not sufficient to cause detectable streaks.</strong></figcaption></figure></center>
 
 <h3>What can be done to reduce Beam Hardening?</h3>
@@ -46,12 +47,36 @@
 
 
 <h3>The ImageJ plugin</h3>
-<p>The <strong>Scanner Setup</strong> helps to fine-tune the pre-hardening technique. It guides selection of the operating conditions that will give good contrast and accurate attenuation measurements for your sample. It provides an interactive way to minimize the severity of beam hardening. <em><strong>Scanner Setup</strong> is not a predictor of scanner performance.  The x-ray source intensity is calculated using the Kramers equation and neglects characteristic emission lines and source configuration.  The detector is "ideal" in that it returns at each energy the fraction of counts absorbed by the scintillator screen. Energy dependent fluorescent yield, collection efficiency, gain and other characteristics of real detectors are neglected.</em></p>
+<p>The <strong>Scanner Setup</strong> plugin helps to fine-tune the pre-hardening technique. It guides selection of the operating conditions that will give good contrast and accurate attenuation measurements for your sample. It provides an interactive way to minimize the severity of beam hardening. <em><strong>Scanner Setup</strong> is not a predictor of scanner performance.  The x-ray source intensity is calculated using the Kramers equation and neglects characteristic emission lines and source configuration.  The detector is "ideal" in that it returns at each energy the fraction of counts absorbed by the scintillator screen. Energy dependent fluorescent yield, collection efficiency, gain and other characteristics of real detectors are neglected.</em></p>
 
 
 <h3>The User Interface</h3>
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/BHworkbenchInitial.png" width="700" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSetup/BHworkbenchInitial.png" width="700" />
 <figcaption><strong>ImageJ Plugin CT Scanner Setup, Initial</strong></figcaption></figure></center>
+<ul>
+<li>Target - The anode material of a conventional X-ray source.</li>
+<li>KV - The accelerating potential of a conventional X-ray source.</li>
+<li>ma - The beam current of a conventional X-ray source.</li>
+<li>Filter Material - Usually a metal foil placed just downstream of the X-ray source.</li>
+<li>Filter Thickness(cm) - The thickness of the filter in centimeters.</li>
+<li>Sample Name Filter - Clips the choices to those beginning with the characters in this textbox. Clear to restore the full list.</li>
+<li>Sample Name Choices -Pick a material from this list imported from <a href="MaterialsEditor.html" target="_self">DefaultMaterials.csv</a> in the plugins/DialogData folder.</li>
+<li>Sample Formula - Pre-populated from the name choice. Edit to change the formula.</li>
+<li>Sample Thickness(cm) - Pre-populated from the name choice. Edit to change the formula.</li>
+<li>Sample Density(gm/cc) - Pre-populated from the name choice. Edit to change the formula.</li>
+<li>Detector Name Filter - Clips the choices to those beginning with the characters in this textbox. Clear to restore the full list.</li>
+<li>Detector Name Choices -Pick a material from this list.</li>
+<li>Detector Formula - Pre-populated from the name choice. Edit to change the formula.</li>
+<li>Detector Thickness(cm) - Pre-populated from the name choice. Edit to change the formula.</li>
+<li>Detector Density(gm/cc) - Pre-populated from the name choice. Edit to change the formula.</li>
+<li>Plot Minimum(keV) - Sets the X-ray Spectra plot minimum energy. The maximum energy is the accelerating potential(KV).</li>
+<li>Plot Inc(keV - Sets the energy step size for the polychromatic scan. Large steps go faster. Small steps have better spectral resolution.</li>
+<li>keV Angstroms Buttons - Selects the plot x-axis scale</li>
+<li>Update Plot - Recalculate the plots and results.</li>
+<li>OK - Recalculate,  update and exit leaving plot and results windows open</li>
+<li>Cancel - Exit closing plots and results windows.</li>
+<li>Help -  Brings up this page.</li>
+</ul>
 
 <h3>Example</h3>
 
@@ -103,7 +128,7 @@ Add filter thickness and observe the changes in the curves. Removing the low ene
 </ul>
 Achieving a proper balance between photon use and acceptable beam hardening often depends on the sample composition and structure, the effectiveness of post-acquisition beam hardening corrections, and the information to be obtained from the image.
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="Images/CtScannerSetup/BHworkbenchFinal.png" width="700" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="Images/ScannerSetup/BHworkbenchFinal.png" width="700" />
 <figcaption><strong>ImageJ Plugin Beam Hardening Workbench, Final</strong></figcaption>
 </figure></center>
 
@@ -112,7 +137,7 @@ Achieving a proper balance between photon use and acceptable beam hardening ofte
 <ul>
 	<li>The sample attenuation is now 1.989</li>
 	<li>The beam hardening <q>BH%</q> is 7.4%</li>
-	<li>The "Photon Use", is 7.47%</li>
+	<li>The "Photon Use", is 9.1%</li>
 	<li>The thin CsI scintillator is not a good choice. It is inefficient in the energy range transmitted by this sample.
 </ul>
 

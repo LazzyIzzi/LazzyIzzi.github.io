@@ -3,28 +3,33 @@
 <h1>CT Scan Simulators</h1> 
 <h3>Requires ImageJ 1.53k or higher, MuMassCalculatorLib.jar</h3> 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
-<h3>These plugins create sinograms from square 2D 32-bit images.</h3>
+<h3>These plugins create sinograms from square 32-bit images or stacks.</h3>
 <p>This set of four individual quantitative<sup>1</sup> plugins vary from simple monochromatic parallel projection to polychromatic fan beam projection.
 <ul>
-<li>MuLinSlice_To_Parallel_Sinogram - Converts a 2D linear attenuation image to a monochromatic parallel beam sinogram.</li>
-<li>MuLinSlice_To_Fan_Sinogram - Converts a 2D linear attenuation image to a monochromatic fan beam sinogram.</li>
-<li>TagSlice_To_Parallel_Sinogram - Converts a 2D tag image to a bremsstrahlung parallel beam sinogram.</li>
-<li>TagSlice_To_Fan_Sinogram - Converts a 2D tag image to a bremsstrahlung fan beam sinogram.</li>
+<li>MuLinSlice_To_Parallel_Sinogram - Converts a linear attenuation to monochromatic parallel beam sinograms.</li>
+<li>MuLinSlice_To_Fan_Sinogram - Converts a linear attenuation to monochromatic fan beam sinograms.</li>
+<li>TagSlice_To_Parallel_Sinogram - Converts a  tag image to bremsstrahlung parallel beam sinograms.</li>
+<li>TagSlice_To_Fan_Sinogram - Converts a 2D tag image to a bremsstrahlung fan beam sinograms.</li>
 </ul>
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/CTsimulator/CTscanners.png" width="700" />
 <figcaption><strong>CT Scan Simulator Dialogs</strong></figcaption></figure></center>
 
 <h4>General</h4>
 <ul>
+	<li>The input image should be square. A warning will advise to pad the image to avoid clipping.</li>
+	<li>The input image must be 32-bit. The plugin will not load otherwise.</li>
 	<li>PolyChromatic CTscans require <a href="MaterialsEditor.html" target="_self">"Tagged"</a>  images.</li>
-	<li>The suggested views are the minimum required for correct sampling. Lower views will reduce the resolution of  slices reconstructed from the sinogram. Higher views may improve S/N in reconstructed slices.</li>
+	<li>The suggested views are the minimum required for correct sampling. Lower views will reduce the resolution of  slices reconstructed from the sinogram. Higher views will not improve S/N in slices reconstructed using the CT_Recon_Parallel_Beam plugin.</li>
 	<li>Fan beam plugins calculate the correct detector size and source-to sample distance from the source-to-detector and magnification and display it FYI in the dialog.</li>
 </ul>
 
 <h3>Description of the dialog fields</h3> 
 	
 <ul>
-	<li>Target - the x-ray source target(anode),
+	<li>Suggested View Angles - DetectorWidth*<big>&pi;</big>/2 for parallel scans and DetectorWidth*<big>&pi;</big> for fan-beam.</li>
+	<li>Pad Options - "Circumscribed" -pad to square-in-circle; "Next Power of 2" some reconstructors require this.</li>
+	<li>Detector Pixels - Specify a detector width greater than the minimum detector width. </li>
+	<li>Target - the x-ray source target(anode)</li>
 	<li>KV  - the x-ray source accelerating potential.</li>
 	<li>mA - the x-ray source electron beam current.</li>
 	<li>KeV Bins - specifies the energy resolution of the simulation. Execution time is directly proportional to the number of bins</li>
@@ -36,8 +41,13 @@
 	<li>Detector Formula - the detector scintillator material as Atom1:Count1:Atom2:Count2... e.g. Cs:1:I:1 for Cesium Iodide.
 	<li>Detector Thickness - the detector scintillator thickness in centimeters.
 	<li>Detector Density - the detector density in gm/cc.
-	<li>Pad Image - embeds non-square images in a square zero-filled field.</li>
 	<li>Scale to 16-bit - multiply the sinogram by 6000 and convert from float to 16-bit.</li>
+	<li>Scale Factor - Multiply the output sinogram by this number and convert to 16-bit. </li>
+</ul>
+<ul><strong>Advisory Fields</strong>
+	<li>Minimum Detector Width - The minimum width required to collect the projections. If the Detector Pixels field is less than the minimum width the OK button is disabled.</li>
+	<li>Padded Image Width - The width of the padded image after a pad option is selected.</li>
+	<li>Axis to Detector - The distance from the rotation axis to the detector calculated from the fan-beam magnification. If, at low magnification, your sample surface penetrates the virtual detector the resulting reconstruction will be clipped.
 </ul>
 <p>Note: The dialog field information is preserved in the header of sinograms saved as tiff files. Use ImageJ Image->Show Info(ctrl-i) to view or use the "Sinogram Properties" plugin to write the field data to a results window.</p>
 <center><figure class="easyimage easyimage-full"><img alt="" src="Images/CTsimulator/SinoProperties.png" width="600" />
@@ -48,7 +58,7 @@
 	<li>All projectors compute total attenuation, the sum of attenuations from coherent, incoherent, photoelectric, and pair-production processes.  The "detected" intensity does not include that from scatter, fluorescence or other processes.</li>
 	<li>Monochromatic projectors use ray sums through the image linear attenuation data to produce the projection at each angle. A transformation is applied to rotate the source point(s) and detector points about the center of the 2D image when computing the ray sums. The image data is not interpolated.</li>
 	<li>Polychromatic projectors operate on tagged images, each tag is a reference to a material composition and density. The projectors simulate a bremsstrahlung intensity distribution by breaking the scan into a series of monochromatic scans with the appropriate source intensity for each energy interval. The resulting scans are combined to create a polychromatic result. Characteristic x-ray emission lines are neglected.</li>
-	<li>Fan beam projectors neglect regions outside the input 2D image i.e. the source to detector "air" path.</li>
+	<li>All four projectors neglect regions outside the input 2D image i.e. the source to detector "air" path.</li>
 </ul>
 
 <h3>Output</h3>
