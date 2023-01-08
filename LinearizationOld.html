@@ -6,22 +6,11 @@
 
 <h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 
-<h3>A collection of plugins for model-based correction of cupping beam hardening artifact in reconstructed CT slices by linearization.</h3>
+<h3>A pair of plugins for model-based correction of cupping beam hardening artifact in reconstructed CT slices by linearization. The first plugin calibrates against an an idealized model of the slice. The second applies the calibration to the original sinogram.</h3>
 
+<h3>Single Material specimens</h3>
 
-<p>The beam-hardening cupping artifact and its correction by linearization are briefly described in the <a href="CtScannerSetup.html" target="_self">CT Scanner Setup</a> page. The correction process typically seeks to identify a polynomial that "linearizes" the attenuation vs sample thickness relationship. Calibration standards are sometimes used to find the polynomial coefficients. Sometimes a good guess suffices. The CT_Recon_Parallel_Beam plugin uses a slider that weights the coefficients of a second order polynomial. The user can reconstruct a trial slice until a satisfactory image is obtained, but the linear attenuation of the materials in the reconstructed slice are usually incorrect. This method often fails for complex heterogeneous specimens.</p> 
-
-
-<p>These plugins use knowledge of the specimen composition to build a "model" image of the sample. Attenuations of the model are compared to the beam-hardened attenuations to obtain the coefficients. In this example, we begin with a image</p>
-
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-
- A known material positioned on the axis of rotation is used to <a href="XrayLookup.html" target="_self">look-up</a>  the effective energy. Assuming sufficient view angle sampling, the set of rays passing through this unique position must pass through all specimen points represented as pixels in the reconstructed image, i.e. the linear attenuation on the axis of rotation in the reconstructed image arises from the effective energy for the entire sample.  If a known material is not on the axis or a internal standard cannot be placed at that position then these plugins will not return accurate results. </p>
+<p>Beam hardening and linearization are briefly described in the <a href="CtScannerSetup.html" target="_self">CT Scanner Setup</a> page.  Finding and applying the polynomial coefficients usually requires "penetrameter" calibration standards. In contrast, these plugins use knowledge of the specimen composition to build a "model" that is used as the standard. A known material positioned on the axis of rotation is used to <a href="XrayLookup.html" target="_self">look-up</a>  the effective energy. Assuming sufficient view angle sampling, the set of rays passing through this unique position must pass through all specimen points represented as pixels in the reconstructed image, i.e. the linear attenuation on the axis of rotation in the reconstructed image arises from the effective energy for the entire sample.  If a known material is not on the axis or a internal standard cannot be placed at that position then these plugins will not return accurate results. </p>
 
 <h3>Multi-Material specimens</h3>
 
