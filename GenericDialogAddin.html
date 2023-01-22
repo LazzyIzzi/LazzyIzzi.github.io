@@ -1,28 +1,80 @@
 <title>Generic Dialog Addin</title>
 <link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
 
-<h1>Generic Dialog Addin</h1> 
-<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<h1>Generic Dialog Addin</h1>
+<h2>
+	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
 
 
-<h3>An Addin<sup>1</sup> for making legacy ImageJ event handlers easier to write.</h3>
+<h3>
+	An Addin<sup>1</sup> for making legacy ImageJ event handlers easier to
+	write.
+<br> 
+	The JavaDocs for
+	GenericDialogAddin are <a href="GenericDialogAddin/index.html"
+		target="_blank">here</a>.
+		<br> 	
+	Download GenericDialogAddin from <a href="https://github.com/LazzyIzzi/ImageJAddins/releases/tag/v1.0.0-beta"
+		target="_blank">here</a>.</h3>
 
-<p>ImageJ's GenericDialog class makes creating user dialogs fast and relatively painless. The programmer simply creates an instance of the class and adds components using the GenericDialog's class .addXxxx methods. To fetch the values from the various components one simply calls the .getNextXxxx methods for the corresponding component in the order that they appear in the dialog. This approach works very well for simple "once-through" plugins, but things get a bit more complicated if the dialog is event aware.</p>
 
-<p>Beginning with version 1.53t an Action button was added to the standard components allowing the programmer to evaluate a potential result without exiting the dialog. This ran into problems on the second click of the action button because the GenericDialog .getNextXxxx methods were designed for once-through operation. The short-term work-around was to use the GenericDialog getXxxxFields methods in the event handler to fetch and array of the dialog's components of type Xxxx.  This required keeping track of the index in the component array. Any rearranging of the dialog would break the event handler code.</p>
+<p>ImageJ's GenericDialog class makes creating user dialogs fast and
+	relatively painless. The programmer simply creates an instance of the
+	class and adds components using the GenericDialog's class .addXxxx
+	methods. To fetch the values from the various components one simply
+	calls the .getNextXxxx methods for the corresponding component in the
+	order that they appear in the dialog. This approach works very well for
+	simple "once-through" plugins, but things get a bit more complicated if
+	the dialog is event aware.</p>
 
-<p>Beginning with version 1.53u, the GenericDialog resetCounters() method was made public.  This allowed multiple passes through the getNextXxxx methods without throwing an indexOutOfRange error. This worked quite well but I wanted to give my dialogs the same level of interactivity enjoyed by their Excel equivalents.  This includes enabling/disabling, relabeling, visibility etc. of the dialog's components.</p>
+<p>Beginning with version 1.53t an Action button was added to the
+	standard components allowing the programmer to evaluate a potential
+	result without exiting the dialog. This ran into problems on the second
+	click of the action button because the GenericDialog .getNextXxxx
+	methods were designed for once-through operation. The short-term
+	work-around was to use the GenericDialog getXxxxFields methods in the
+	event handler to fetch and array of the dialog's components of type
+	Xxxx. This required keeping track of the index in the component array.
+	Any rearranging of the dialog would break the event handler code.</p>
 
-<p>The GenerigDialogAddin class contains methods that return a Field containing references to the individual components created by an immediately preceding call to a GenericDialog addXxxx method. This allows full access to each component's methods independent of its creation order in the dialog. If this sounds complicated, using the Addin is actually quite easy if you have a code example and are accustomed to using java.awt component methods. The JavaDocs for GenericDialogAddin are <a href="GenericDialogAddin/index.html" target="_blank">here</a>.  The example is adapted from the X-ray Calculator plugin.</p>
+<p>Beginning with version 1.53u, the GenericDialog resetCounters()
+	method was made public. This allowed multiple passes through the
+	getNextXxxx methods without throwing an indexOutOfRange error. This
+	worked quite well but I wanted to give my dialogs the same level of
+	interactivity enjoyed by their Excel equivalents. This includes
+	enabling/disabling, relabeling, visibility etc. of the dialog's
+	components.</p>
+
+<p>
+	The GenerigDialogAddin class contains methods that return a Field
+	containing references to the individual components created by an
+	immediately preceding call to a GenericDialog addXxxx method. This
+	allows full access to each component's methods independent of its
+	creation order in the dialog. If this sounds complicated, using the
+	Addin is actually quite easy if you have a code example and are
+	accustomed to using java.awt component methods. The example is adapted from the X-ray
+	Calculator plugin.</p>
+	
+	
+
 
 <ul>
-	<li>The XxxxField declarations and the GenericDialogAddin instance "gda" have plugin wide scope.</li>
-	<li>Immediately following the gd.addXxxx method, the Xxxxfield is returned by a call to the gda.getXxxxField method.</li>
-	<li>The gda.getXxxxField arguments are the parent gd followed by optional names for each component in the Field. Naming a component allows an event handler to dispatch an event by the source's name rather than by its index (no more index tracking!). We also have access to all component methods.</li>
+	<li>The XxxxField declarations and the GenericDialogAddin instance
+		"gda" have plugin wide scope.</li>
+	<li>Immediately following the gd.addXxxx method, the Xxxxfield is
+		returned by a call to the gda.getXxxxField method.</li>
+	<li>The gda.getXxxxField arguments are the parent gd followed by
+		optional names for each component in the Field. Naming a component
+		allows an event handler to dispatch an event by the source's name
+		rather than by its index (no more index tracking!). We also have
+		access to all component methods.</li>
 </ul>
 
-<h4>Some example syntax for setting up the GenericDialogAddin Fields</h4>
-<pre><strong>
+<h4>Some example syntax for setting up the GenericDialogAddin
+	Fields</h4>
+<pre>
+	<strong>
 //required GenericDialogAddin imports
 import jhd.AddIns.GenericDialogAddin;
 import jhd.AddIns.GenericDialogAddin.*;
@@ -73,11 +125,13 @@ private void DoDialog()
 	gd.showDialog();
 	
 }
-</strong></pre>
+</strong>
+</pre>
 
 <h4>Some example syntax for using the GenericDialogAddin Fields</h4>
 
-<pre><strong>
+<pre>
+	<strong>
 public boolean dialogItemChanged(GenericDialog gd, AWTEvent e)
 {
 boolean dialogOK = getSelections();
@@ -112,11 +166,14 @@ if(e!=null)
 //....Other Stuff		
 return dialogOK;
 				
-</strong></pre>
+</strong>
+</pre>
 
-<h4>Some example syntax for using the GenericDialogAddin Fields to screen user inputs</h4>
+<h4>Some example syntax for using the GenericDialogAddin Fields to
+	screen user inputs</h4>
 
-<pre><strong>
+<pre>
+	<strong>
 private boolean getSelections()
 {
 	boolean dialogOK=true;
@@ -142,10 +199,23 @@ private boolean getSelections()
 	useTabDensity = useTabDensCF.getCheckBox().getState();
 	return dialogOK;
 }
-	</strong></pre>
+	</strong>
+</pre>
 <p></p>
 
-<p><small>1. Why call it an Addin? It needs to work with both GenericDialog and GUI.nonBlockingDialog. Java does not allow extending both in one class. Creating separate but identical classes is impractical. An interface worked OK but it's really not a proper use of an interface. Calling it a library seemed inappropriate since it is completely dependent on GenericDialog components. In the best Excel tradition I called it an Addin.  Ideally, it could someday become part of the GenericDialog class where the calls to GenericDialog.add... would return the added item's components.</small></p>
+<p>
+	<small>1. Why call it an Addin? It needs to work with both
+		GenericDialog and GUI.nonBlockingDialog. Java does not allow extending
+		both in one class. Creating separate but identical classes is
+		impractical. An interface worked OK but it's really not a proper use
+		of an interface. Calling it a library seemed inappropriate since it is
+		completely dependent on GenericDialog components. In the best Excel
+		tradition I called it an Addin. Ideally, it could someday become part
+		of the GenericDialog class where the calls to GenericDialog.add...
+		would return the added item's components.</small>
+</p>
 
-<h2><a href="index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<h2>
+	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
 
