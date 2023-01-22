@@ -25,32 +25,25 @@
 <br><strong>DistanceMapLib.jar&nbsp;</strong>is available for download <a href="https://drive.google.com/file/d/1I2Zrt58bVKn1voTMelnGeprEIw9uQMWx/view?usp=sharing" target="_blank">here</a>.
 <br><strong>MuMassCalculatorLib.jar&nbsp;</strong>is available for download <a href="https://github.com/LazzyIzzi/MuMassCalculator/releases/tag/v1.1.0" target="_blank">here</a>. Scroll down to the bottom of the page to download the jar file and/or source codes.
 
-<h2>CT_Tools</h2>
-<h3>A collection of MuMassCalculatorLib based ImageJ plugins that together create a virtual CT system for creating, scanning, reconstructing, and evaluating digital images. </h3>
+<h2>CT_Tools - A collection of MuMassCalculatorLib based ImageJ plugins that together create a virtual CT system for creating, scanning, and reconstructing digital images.</h2>
 
-<h4>Setup and test of CT scan conditions </h4> 
 <ul>
-<li><a href="CtScannerSetup.html" target="_self">Scanner Setup</a> - A 1-D model that plots the X-ray intensity vs energy at key locations from source to detector. You can change the source energy, filtration, and detector composition and view the spectra and configuration metrics such as beam hardening, sample opacity etc. It provides guidance for setting up an actual scanner to minimize spectral artifacts.</li>
-<li><a href="MaterialTagger.html" target="_self">Material Tagger</a> - Creates "Tag Images" by segmenting an image into its material components.  </li>
-<li><a href="MaterialsEditor.html" target="_self">Materials Editor</a> - Manages the Image Tags data File.</li>
-<li><a href="CTsimulator.html" target="_self">Tag Image Projectors</a> - Configure a virtual conventional X-ray source CT-scanner to create parallel or fan-beam sinograms.</li>
-<li><a href="CtRecon.html" target="_self">CT Recon Parallel Beam</a> - Reconstructs a parallel-beam sinogram to help determine if the result met expectations.</li>
+	<li><a href="XraySpectrumPlotter.html" target="_self">X-ray Spectrum Plotter</a> - Plot the tabulated mass attenuation coefficients vs energy for atoms and compounds.</li>
+	<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - Calculate photon cross-sections for formulas and atoms using tabulated XCOM data.</li>
+	<li><a href="XrayLookupMuLin.html" target="_self">X-ray Lookup-MuLin</a> - Look-up X-ray energies that produce a measured cross-section for formulas and atoms.</li>
+	<li><a href="XrayLookupRatio.html" target="_self">X-ray Lookup Ratio</a> - Look-up X-ray energies that produce a measured cross-section ratio for formulas and atoms.</li>
+	<li><a href="MaterialsEditor.html" target="_self">Materials Editor</a> - Read me First! View and edit the default list of tags and their respective formulas and densities. See the <a href="XrayCalculator.html" target="_self">X-ray Calculator</a> for an example of a plugin that uses the materials list.</li>
+	<li><a href="MaterialTagger.html" target="_self">Material Tagger</a> - Convert ranges of image brightness to tag<sup>2</sup> values of materials of known composition and density.
+	<li><a href="TagsToMuLin.html" target="_self">TagSlice to MuLin</a> - Convert tagged images to total linear attenuation at a single x-ray energy.
+	<li><a href="CtScannerSetup.html" target="_self">Scanner Setup</a> - An interactive tool for optimizing radiographic and tomographic image acquisition conditions.</li>
+	<li> <a href="CTsimulator.html" target="_self">2D Scanners</a> - A suite of four plugins to create total attenuation monochromatic or bremsstrahlung sinograms from 2D images of linear attenuation or tagged<sup>2</sup> compositions and densities.
+	<li><a href="CtRecon.html" target="_self">CT Recon Parallel Beam</a> - Parallel beam reconstruction using direct Fourier inversion. Requires "Base_Recon.exe" in the plugins folder.</li>
+	<li><a href="Linearization.html" target="_self">Linearization</a> - A pair of plugins for finding and applying attenuation linearization.
+	<ul>
+		<li>Find Linearization - compares a beam hardened reconstructed slice to an ideal model of the same slice and uses ImageJ's curve fitting methods to obtain polynomial coefficients for correcting the original sinogram attenuations.</li>
+		<li>Apply linearization - Correct beam hardened sinogram attenuations using the best linearization fit.</li>
+	</ul>
 </ul>
-
-<h4>Evaluating reconstructed images </h4> 
-<ul>
-<li><a href="X-raySpectrumPlotter.html" target="_self">X-ray Spectrum Plotter</a> - Plots NIST-XCOM based mass attenuation spectra in cm<sup>2</sup>/gm of a material for Total, photoelectric, elastic, inelastic, and pair-production from 1keV to 100GeV.</li>
-<li><a href="XrayCalculator.html" target="_self">X-ray Calculator</a> - Reports interpolated attenuations at specific energies. </li>
-<li><a href="XrayLookupMuLin.html" target="_self">X-ray MuLin Lookup</a> - Reports X-ray energie(s) that will produce a material's measured linear attenuation.</li>
-<li><a href="XrayLookupRatio.html" target="_self">X-ray Ratio Lookup</a> - Reports X-ray energie(s) consistent with the measured attenuations of two different materials.</li>
-</ul>
-
-<h4>Correcting residual beam hardening artifacts </h4> 
-<ul>
-<li><a href="Linearization.html" target="_self">Linearization Fitter</a> - Interactively plots observed vs model sinograms attenuations calculated from a reconstructed and a tag image at a given X-ray energy. Reports 1-6 degree polynomial fits. The X-ray energy that gives the best fit is the effective energy for the measurement.</li>
-<li><a href="Linearization.html" target="_self">Apply Linearization</a> - Applies a selected polynomial to the sinogram used to reconstruct the observed reconstruction.</li>
-</ul>
- 
 
 <h3>Installation CT_Tools</h3>
 <ol>

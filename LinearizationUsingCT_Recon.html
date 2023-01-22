@@ -1,69 +1,10 @@
 <title>Linearization</title>
 <link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
-
-<h1>Linearization - This page is currently being updated. Please
-	try again later.</h1>
 <h3>Requires ImageJ 1.53k or higher, MuMassCalculatorLib.jar</h3>
 
 <h2>
 	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
 </h2>
-
-<h3>A pair of plugins for model-based correction of beam hardening
-	artifacts in reconstructed CT slices by model-based linearization.</h3>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/LinearizationFitsAndApply.png"
-			width="500" />
-		<figcaption>
-			<strong>Linearize Fitter (left) and Apply (right)</strong>
-		</figcaption>
-	</figure>
-</center>
-
-<h3>Step 1. Linearization Fitter</h3>
-<ul>
-<li>CT Slice - select the beam-hardened slice to be corrected.</li>
-<li>Tag Image - Select the <a href="MaterialTagger.html" target="_self">Tag Image</a> model for correcting the CT slice.</li>
-<li>Est. keV - Enter an estimate of the effective X-ray energy for the CT Slice.</li>
-<li>Update - Click to display a plot of the Slice vs Model attenuations and polynomial fits at the entered X-ray energy.</li>
-</ul>
-Adjust the Est.keV followed by Update to optimize R^2 of the fit.
-Click OK when done.
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/LinearizationPlot.png"
-			width="500" />
-		<figcaption>
-			<strong>Linearize Fit Plot</strong>
-		</figcaption>
-	</figure>
-</center>
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/LinearizationFits.png"
-			width="500" />
-		<figcaption>
-			<strong>Linearize Fits</strong>
-		</figcaption>
-	</figure>
-</center>
-
-<h3>Step 2. Apply Linearization</h3>
-<ul>
-<li>Sinogram Choice - select the sinogram used to reconstruct the beam-hardened slice.</li>
-<li>Results Choice - Select the Fit Parameters Results window.</li>
-<li>Fit Choice - Select the polynomial to apply to the sinogram.</li>
-<li>A0 to A6 - Edit the polynomial coefficients if needed.</li>
-<li>Use Scale Factor - Check this box if your sinogram has been scaled from 32 to 16bit</li>
-<li>Scale Factor - Enter the factor used to scale the sinogram. Ignored if Use is not checked.</li>
-<li>Create new image -recommended, otherwise the original sinogram will be overwritten..</li>
-</ul>
-Click OK to apply the correction to the sinogram.  Reconstruct and observe the result.
-
-
 
 <p>
 	Before proceeding, please have a look at the <a
