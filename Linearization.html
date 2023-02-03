@@ -1,9 +1,9 @@
 <title>Linearization</title>
 <link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
 
-<h1>Linearization - This page is currently being updated. Please
-	try again later.</h1>
-<h3>Requires ImageJ 1.53k or higher, MuMassCalculatorLib.jar</h3>
+<h2>Linearization</h2>
+
+<h3>Requires ImageJ 1.53k or higher</h3>
 
 <h2>
 	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
@@ -11,6 +11,14 @@
 
 <h3>A pair of plugins for model-based correction of beam hardening
 	artifacts in reconstructed CT slices by model-based linearization.</h3>
+See the
+<a href="LinearizationTutorial.html" target="_self">Linearization
+	Tutorial</a>
+page for a brief description of the process.
+<br>
+See the
+<a href="MaterialTagger.html" target="_self">Material Tagger</a>
+page for creating Tag Images.
 
 <center>
 	<figure class="easyimage easyimage-full">
@@ -22,15 +30,19 @@
 	</figure>
 </center>
 
-<h3>Step 1. Linearization Fitter</h3>
+<h3>Step 1. Linearization Fitter(left)</h3>
 <ul>
-<li>CT Slice - select the beam-hardened slice to be corrected.</li>
-<li>Tag Image - Select the <a href="MaterialTagger.html" target="_self">Tag Image</a> model for correcting the CT slice.</li>
-<li>Est. keV - Enter an estimate of the effective X-ray energy for the CT Slice.</li>
-<li>Update - Click to display a plot of the Slice vs Model attenuations and polynomial fits at the entered X-ray energy.</li>
+	<li>CT Slice - select the beam-hardened slice to be corrected.</li>
+	<li>Tag Image - Select the <a href="MaterialTagger.html"
+		target="_self">Tag Image</a> model for correcting the CT slice.
+	</li>
+	<li>Est. keV - Enter an estimate of the effective X-ray energy for
+		the CT Slice.</li>
+	<li>Update - Click to display a plot of the Slice vs Model
+		attenuations and polynomial fits at the entered X-ray energy.</li>
 </ul>
-Adjust the Est.keV followed by Update to optimize R^2 of the fit.
-Click OK when done.
+Adjust the Est.keV followed by Update to optimize R^2 of the fit. Click
+OK when done.
 
 <center>
 	<figure class="easyimage easyimage-full">
@@ -51,503 +63,31 @@ Click OK when done.
 	</figure>
 </center>
 
-<h3>Step 2. Apply Linearization</h3>
+<h3>Step 2. Apply Linearization(right)</h3>
 <ul>
-<li>Sinogram Choice - select the sinogram used to reconstruct the beam-hardened slice.</li>
-<li>Results Choice - Select the Fit Parameters Results window.</li>
-<li>Fit Choice - Select the polynomial to apply to the sinogram.</li>
-<li>A0 to A6 - Edit the polynomial coefficients if needed.</li>
-<li>Use Scale Factor - Check this box if your sinogram has been scaled from 32 to 16bit</li>
-<li>Scale Factor - Enter the factor used to scale the sinogram. Ignored if Use is not checked.</li>
-<li>Create new image -recommended, otherwise the original sinogram will be overwritten..</li>
+	<li>Sinogram Choice - select the sinogram used to reconstruct the
+		beam-hardened slice.</li>
+	<li>Results Choice - Select the Fit Parameters Results window.</li>
+	<li>Fit Choice - Select the polynomial to apply to the sinogram.</li>
+	<li>A0 to A6 - Edit the polynomial coefficients if needed.</li>
+	<li>Use Scale Factor - Check this box if your sinogram has been
+		scaled from 32 to 16bit</li>
+	<li>Scale Factor - Enter the factor used to scale the sinogram.
+		Ignored if Use is not checked.</li>
+	<li>Create new image -recommended, otherwise the original sinogram
+		will be overwritten..</li>
 </ul>
-Click OK to apply the correction to the sinogram.  Reconstruct and observe the result.
+Click OK to apply the correction to the sinogram. Reconstruct and
+observe the result. Check the consistency of the reconstructed
+attenuations using the
+<a href="XrayLookupMuLin.html" target="_self">Xray Lookup MuLin</a>
+and
+<a href="XrayLookupRatio.html" target="_self">Xray Lookup Ratio</a>
+plugins. The X-ray energies reported from the corrected attenuations
+should be approximately the same. Remenber that the correction
+polynomial is a "fit" to the observed data. If there is a lot of scatter
+around the fit then the corrected attenuations will be less accurate.
 
-
-
-<p>
-	Before proceeding, please have a look at the <a
-		href="CtScannerSetup2.html" target="_self">CT Scanner Setup</a> page
-	where filtering the X-ray beam to reduce beam-hardening artifacts is
-	briefly described. Even after filtering, depending on specimen
-	composition and structural heterogeniety, some hardening artifact may
-	remain. Whether or how to correct them depends on what is needed from
-	the image.
-</p>
-<ul>
-	<li>Correction by linearizing is a compromise that may not work
-		for all of the materials in a complex image.</li>
-	<li>Be cautious when applying the same correction to a 3D data
-		set.</li>
-	<li>If attenuation coefficients are important, check that material
-		attenuations and their ratios give the same effective energy.</li>
-	<ul>
-		<li>Use the <a href="XrayLookupRatio.html" target="_self">X-ray
-				Ratio Lookup</a> plugin to obtain the effective energy(Eff)
-			using the brightness ratio between two materials.
-		</li>
-		<li>Use the <a href="XrayLookupMuLin.html" target="_self">X-ray
-				MuLin Lookup</a> plugin to obtain the Eff from the individual
-			materials.
-		</li>
-	</ul>
-
-	<li>Correcting severe hardening is often beyond the scope of these
-		plugins, but they sometimes work surprisingly well.</li>
-	<li>It may be easier to add filtration and repeat the CT-Scan.</li>
-</ul>
-
-<p>
-	The easiest way to qualitatively correct hardening is to use the slider
-	in the <a href="CtRecon.html" target="_self">CT Recon Parallel Beam</a>
-	plugin. The slider weights a 2nd order polynomial to compute a
-	corrected <big>&tau;</big><sub><small>corr</small></sub> = (1-W)(<big>&tau;</big><sub><small>obs</small></sub>)
-	+ (W)(<big>&tau;</big><sup><small>2</small></sup><sub><small>obs</small></sub>).
-	This can often flatten the cupping artifact but the reconstructed
-	linear attenuations will usually will be wrong.  As shown in the plot below, the linearization is not unique. 
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/LinearizationPlotNonUnigue.png"
-			width="400" />
-		<figcaption>
-			<strong>Observed attenuation(black) transformed to three linear functions</strong>
-		</figcaption>
-	</figure>
-</center>
-
-
-
-
-<ol>
-	<li>Reconstruct a slice without applying a linearization
-		correction.</li>
-	<li>Measure the linear attenuation of a small region of known
-		composition at or near the axis of rotation.
-		<ul>
-			<li>As the specimen rotates during the CT scan, the collection
-				of X-ray paths that go through the axis (medial rays) passes through
-				all other locations in the specimen. The attenuation at the axis is
-				reconstructed using the average energy for the whole slice.</li>
-		</ul>
-	</li>
-	<li>Enter the measured attenuation and the composition and density
-		of the know material into the <a href="XrayLookupMuLin.html"
-		target="_self">X-ray MuLin Lookup</a> plugin and record the reported
-		energy.
-	</li>
-	<li>Reconstruct a slice again applying an estimated linearization
-		correction that flattens the cupping.</li>
-	<li>Obtain the linear attenuation at the same location as before.</li>
-	<li>Multiply the flattened image by the uncorrected/corrected
-		attenuation ratio to produce an image with attenuations that represent
-		the effective energy probing the specimen.</li>
-</ol>
-<h4>Introduction</h4>
-
-<p>
-	Beam-hardening and filtering the X-ray beam to reduce cupping artifact
-	are briefly described in the <a href="CtScannerSetup2.html"
-		target="_self">CT Scanner Setup</a> page. Clearly, the ideal way to
-	minimize beam hardening artifacts is to use a monochromatic X-ray
-	source. Choosing a filter for a conventional X-ray source requires
-	optimizing the tradeoff between image quality requirements, X-ray
-	spectral band-width, and intensity.
-</p>
-<ul>
-	<li>More filtering reduces beam-hardening and increases scan time
-		to obtain the required S/N.</li>
-	<li>Some hardening artifact may still be present even after heavy
-		filtering.</li>
-</ul>
-<h4>Linearization</h4>
-
-<p>
-	Linearization provides a method to reduce residual hardening artifact
-	by identifying a function, usually a polynomial, that linearizes the
-	attenuation vs path length relationship. A good guess is often
-	sufficient for qualitative attenuation results. <a href="CtRecon.html"
-		target="_self">CT Recon Parallel Beam</a> has a built-in linearize
-	guesser. The slider weights a 2nd order polynomial, linearized <big>&tau;</big><sub><small>lin</small></sub>
-	= (1-W)(<big>&tau;</big><sub><small>obs</small></sub>) + (W)(<big>&tau;</big><sup><small>2</small></sup><sub><small>obs</small></sub>).
-	The plugin allows interactive selection of the weight that best
-	flattens the cupping artifact. Although the cupping is suppressed, the
-	reconstructed linear attenuations are usually not correct after using
-	this uncalibrated correction. The plot below illustrates that
-	linearizing functions are not unique.
-</p>
-
-
-<p>The black line shows the observed attenuation vs. thickness for
-	an aluminum sample. The dashed lines show three arbitrary
-	linearizations using third order polynomials. The polynomial
-	coefficients are obtained by a least squares fit of the observed
-	attenuations to three arbitrary linear functions. When applied to the
-	observed attenuation the fits produce values along the dashed lines.</p>
-
-
-This can be relatively straightforward for relatively homogeneous
-specimens but becomes more challenging as specimens become more
-spatially and compositionally heterogeneous.
-
-
-<h3>Linearization of Multi-Material Specimens</h3>
-<h4>Introduction</h4>
-<p>With the exception of absorption edge crossing, the contrast due
-	to composition decreases with increasing X-ray energy. The images below
-	simulate the contrast between siderite(iron carbonate, bright) and
-	quartz(gray) acquired at accelerating potentials of 80 and 160KV with a
-	0.1cm copper filter.
-<ol>
-	<li>Simulation conditions were configured using the <a
-		href="CtScannerSetup.html" target="_self">Scanner Setup</a> plugin.
-	</li>
-	<li>Sinograms were created from a tag image template using the <a
-		href="CTsimulator.html" target="_self">Polychromatic Parallel Beam
-			CTscan</a> plugin
-	</li>
-	<li>Reconstruction were done using the <a href="CtRecon.html"
-		target="_self">CT Recon Parallel Beam</a> plugin with no
-		beam-hardening correction.
-	</li>
-</ol>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/ContrastChangeWithEnergy.png"
-			width="800" />
-		<figcaption>
-			<strong> Left to right, 160KV, 80KV, 160KV(scaled),
-				80KV-160KV(scaled)</strong>
-		</figcaption>
-	</figure>
-</center>
-
-<p>
-	The first two images have been scaled to display quartz at the same
-	gray level. The siderite in the 80KV image is brighter compared to
-	quartz than in the 160KV image. The 160KV(scaled) has been scaled to
-	match the level of quartz at 80KV. The forth image is a difference
-	image showing only siderite, see <a
-		href="https://en.wikipedia.org/wiki/Dual-energy_X-ray_absorptiometry"
-		target="_blank">DEXA</a>.
-</p>
-
-
-<p>Since the contrast changes with X-ray energy, it should be
-	possible to estimate the X-ray energy from the contrast ratio.
-<ul>
-	<li>The <a href="XrayLookupRatio.html" target="_self">X-ray
-			Ratio Lookup</a> plugin was used to obtain the effective energy(Eff)
-		using the brightness ratio of the two materials.
-	</li>
-	<li>The <a href="XrayLookupMuLin.html" target="_self">X-ray
-			MuLin Lookup</a> was used to obtain the Eff from the individual
-		components.
-	</li>
-</ul>
-
-<style>
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 80%;
-}
-
-td, th {
-	border: 2px solid #aaaaaa;
-	text-align: left;
-	padding: 8px;
-}
-
-tr:nth-child(even) {
-	background-color: #dddddd;
-}
-</style>
-
-<center>
-	<table>
-		<tr>
-			<th>KV</th>
-			<th>quartz &mu;<sub>lin</sub></th>
-			<th>siderite &mu;<sub>lin</sub></th>
-			<th>Eff-ratio (keV)</th>
-			<th>Eff-quartz( keV)</th>
-			<th>Eff-siderite (keV)</th>
-		</tr>
-		<tr>
-			<td>80</td>
-			<td>0.6935</td>
-			<td>2.490</td>
-			<td>65.2</td>
-			<td>58.2</td>
-			<td>62.2</td>
-		</tr>
-		<tr>
-			<td>160</td>
-			<td>0.5165</td>
-			<td>1.300</td>
-			<td>89.8</td>
-			<td>79.4</td>
-			<td>86.5</td>
-		</tr>
-		<caption>Linear attenuations and calculated X-ray energies</caption>
-	</table>
-</center>
-
-<p>Although this is a good qualitative result, the X-ray energies
-	are not in good agreement. The setup indicated a small amount of
-	residual beam hardening. If monochrimatic X-rays had been used, all of
-	the energies computed from material attenuation would be the same.</p>
-
-<h4>Model-based correction of beam-hardening artifact</h4>
-<ul>
-	<li>The method requires a segmentable image with materials of
-		known composition and density.</li>
-	<li>The method does not currently include a provision for
-		including material porosities, but this would not be difficult to add
-		if porosity image data becomes routinely available.</li>
-</ul>
-
-<p>Jumping ahead, the model-based linearizer produced the results
-	below for the siderite/quartz example.</p>
-<center>
-	<table>
-		<tr>
-			<th>KV</th>
-			<th>quartz &mu;<sub>lin</sub></th>
-			<th>siderite &mu;<sub>lin</sub></th>
-			<th>Eff-ratio (keV)</th>
-			<th>Eff-quartz( keV)</th>
-			<th>Eff-siderite (keV)</th>
-			<th>Eff-fit (keV)</th>
-		</tr>
-		<tr>
-			<td>80</td>
-			<td>0.61</td>
-			<td>2.210</td>
-			<td>65.2</td>
-			<td>66.1</td>
-			<td>64.0</td>
-			<td>65</td>
-		</tr>
-		<tr>
-			<td>160</td>
-			<td>0.48</td>
-			<td>1.22</td>
-			<td>89.8</td>
-			<td>88.9</td>
-			<td>88.9</td>
-			<td>88</td>
-		</tr>
-		<caption>Linear attenuations and calculated X-ray energies
-			after beam-hardening correction</caption>
-	</table>
-</center>
-
-
-<p>
-	Quantitative correction of beam hardening in multi-material specimens
-	with high Z contrast is more complicated and various solutions are
-	described in the literature<sup>1</sup>. Generally, the attenuations
-	measured from each material in the image will not be consistent with a
-	single effective energy and the image may contain streak artifacts. In
-	addition to linearization post-processing, it may be possible to reduce
-	attenuation errors and artifacts by using additional filtration. For
-	now I'll just discuss the plugins.
-</p>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/BereaFilterStudy.png"
-			width="600" />
-		<figcaption>
-			<strong> Copper 0.005cm Filtered Sandstone Reconstructions
-				Uncorrected(left) Linearized(right) </strong>
-		</figcaption>
-	</figure>
-</center>
-
-<h3>The plugins</h3>
-
-<p>
-	The first "finder" plugin combines the three steps, building a model,
-	comparing the model to the beam hardened image, and fitting the
-	comparision to several candidate polynomials, into one dialog. If
-	needed, the plugins for the individual steps are described <a
-		href="#BadThresholds">here</a>, and a graphical description of the
-	workflow is <a href="#Workflow">here</a>.
-<h3 id="Combined"></h3>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/Find_BH_Corrections.png"
-			width="250" />
-		<figcaption>
-			<strong>The first plugin is the Linear Coefficient Finder</strong>
-		</figcaption>
-	</figure>
-</center>
-
-<ol>
-	<li>Click on the reconstructed slice that you want to fix to make
-		it the active window. slices must have pixel sizes in cm and pixel
-		values in cm<sup>-1</sup>
-	</li>
-	<li>Select an small region in a known material at or close to the
-		axis of rotation and measure the observed attenuation. This group of
-		pixels is unique since the values are obtained from the average energy
-		of all rays passing through the portion of the specimen at the axis of
-		rotation.</li>
-	<li>Use the <a href="XrayLookup.html" target="_self">Lookup</a>
-		plugin in this package to obtain the effective energy.
-	</li>
-	<li>Select "Find Beam Hardening Corrections" plugin in the ImageJ
-		plugins menu. A blank image will appear next to the active window.</li>
-	<li>Select a specimen material from the Materials List.</li>
-	<li>Use the slider to threshold select the material in the active
-		window. If the beam hardening is too severe to properly threshold a
-		material an additional set of steps is described <a
-		href="#BadThresholds">below</a>.
-	</li>
-	<li>Click the "Add Material to Tag Image" to add the material to
-		the model. Continue until all of the materials are tagged. Untagged
-		materials are set to 0, "empty space" in the model image.</li>
-	<li>Enter the x-ray energy found in step 3 in the Est keV Field
-		and Click OK.</li>
-</ol>
-
-<p>The "Finder" will output a plot of the model vs image
-	attenuations and a list of several polynomial fits to the plot data.</p>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/LinearizationPlot.png"
-			width="600" />
-		<figcaption>
-			<strong>Linearization "Finder" Output</strong>
-		</figcaption>
-	</figure>
-</center>
-
-<p>The "Add Fit" in the Plot window's Data menu can be used to
-	examine the appropriateness of the fits listed in the "Fit Params"
-	table. Leave the Fit Params window open for use in the "Apply" plugin.</p>
-
-<p>The second "apply" plugin corrects the original sinogram using
-	the selected polynomial coefficients.</p>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/LinearizationApply.png"
-			width="250" />
-		<figcaption>
-			<strong>Linearization "Apply" Dialog</strong>
-		</figcaption>
-	</figure>
-</center>
-
-<ol>
-	<li>Open or Click on the sinogram used to make the reconstructed
-		slice.</li>
-	<li>In the ImageJ plugins menu select the "Apply Linearization"
-		plugin.</li>
-	<li>Select the fit you want to apply(the Fit Params table must be
-		the active table).</li>
-	<li>Click OK to apply the fit to the sinogram.</li>
-	<li>Reconstruct the sinogram again to see the results.</li>
-</ol>
-
-<h3 id="BadThresholds">Correcting Severe Beam Hardening</h3>
-<p>The plugins below, left to right, are the individual steps in the
-	"finder" dialog described above.</p>
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/BH_Tools_All.png" width="700" />
-		<figcaption>
-			<strong>Linearization Plugins</strong>
-		</figcaption>
-	</figure>
-</center>
-
-
-<p>When proper thresholding cannot resolve the materials in the
-	image, a rough approximation of the model slice can be used to reduce
-	the cupping so that thresholding is possible.</p>
-Start with the
-<a href="#Combined">Finder</a>
-plugin
-<ol>
-	<li>Select a small region in a known material at or close to the
-		axis of rotation and measure the observed attenuation. This group of
-		pixels is unique since the values represent the average energy of all
-		rays passing through the sample.
-	<li>Use the <a href="XrayLookup.html" target="_self">Lookup</a>
-		plugin in this package to obtain the effective energy.
-	</li>
-	<li>In the combined "finder" dialog, use a threshold that selects
-		the specimen(do not include empty spaces) and tag it with a single
-		material, either the main component or some approximation.</li>
-	<li>Enter the effective keV and click OK</li>
-	<li>Apply the corrections to the image's sinogram and reconstruct.
-		The cupping should be substantially reduced but the attenuations will
-		be grossly in error.</li>
-</ol>
-Switching to the individual plugins:
-<ol>
-	<li>Use the "Material Tagger" plugin and the slice from step 5
-		above to create a properly segmented tag image.</li>
-	<li>Use the Find Beam Hardening Corrections plugin. Select the
-		original beam-hardened reconstruction and the model image from step 1.
-		Enter the keV from step 4 above. Click OK</li>
-	<li>Choose the best fit and apply it to the original sinogram.</li>
-</ol>
-
-
-<p>The "Material Tagger" plugin is a blunt instrument compared to
-	far more sophisticated pixel classifiers available to ImageJ. It is a
-	place-holder until a material tagger that uses more advanced
-	classifiers is written.</p>
-
-<h3 id="Workflow">Beam Hardening Correction Work Flow</h3>
-<p>The workflow for correcting beam hardening artifacts using these
-	plugins.
-<ol>
-	<li>The sinogram(b) is obtained experimentally or by creating a
-		sinogram using one of the <a href="CTsimulator.html" target="_self">bremsstrahlung
-			projector</a> plugins on a digital image(a).
-	</li>
-	<li>The reconstruction(c) is obtained using a 3rd party
-		reconstruction application<sup>2</sup>.
-	</li>
-	<li>The model slice(d) is obtained using the tagger and the
-		converter.</li>
-	<li>The plot(e) and fits(f) are obtained using Fitter.</li>
-	<li>The corrected sinogram(g) is obtained using Apply.</li>
-	<li>The corrected reconstruction(h) is obtained using the 3rd
-		party reconstruction application.</li>
-</ol>
-
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images/Linearization/BeamHardeningCorrection.png"
-			width="700" />
-		<figcaption>
-			<strong>Linearization Workflow</strong>
-		</figcaption>
-	</figure>
-</center>
-
-
-<p>
-	<small>1. For example, "Beam Hardening Correction in X-ray
-		Computed Tomography: A Comparison of Two Iterative Model-based
-		Reconstruction Methods", K. Dremel et al., Proceedings of the 11th
-		European Conference on Non-Destructive Testing, October 6-10, Prague,
-		Czech Republic. Or Google "X-ray beam hardening correction".</small>
-<p>
-	<small>2. The reconstructions on this page were made using
-		Fourier inversion of parallel projections.</small>
 <h2>
 	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
 </h2>

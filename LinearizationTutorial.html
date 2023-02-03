@@ -1,0 +1,62 @@
+
+<title>LinearizationTutorial</title>
+<link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
+
+<h2>
+	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
+<h3>What is Linearization?</h3>
+<p>
+	Linearization is a technique to mitigate <a
+		href="BeamHardeningTutorial.html" target="_self">beam-hardening</a>
+	artifacts in projections and, therefore, the CT slices reconstructed
+	from those projections. Conventional X-ray sources are polychromatic
+	and will produce beam-hardening artifacts if not sufficiently filtered.
+	The <a href="CtScannerSetup.html" target="_self">Scanner Setup</a>
+	plugin provides a guide to configuring the source, filter, and detector
+	to approximate a monochromatic X-ray source. When beam hardening
+	artifacts persist, linearization provides a way to minimize the
+	artifact and, in some cases, produce correct linear attenuations for
+	the specimen materials.
+</p>
+<p>
+	The linearization process typically uses a least-squares fit to identify a function, usually a
+	polynomial<sup>1</sup> that, when applied to the measured attenuations
+	vs thickness, transforms it into a linear function. The plot below
+	shows a typical beam hardened attenuation vs thickness curve for a an
+	aluminum specimen(black line), and three possible solutions.
+</p>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="Images/Linearization/LinearizationPlotNonUnigue.png"
+			width="400" />
+		<figcaption>
+			<strong>Observed attenuation(black) transformed to three
+				linear functions</strong>
+		</figcaption>
+	</figure>
+</center>
+
+<ul>
+	<li>Linearizing fits are not unique. Most will mitigate
+		beam-hardening artifact but the "corrected" attenuations will usually
+		be wrong.</li>
+	<li>Single material fits are not well constrained. The resulting
+		images can be rescaled to any effective energy. For a demonstration, see the <a href="CtReconExample.html" target="_self">CT Recon Example</a> page.</li>
+	<li>Unlike the black line in the single material plot,
+		multi-material plots may show significant scatter. The "best fit" is
+		an approximation for the mix of materials.</li>
+	<li>In some multi-material cases, where the composition is known,
+		the fit can be constrained to the one that produces the correct
+		attenuation and attenuation rations for all of the materials in the
+		specimen. For a demonstration, see the <a href="LinearizationFitExample.html" target="_self">Linearization Fit Example</a> page.</li>
+</ul>
+
+<small>1. Many reconstruction codes accept polynomials as input parameters.</small>
+
+<h2>
+	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
