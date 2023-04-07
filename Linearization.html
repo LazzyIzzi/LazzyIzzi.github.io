@@ -3,14 +3,15 @@
 
 <h2>Linearization</h2>
 
-<h3>Requires ImageJ 1.53k or higher</h3>
+<h3>Requires ImageJ 1.53k or higher. See the Home page for CT_Tools download and installation instructions.</h3>
+
 
 <h2>
 	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
 </h2>
 
-<h3>A pair of plugins for model-based correction of beam hardening
-	artifacts in reconstructed CT slices by model-based linearization.</h3>
+<h3>A pair of plugins for correction of beam hardening
+	artifacts in reconstructed CT slices using a model-based linearization.</h3>
 See the
 <a href="LinearizationTutorial.html" target="_self">Linearization
 	Tutorial</a>
@@ -19,7 +20,10 @@ page for a brief description of the process.
 See the
 <a href="MaterialTagger.html" target="_self">Material Tagger</a>
 page for creating Tag Images.
-
+<br>
+See the <a href="LinearizationExample.html"
+		target="_self">Linearization Example</a> page for examples of linearization using CT_Recon slider and the
+		Linearization Fitter.
 <center>
 	<figure class="easyimage easyimage-full">
 		<img alt="" src="Images/Linearization/LinearizationFitsAndApply.png"
@@ -42,7 +46,7 @@ page for creating Tag Images.
 		attenuations and polynomial fits at the entered X-ray energy.</li>
 </ul>
 Adjust the Est.keV followed by Update to optimize R^2 of the fit. Click
-OK when done.
+OK when done. Do not delete the Fit Parameters window.
 
 <center>
 	<figure class="easyimage easyimage-full">
@@ -68,7 +72,7 @@ OK when done.
 	<li>Sinogram Choice - select the sinogram used to reconstruct the
 		beam-hardened slice.</li>
 	<li>Results Choice - Select the Fit Parameters Results window.</li>
-	<li>Fit Choice - Select the polynomial to apply to the sinogram.</li>
+	<li>Fit Choice - Select the polynomial to apply to the sinogram. The fit coefficients will be imported from the Fit Parameters window.</li>
 	<li>A0 to A6 - Edit the polynomial coefficients if needed.</li>
 	<li>Use Scale Factor - Check this box if your sinogram has been
 		scaled from 32 to 16bit</li>

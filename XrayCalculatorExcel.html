@@ -40,12 +40,7 @@
 </center>
 
 <p>To use the functions, Select an output cell(s), Click the
-	FORMULAS tab and then click the Insert Function icon.
-<p>GetFormualMevFromMuLin and GetFormualMevFromMuLinRatio functions
-	return arrays. This is noted in their input dialogs. Select several
-	contiguous row cells for output before calling the function. Do No
-	click OK in the function dialog. Use Ctrl-Shift-Enter to execute the
-	function.
+	FORMULAS tab and then click the Insert Function icon. Fill in the required data and click OK.
 <center>
 	<figure class="easyimage easyimage-full">
 		<img alt="" src="Images/Excel/InsertFunction-1.png" width="300" />
@@ -79,10 +74,17 @@
 	</figure>
 </center>
 
+<h3>Excel Array Functions</h3>
+<p>GetFormualMevFromMuLin and GetFormualMevFromMuLinRatio functions
+	return arrays. This is noted in their input dialogs. Select at least two
+	contiguous row cells for output before calling the function. <strong>Do Not</strong>
+	click OK in the function dialog. Use Ctrl-Shift-Enter to execute the
+	function. The first value returned is the number of solutions. The contiguous row cells should be the number of solutions + 1.</p>
 
+<h3>Excel Macros</h3>
 <p>To use the macros, Click the ADD-INS tab, GetSpectrum and
 	BeamHardening should appear in the Toolbar Commands ribbon.
-<H3>Get Spectrum</H3>
+<H4>Get Spectrum</H4>
 <P>Use the radio buttons to select Atom or Formula</P>
 
 <p>Get Spectrum returns a list of absorption cross-section data for
@@ -109,7 +111,7 @@
 	formatted Formula</p>
 <ol>
 	<li>Check the desired cross-sections</li>
-	<li>Enter the desired energy range Min amd Max</li>
+	<li>Enter the desired energy range Min and Max</li>
 	<li>Select the number of interpolated points to add to the output.
 		This will create a separate list of N approximately log-spaced points
 		in the selected range.</li>
@@ -125,7 +127,7 @@
 	</figure>
 </center>
 
-<H3>Beam Hardening</H3>
+<H4>Beam Hardening</H4>
 
 <p>
 	Please refer to the ImageJ <a href="CtScannerSetup.html"
