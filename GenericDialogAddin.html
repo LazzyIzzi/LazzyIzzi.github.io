@@ -8,8 +8,6 @@
 <h2>
 	<a href="index.html" target="_self"><em><strong>Home</strong></em></a>
 </h2>
-
-
 <h3>
 	An Addin<sup>1</sup> for making legacy ImageJ event handlers easier to write.
 	<br>The JavaDocs for GenericDialogAddin are <a href="GenericDialogAddin/index.html"
@@ -18,22 +16,12 @@
 	Download GenericDialogAddin from <a href="https://github.com/LazzyIzzi/ImageJAddins/releases/tag/v1.0.0-beta"
 		target="_blank">here</a>.</h3>
 
-<hr>	
-<h4>New! GenericDialogAddin.addSpinner() method to add "+" and "-" buttons and an increment to a GenericDialog.addNumericField() component</h4>
+<h2>New! GenericDialogAddin.addSpinner() method to add "+" and "-" buttons and an increment to a GenericDialog.addNumericField() component</h2>
 
-<center>
-	<figure class="easyimage easyimage-full">
-		<img alt="" src="Images\GenericDialogAddin\SpinnerExample.png" width="300" />
-		<figcaption>
-			<strong>Click the "+" or "-" buttons to change a NumericField by "Inc"</strong>
-		</figcaption>
-	</figure>
-</center>
 
 Jump to <a href="#addSpinnerExample"><strong>addSpinner</strong></a> example.<br>
 
 <hr>
-
 <h3>Background</h3>
 <p>Legacy ImageJ's GenericDialog class makes creating user dialogs fast and
 	relatively painless. The programmer simply creates an instance of the
@@ -55,7 +43,18 @@ Jump to <a href="#addSpinnerExample"><strong>addSpinner</strong></a> example.<br
 	creation order in the dialog.</p>	
 <hr>
 
-<h3>A long, colorful example using GenericDialogAddin Fields</h3>
+<h3>A colorful example using GenericDialogAddin Classes</h3>
+		
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="Images\GenericDialogAddin\GenericDialogAddin.png" width="300" />
+		<figcaption>
+			<strong>A "Toy" example using GenericDialogAddin classes</strong>
+		</figcaption>
+	</figure>
+</center>
+		
+
 	
 Note:
 <ul>
@@ -415,6 +414,16 @@ public class GenericDialogAddin_Example implements PlugIn, DialogListener, Actio
 
 <hr>
 <h3 id="addSpinnerExample">Example code for addSpinner</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="Images\GenericDialogAddin\SpinnerExample.png" width="300" />
+		<figcaption>
+			<strong>Click the "+" or "-" buttons to change a NumericField by "Inc"</strong>
+		</figcaption>
+	</figure>
+</center>
+
 <p>Unlike swing, Java8 AWT has no spinner. Although its not as pretty, addSpinner provides the same functionality.</p>
 <ol>
 
