@@ -1,0 +1,64 @@
+<title>X-ray Lookup Ratio</title>
+<link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
+
+<h1>X-ray Lookup Ratio</h1> 
+<h3>Requires ImageJ 1.53k or higher. See the Home page for CT_Tools download and installation instructions.</h3>
+
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
+<h3>This plugin provides a non-modal dialog that allows the user to look up the X-ray energy that will produce an experimentally observed cross-section ratio for atoms and compounds while working with other images.</h3>
+
+<center><figure class="easyimage easyimage-full"><img alt="LookUp Gui" src="../CT_ReconImages//XrayLookup/Calcite-QuartzLookup.png" width="700" />
+<figcaption><strong>X-ray Lookup Ratio Dialog and Results Windows.</strong></figcaption>
+</figure></center>
+
+<p>This figure shows the user dialog and the results window created and updated by X-Ray Lookup Ratio.</p>
+
+<p>X-Ray Lookup Ratio <u>indirectly</u> obtains the photon energies from a contrast ratio. It is assumed that brighter features are more attenuating.</P>
+<ul>
+<li>Import tabulated densities - Uncheck to ignore tabulated densities. </li>
+<li>Filter Material 1 Names - Clips the pull down list to materials that begin with the characters in this textbox.</li>
+<li>Material 1 Name - Auto-populated from the list choice.  Edit to change the name.</li>
+<li>Formula 1 - Auto-populated from the list choice.  Edit to change the formula.</li>
+<li>Density 1 - Auto-populated from the list choice.  Edit to change the density.</li>
+<li>Repeat for the Material 2 fields.</li>
+<li>Get keV from Ratio - Click to get the X-ray energie(s) without exiting.</li>
+<li>OK - Click to get the X-ray energie(s) and exit.</li>
+</ul>
+
+<h3>Limitations.</h3>
+
+<p>The look-up methods are intended to be used with internal standards of known composition and density. The standards should be placed at strategic locations on and within the CT scan specimen and each standard's attenuations measured in the reconstructed slices. These measurements are used to guide beam hardening corrections, if needed, and quantitative analysis of component concentrations. If standards cannot be used, then the specimen's materials can sometimes be used with limited success if the compositions and densities of the measured regions can be confirmed by independent analysis.</p>
+
+<p>The plots below compare the barite/quartz and calcite/quartz contrast ratios as a function of photon energy.</p>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../CT_ReconImages//XrayLookup/Barite-Calcite-QuartzRatioPlot.png" width="600" />
+<figcaption><strong>(left) Calcite/Quartz contrast, (right) Barite/Quartz contrast.</strong></figcaption>
+</figure></center>
+
+<p>The heavy gray lines are the contrast ratios of (left) calcite (CaCO<sub>3</sub>) to quartz (SiO<sub>2</sub>) and (right) barite (BaSO<sub>4</sub>) to quartz (SiO<sub>2</sub>) as a function of x-ray energy. The blue lines are the linear attenuations of calcite(left) and barite(right)(The sharp discontinuity in barite is the K absorption edge) and the red lines are the linear attenuation of quartz.</p>
+
+<h3>How it works.</h3>
+<p>The right vertical axis is the contrast ratio. The dashed lines are observed ratios. Where they intersect the heavy gray line are the ratio solutions.
+<p>Casual inspection shows that contrast ratios like the ones shown by the blue dashed lines are insensitive to photon energy above about 500keV and have no solution below(not very useful).  Contrast ratios like the green dashed lines have a weak dependence below about 30keV and are multi-valued(use with caution). Ratios like the red lines are in the "sweet spot" with contrast-energy dependencies that can give meaningful results.</p>
+<p>A warning message will appear if the contrast ratio is a weak function of energy;</p>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../CT_ReconImages//XrayLookup/Calcite-QuartzLookupWarning.png" width="600" />
+<figcaption><strong>Brightness ratio sensitivity warning</strong></figcaption>
+</figure></center>
+
+<h3>Summary</h3>
+<ul>
+	<li>Neither the direct or indirect method is reliable above 500keV.</li>
+	<li>The indirect or ratio method is contrast dependent.</li>
+	<li>Some of the energy solutions are easily eliminated if they are outside the x-ray source's operational range.</li>
+	<li>Solutions near absorption edge energies should be treated with caution since the near-edge energy range can be sensitive to the atom's chemical environment.</li>
+	<li>The accuracy of the look-up will depend on the image data. The precision can vary substantially as observed in the above examples. To test the confidence of the reported energies, check the solutions returned at the standard deviations of the image data.
+	<li>At this point it should be clear why carefully chosen internal "witness" standards are important to accurate analysis.</li>
+</ul>
+
+<P><small>1. A simple test is to create a synthetic digital image and scan it with a monochromatic projector.  Reconstruct the sinogram with your reconstruction package. It should return the synthetic image plus some noise. A more severe test is to scan it with a bremsstrahlung scanner and apply a beam hardening correction during reconstruction.</small></P>
+
+
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+

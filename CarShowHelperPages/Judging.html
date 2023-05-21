@@ -1,0 +1,50 @@
+<title>CSH_Judging</title>
+<link rel="icon" type="image/x-icon" href="SiteImages/LazzyIzzi.jpg">
+
+<h1>Judging</h1>
+
+<h2><a href="CarShowHelper.html" target="_self"><em><strong>Car Show Helper Home</strong></em></a></h2>
+<h3><a href="../index.html" target="_self"><em><strong>Projects Home</strong></em></a></h3>
+
+<h3>Ballot and Judging data entry dialogs are created dynamically from user selections.</h3>
+<h3>All are designed to prevent errors like:</h3>
+<ul>
+<li>Voting for the same car twice.
+<li>Voting for an non-existent car.</li>
+<li>Voting for a car in the wrong class
+<li>Adding or deducting more points than specified by the judging sheet.
+</ul>
+
+<p>Like Registration, entering judging sheet or ballot data can be pretty intense but usually has more time. My better half is a wizard with a number pad and can enter data really fast. I need someone to read the numbers while I type them in.</p>
+
+<h3> Judging dialog examples:</h3>
+<ul>
+<li><strong>Popular Vote</strong> dialogs are created using the <strong>Settings->Judging->Popular Vote</strong> selection and the number of <strong>Votes Per Ballot</strong>. Enter the popular vote car numbers from the participant ballot and click <strong>Vote</strong>. If a car is voted more than once on a ballot, an error is posted and the ballot will not be processed until it is corrected.  If a non-existent car is voted, the votes for all valid cars will be posted. Correct the non-existent car number and click <strong>Vote</strong> or <strong>Clear</strong> the non-existent car. Continue entering the available ballots. Click <strong>Close</strong> when done.  The dialog can be closed and reopened as batches of ballots arrive during the show.
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Judging_PopularVote.png" width="600" />
+		<figcaption>
+			<Strong>Car Show Helper Popular Vote Dialog with 10 Votes Per Ballot</Strong>
+		</figcaption>
+	</figure></center>
+</li>
+
+<li><strong>Popular Vote By Class</strong> dialogs are created using the <strong>Settings->Judging->Popular Vote By Class</strong> and <strong>Settings->Registration->Class Table</strong> selections. <em>Warning!  This dialog can become very large if there are a lot of classes.</em> A pull-down list shows the car numbers in each class. Classes with no cars are grayed. Enter the car numbers from the participant ballots and click <strong>Vote</strong>. If a non-existent or wrong-class car is voted, the votes for all valid cars will be posted. Delete or correct the non-existent or wrong-class car number and click <strong>Vote</strong>. Continue entering the available ballots. Click <strong>Close</strong> when done.  The dialog can be closed and reopened as batches of ballots arrive during the show.
+<center>	<figure class="easyimage easyimage-full">
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Judging_PopularVoteByClass.png" width="600" />
+		<figcaption>
+			<Strong>Car Show Helper Popular Vote by Class Dialog Created using<br>Settings->Registration->PracticeClassTab and<br>Settings->Judging->Popular Vote By Class</Strong>
+		</figcaption>
+	</figure></center>
+</li>
+<li><strong>Judging</strong> dialogs are created using the <strong>Settings->Judging</strong> table selection. The dialog will note if points are being added or deducted. Enter the car number. Invalid car numbers will turn red and the <strong>Vote</strong> button will be disabled. Enter the points to be added or deducted for each judging area and click <strong>Vote</strong>. The maximum points for each judging area are in parentheses. Points above the designated range are counted as maximum. Points less than 0 are counted as 0. Continue entering the available judging sheets. Click <strong>Close</strong> when done.  The dialog can be closed and reopened as batches of judging sheets arrive during the show.
+	<center><figure class="easyimage easyimage-full">
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Judging_Sheet.png" width="400" />
+		<figcaption>
+			<Strong>Car Show Helper Judging Dialog Created using<br>Settings->Judging->LargeJudgeTab.</Strong>
+		</figcaption>
+	</figure></center>
+</li>
+</ul>
+
+

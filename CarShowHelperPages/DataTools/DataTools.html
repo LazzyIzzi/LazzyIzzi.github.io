@@ -1,0 +1,423 @@
+<title>CSH_Data Tools</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+
+<h1>Data Tools</h1>
+
+
+<h2>
+	<a href="../CarShowHelper.html" target="_self"><em><strong>Car
+				Show Helper Home</strong></em></a>
+</h2>
+<h3>
+	<a href="../index.html" target="_self"><em><strong>Projects
+				Home</strong></em></a>
+</h3>
+
+<!-- ***************************************************************************** -->
+
+<h3 id="DataToolsMenu">Data Tools Menu</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/DataToolsMenu.png"
+			width="700" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Main Menu.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>With the exception of "Import Export Table", data tools menu contains tools that help organize, analyze and use your car show data. </p>
+
+<center>
+	<a href="#ImportExportTable"><strong>Jump To Import/Export Table</strong></a><br>
+	<a href=#EditShowTable><strong>Jump To Edit Show Table</strong></a><br>
+	<a href="#BeautifyTable"><strong>Jump To Beautify Table</strong></a><br>
+	<a href="#MarkBadEmailAddresses"><strong>Jump To Mark Bad E-mail Addresses</strong></a><br>
+	<a href="#MarkPossibleTableDuplicates"><strong>Jump To Mark Possible Table Duplicates</strong></a><br>
+<!-- 	<a href="#ResetSheetColors"><strong>Jump To Reset Sheet Colors</strong></a><br> -->
+	<a href="#AutoUpdateContactWarning"><strong>Jump To Auto Update Contacts Info</strong></a><br>
+	<a href="#SyncRegistrationAndContacts"><strong>Jump To Sync Registration &amp; Contacts Info</strong></a><br>
+	<a href="#SimpleMailMerge"><strong>Jump To Simple Mail Merge</strong></a><br>
+	<a href="#MakePracticeData"><strong>Jump To Make Practice Data</strong></a><br>
+	<a href="#MakeCarNumbers"><strong>Jump To Make Car Numbers</strong></a><br>
+	<a href="#SimulateVotesWarning"><strong>Jump To Simulate Votes</strong></a><br>
+	<a href="#PlotTravelDistances"><strong>Jump To Plot Travel Distances</strong></a><br>
+	<a href="#PrintDashCards"><strong>Jump To Print Dash Cards</strong></a><br>
+	<a href="#PrintRegSlips"><strong>Jump To Print Reg Slips</strong></a><br>
+</center>
+<hr>
+<!-- ***************************************************************************** -->
+
+<h3 id="ImportExportTable">Import/Export Table</h3>
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/ImportExportTable.png"
+			width="450" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Import Export Table Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+<p>Import/Export Table appends the columns of a source table to the appropriate columns of a destination table. The source table can be any excel table with column headers. "Year", "Make", "Model" in the figure are column headers. The figure shows a typical use, importing the registration data collected by an on-line registration website (in this case a Joomla CMS back-end report) into the "Registration" sheet using the following steps:</p>
+<ol>
+<li>Use Excel tools to copy your data into a new workbook. Copy/Paste, open a csv file etc.</li>
+<li>If necessary, add column headers to each column. </li>
+<li>If the data is not in an Excel table, convert it to a table by clicking a cell in the data. Select Excel's INSERT tab and click the "Table" icon. A dialog will appear with the data range automatically selected and the "My table has headers" checked. Click OK. Excel will show the Table Tools in the ribbon.  Note the default name of the new table shown in the ribbon. You can change it if you like.</li>
+<li>Run Import/Export Table</li>
+<li>Select your table from the Source Table pull-down list. A list of source table headers will appear in the Src columns list.</li>
+<li>Select a table from the Destination Table pull-down list. A list of destination table headers will appear in the Dest col list. </li>
+<li>Select a column  in the Src Columns list.</li>
+<li>Select a column in the Dest Col list.</li>
+<li>Click the Src Match button to associate the source and destination columns.</li>
+<li>Repeat the selection and Src Match steps until all of the columns you need are associated.</li>
+<li>Click OK.  The selected data in the Source Table will be appended to the associated column in the DestinationTable</li>
+</ol>
+<br><a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+<!-- ***************************************************************************** -->
+
+<h3 id="EditShowTable">Edit Show Table</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/EditShowTable.png"
+			width="450" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Edit Show Table
+				Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+<p>The Edit Show Table dialog looks a lot like the CarShowTools->Registration dialog. The main difference is that it targets a selected registration, contacts, or archive table.  "CarShowTools->Registration" searches the contacts table and posts to the Registration table. Edit Show Table searches and posts to the target table. Edit Show Table is mainly used to add or correct data such as non-required contact information in a car show table.  There is usually a lot of contact data on paper day-of-show registration forms that can be added after the show.</p>
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+<!-- ***************************************************************************** -->
+
+<h3 id="BeautifyTable">Beautify Table</h3>
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/BeautifyTable.png"
+			width="600" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Beautify Table
+				Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>As shown in the figure, Beautify Table cleans up a show table for a neat appearance and proper data format.  Excel-Paste overrides the formatting in a cell and can cause errors, for example when a number is pasted as a string. Beautify Table will fix most of these problems. Formatting addresses to USPS standards eliminates potential contacts duplicates, for example by changing Avenue, Ave. etc. to the standard "Ave". People are often inconsistent in how they write their address. These minor changes create unique contacts entries.</p>
+<p>Select a table to beautify and click OK.</p>
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+
+<hr>
+<!-- ***************************************************************************** -->
+<h3 id="MarkBadEmailAddresses">Mark Bad E-mail Addresses</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/MarkBadEmailAddresses.png"
+			width="620" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Mark Bad E-mail Addresses Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>Car Show Helper does not validate e-mail addresses. The email addresses provided by registrants are sometimes incorrect, illegible, blocked, or fail due to other reasons. Simple Mail Merge(below) can create a bulk e-mail list for your mailing package. The mailing package will usually return a list of invalid email addresses.</p>
+<ol>
+<li>Copy the invalid email addresses to a columnar range of cells. The invalid e-mail range can be in a Car Show Helper sheet or in a separate workbook. </li>
+<li>Run  Mark Bad E-Mail Addresses</li>
+<li>Click in the Range box at the right of the text box.</li>
+<li>Select the invalid e-mail range and click OK.</li>
+<li>The invalid e-mails in the contacts list will be marked by a lovely shade of pink. Edit or delete them as needed.</li>
+</ol>
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+<!-- ***************************************************************************** -->
+<h3 id="MarkPossibleTableDuplicates">Mark Possible Table Duplicates</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/CheckTableForDuplicates.png"
+			width="500" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Mark Possible Table Duplicates Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>Marks possible duplicates in the selected sheet with colors from pale yellow to pure red depending on the number of identical matching Year, Make, Model, Edition, First Name, and Last Name cells. Determining and deleting actual duplicates is left to the user. The Mask column in StdHdrTab in the Settings sheet sets the columns used to determine duplicates.</p>
+
+<p>Run Reset Sheet Colors to remove the Marker colors.</p>
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="AutoUpdateContactWarning">Auto Update Contact Info</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/AutoUpdateContactWarning.png"
+			width="450" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Auto Update Contact Info Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>There is no dialog box for Auto Update Contact Info, but it does post the above warning.</p>
+<p>Registrants may change their contact information between shows. If a contact's first name and lastName are the same then replace the email, street, city, email, phone with the more recent non-blank data.</p>
+
+
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="SyncRegistrationAndContacts">Sync Registration And Contacts</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/SyncRegistrationAndContacts.png"
+			width="550" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Sync Registration And Contacts Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>There is no dialog box for Sync Registration And Contacts, but it does post the above warning.</p>
+
+<p>
+	Sync Registration And Contacts fills in missing data by comparing the Contacts and Registration sheets. 
+</p>
+
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="SimpleMailMerge">Simple Mail Merge</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/SimpleMailMerge.png"
+			width="550" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Simple Mail Merge Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>
+	Simple Mail Merge creates a new workbook with a filtered contacts list for bulk e-mail, snail-mail, or both.
+</p>
+<ul>
+	<li>Data Source - pull-down list of Car Show Registration, Contacts, and Archive tables.</li>
+	<li>Max Age (yrs) - ignore contacts older than Max Age. If they haven't been to your show in 10 years you may want to delete the contact.</li>
+	<li>Exclude Your Club - Optional, select a club. Don't waste resources sending messages to you own people?</li>
+	<li>Filter List by Car Make - Check the Makes who's owners you want to contact.</li>
+	<li>Remove Duplicates - Recommend checking this.</li>
+	<li>List Options - bulk e-mail, snail-mail, or both.</li>
+</ul>
+
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="MakePracticeData">Make Practice Data</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/MakePracticeData.png"
+			width="550" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Make Practice Data Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>
+	Changes the Class Table Setting to the PracticeClassTab. Creates in the Registration sheet the requested number of fictive car show registrants in the PRACTICE club. Does not Assign judging points. See "Simulate Votes" below. Appending to existing registrants of another class table is not recommended.
+</p>
+
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+
+<!-- ***************************************************************************** -->
+<h3 id="MakeCarNumbers">Make Car Numbers</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/MakeCarNumbers.png"
+			width="450" />
+		<figcaption>
+			<Strong>Car Show Helper Make Car Numbers Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>
+	Legacy Tool. Just appends a bunch of car numbers to the Registration sheet.  May save some annoying typing if you are adding registrations to the sheet manually without using the Registration Dialog.
+</p>
+
+
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="SimulateVotesWarning">Simulate Votes</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/SimulateVotes.png"
+			width="450" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Simulate Votes Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>
+	Simulates votes/points based on the judging table. Overwrites any existing judging results. Useful in learning how Car Show Helper Tally works.  You can make your own fictive shows using Make Practice Data and Simulate Votes. The votes are pseudo-random in that they attempt to mimic the point or vote statistics of a real show., 
+</p>
+
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="PlotTravelDistances">Plot Travel Distances</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/PlotTravelDistances.png"
+			width="550" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Plot Travel Distances Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>
+	Plot travel Distances creates a histogram of as-the-crow-flies distances between a registrants's Zip code and the Zip code for your show location (or any other Zip location). It tells how many people traveled how far to attend your show. It may useful in promoting your show to a potential sponsor or selecting a potential site for a show.
+</p>
+
+<ul>
+	<li>Use Zip Code from: - Select a table containing the Zip codes for the distance measurement.</li>
+	<li>Home Zip Code - A valid Zip code for your chosen location</li>
+	<li>Number of Bins - chop the calculated distances into this many measurements.  More bins increases noise, fewer bins decreases noise. Recommend a smaller number of bins for a small show.</li>
+	<li>Plot title - self explanatory.</li>
+	<li>Max Distance - put all of the distances greater than Max Distance into one bin. For example, if 300 cars come from within 50 miles and one car comes from 2000 miles, and there are 20 bins,  then  there will be 100 miles/bin. All of the cars will be in the 0-100 mile bin and one car will be in the 2000 mile bin. Setting Max bin to 50 will give 19 bins between 0 and 50 miles and 1 bin for any car greater than 50 miles.</li>
+	<li>Show Pot in new Sheet - self explanatory.</li>
+</ul>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/PlotDistanceDistribution.png"
+			width="550" />
+		<figcaption>
+			<Strong>Travel Distance Distribution.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>The plot shows that about 50% of registrants in this practice show traveled 724 miles.  Real shows will probably have much shorter travel distances.</p>
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="PrintDashCards">Print Dash Cards</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/PrintDashCards.png"
+			width="550" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Print Dash Cards Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>Most shows use dash cards to identify each car for judging. Print Dash Cards creates a simple dash card for each registered car in a formatted Excel sheet named "Print then Delete". Use Excel's Print Previewer to view the draft output. Delete the page after printing.</p>
+<ul>
+	<li>Number of Dash Cards per Page - Two is the default choice for 8.5x11 letter format.</li>
+	<li>Car Show Title - This title will appear on the Dash Card.</li>
+</ul>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/DashCardsPreviewSmall.png"
+			width="650" />
+		<figcaption>
+			<Strong>Car Show Helper Dash Card Print Preview.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>The show title and essential judging data are on the Dash Card. Owner information is limited to city, state and club affiliation.
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+
+<!-- ***************************************************************************** -->
+<h3 id="PrintRegSlips">Print Registration Slips</h3>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/PrintRegistrationSlips.png"
+			width="550" />
+		<figcaption>
+			<Strong>Car Show Helper Data Tools Print Dash Cards Dialog.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>Many shows use a portion of a paper show flyer as a registration slip. Print Registration Slips provides some compatability with the paper registration process by creating paper slips for paperless on-line registered cars in a formatted Excel sheet named "Print then Delete". Use Excel's Print Previewer to view the draft output. Delete the page after printing.</p>
+<ul>
+	<li>Print in Serial order - Car numbers increase in the downward page direction.</li>
+	<li>Print Ordered for Cutting - Car numbers increase in the page direction. For example, at 7 slips per page, 70 cars will need 10 pages to print. The first car will beat the top of page 1, the second car will beat the top of page 2 etc.  Car 11 will be in the second row on page 1, car 12 will be in the second row on page 2 etc.  If you put the ten sheets in a paper cutter and slice off the top row, the car on the cut slips will be 1,2,3,4,5,6,7,8,9,10. </li>
+	<li>Number of slips per page - self explanatory</li>
+</ul>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt=""
+			src="../../CarShowHelperImages/DataTools/RegistrationSlipsSmall.png"
+			width="650" />
+		<figcaption>
+			<Strong>Car Show Helper Dash Card Print Preview.</Strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>The registration slips were printed in cut order, 7 slips per page requiring 15 pages for all of theslips in our make-believe show. Car 100 is in the top row. Car 101 is in the top row on the second page etc. Slicing off the top row gives  slips for cars 100 to 114. Car 115 is in the second row on the first page.</p>
+
+<a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
+<hr>
+

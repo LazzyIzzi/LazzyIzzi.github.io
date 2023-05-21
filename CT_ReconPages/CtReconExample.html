@@ -1,0 +1,128 @@
+<h4>Linearization using CT_recon</h4>
+<p>
+	The built-in beam hardening correction in the <a href="CtRecon.html"
+		target="_self">CT_Recon</a> plugin creates an arbitary second-order
+	polynomial correction that can minimize the cupping artifact but the
+	linear attenuations in the reconstructed slice will usually be
+	incorrect. If the specimen contains more than one material, the
+	attenuations and their ratios can be used in the <a
+		href="XrayLookupRatio.html" target="_self">Xray Lookup Ratio</a> and <a
+		href="XrayLookupMuLin.html" target="_self">Xray Lookup MuLin</a>
+	plugins to estimate an X-ray effective energy. If the Look-up plugins
+	report the same energy for the attenuations and their ratios then the
+	effective energy is approximately correct. In some cases the correct
+	ratios and attenuations can be produced by multiplying the image by a
+	constant, usually the ratio between the attenuation of a material at the axis of
+	rotation in the corrected and uncorrected image.
+</p>
+
+<h4>Example - Qualitative imaging using CT_Recon's built-in beam hardening correction.</h4>
+<p>With the exception of absorption edge crossing, the contrast due
+	to composition decreases with increasing X-ray energy. The images below
+	simulate the contrast between siderite(iron carbonate, bright) and
+	quartz(gray) acquired at accelerating potentials of 80 and 160KV with a
+	0.1cm copper filter.
+<ol>
+	<li>Simulation conditions were configured using the <a
+		href="CtScannerSetup.html" target="_self">Scanner Setup</a> plugin.
+	</li>
+	<li>A tag image template was created from an microscope image of a sandstone.</li>
+	<li>Sinograms were created from the tag image using the <a
+		href="CTsimulator.html" target="_self">Polychromatic Parallel Beam
+			CTscan</a> plugin
+	</li>
+	<li>Reconstruction were done using the <a href="CtRecon.html"
+		target="_self">CT Recon Parallel Beam</a> plugin with no
+		beam-hardening correction.
+	</li>
+</ol>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../CT_ReconImages//Linearization/ContrastChangeWithEnergy.png"
+			width="800" />
+		<figcaption>
+			<strong> Left to right, 160KV, 80KV, 160KV(scaled),
+				80KV-160KV(scaled)</strong>
+		</figcaption>
+	</figure>
+</center>
+
+<p>
+	The quartz(gray) in the 80KV image has been scaled to the same
+	gray level as the 160KV image. The siderite(white) in the 80KV image is brighter than in the 160KV image indicating the loss os contrast with increasing energy.
+<p> This contrast change is useful in separating materials, see <a
+		href="https://en.wikipedia.org/wiki/Dual-energy_X-ray_absorptiometry"
+		target="_blank">DEXA</a>. In this example, the 160KV(scaled) attenuations has been scaled to
+	match the level of quartz at 80KV. The forth image is a difference
+	image showing only siderite. 
+</p>
+
+
+<p>Since the contrast changes with X-ray energy, it may be
+	possible to estimate the X-ray energy from the contrast ratio.
+<ul>
+	<li>The <a href="XrayLookupRatio.html" target="_self">X-ray
+			Ratio Lookup</a> plugin was used to obtain the effective energy(Eff)
+		using the brightness ratio of the two materials.
+	</li>
+	<li>The <a href="XrayLookupMuLin.html" target="_self">X-ray
+			MuLin Lookup</a> was used to obtain the Eff from the individual
+		components.
+	</li>
+</ul>
+
+<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+td, th {
+	border: 2px solid #aaaaaa;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+
+<center>
+	<table>
+		<tr>
+			<th>KV</th>
+			<th>quartz &mu;<sub>lin</sub></th>
+			<th>siderite &mu;<sub>lin</sub></th>
+			<th>Eff-ratio (keV)</th>
+			<th>Eff-quartz( keV)</th>
+			<th>Eff-siderite (keV)</th>
+		</tr>
+		<tr>
+			<td>80</td>
+			<td>0.6935</td>
+			<td>2.490</td>
+			<td>65.2</td>
+			<td>58.2</td>
+			<td>62.2</td>
+		</tr>
+		<tr>
+			<td>160</td>
+			<td>0.5165</td>
+			<td>1.300</td>
+			<td>89.8</td>
+			<td>79.4</td>
+			<td>86.5</td>
+		</tr>
+		<caption>Linear attenuations and calculated X-ray energies</caption>
+	</table>
+</center>
+
+<p>Although this is a good qualitative result, the X-ray energies calculated from the quartz and siderite attenuations and the attenuation ratio
+	are not in good agreement. The setup indicated a small amount of
+	residual beam hardening. If monochromatic X-rays had been used, all of
+	the energies computed from attenuations and  ratios would be the same.</p>
+
+

@@ -22,7 +22,7 @@ Last Updated 3/31/2023
 	MuMassCalculatorLib Java Library<sup><small>1</small></sup>
 </h2>
 <p>
-<a href="MuMassCalculatorLib.html">MuMassCalculator</a>
+<a href="CT_ReconPages/MuMassCalculatorLib.html">MuMassCalculator</a>
 - A NIST-XCOM derived library for calculating photon photoelectric
 absorption, scatter and pair-production cross-sections between 1keV and
 100GeV (Z&le;100). Additional methods include computing the
@@ -51,56 +51,56 @@ and/or source codes.</p>
 </h3>
 <h4>X-ray information</h4>
 <ul>
-	<li><a href="XraySpectrumPlotter.html" target="_self">X-ray
+	<li><a href="CT_ReconPages/XraySpectrumPlotter.html" target="_self">X-ray
 			Spectrum Plotter</a> - Plots NIST-XCOM based mass attenuation spectra in
 		cm<sup>2</sup>/gm of a material for total, photoelectric, elastic,
 		inelastic, and pair-production from 1keV to 100GeV.</li>
-	<li><a href="XrayCalculator.html" target="_self">X-ray
+	<li><a href="CT_ReconPages/XrayCalculator.html" target="_self">X-ray
 			Calculator</a> - Reports interpolated attenuations at specific energies.
 	</li>
 </ul>
 
 <h4>Setup and test of CT scan conditions</h4>
 <ul>
-	<li><a href="CtScannerSetup.html" target="_self">Scanner Setup</a>
+	<li><a href="CT_ReconPages/CtScannerSetup.html" target="_self">Scanner Setup</a>
 		- A 1-D model that plots the X-ray intensity vs energy at key
 		locations from source to detector. You can change the source energy,
 		filtration, and detector composition and view the spectra and
 		configuration metrics such as beam hardening, sample opacity etc. It
 		provides guidance for setting up an actual scanner to minimize
 		spectral artifacts.</li>
-	<li><a href="MaterialTagger.html" target="_self">Material
+	<li><a href="CT_ReconPages/MaterialTagger.html" target="_self">Material
 			Tagger</a> - Creates "Tag Images" by segmenting an image into its
 		material components.</li>
-	<li><a href="MaterialsEditor.html" target="_self">Materials
+	<li><a href="CT_ReconPages/MaterialsEditor.html" target="_self">Materials
 			Editor</a> - Manages the Image Tags data File.</li>
-	<li><a href="CTsimulator.html" target="_self">Image Projectors</a>
+	<li><a href="CT_ReconPages/CTsimulator.html" target="_self">Image Projectors</a>
 		- Re-project images of linear attenuation or configure a virtual
 		conventional X-ray source CT-scanner to create parallel or fan-beam
 		sinograms.</li>
-	<li><a href="CtRecon.html" target="_self">CT Recon Parallel
+	<li><a href="CT_ReconPages/CtRecon.html" target="_self">CT Recon Parallel
 			Beam</a> - Reconstructs a parallel-beam sinogram to help determine if the
 		result met expectations.</li>
 </ul>
 
 <h4>Evaluating reconstructed images</h4>
 <ul>
-	<li><a href="XrayLookupMuLin.html" target="_self">X-ray MuLin
+	<li><a href="CT_ReconPages/XrayLookupMuLin.html" target="_self">X-ray MuLin
 			Lookup</a> - Reports X-ray energie(s) that will produce a material's
 		measured linear attenuation.</li>
-	<li><a href="XrayLookupRatio.html" target="_self">X-ray Ratio
+	<li><a href="CT_ReconPages/XrayLookupRatio.html" target="_self">X-ray Ratio
 			Lookup</a> - Reports X-ray energie(s) consistent with the measured
 		attenuations of two different materials.</li>
 </ul>
 
 <h4>Correcting residual beam hardening artifacts</h4>
 <ul>
-	<li><a href="Linearization.html" target="_self">Linearization
+	<li><a href="CT_ReconPages/Linearization.html" target="_self">Linearization
 			Fitter</a> - Interactively plots observed vs model sinograms attenuations
 		calculated from a reconstructed and a tag image at a given X-ray
 		energy. Reports 1-6 degree polynomial fits. The X-ray energy that
 		gives the best fit is the effective energy for the measurement.</li>
-	<li><a href="Linearization.html" target="_self">Apply
+	<li><a href="CT_ReconPages/Linearization.html" target="_self">Apply
 			Linearization</a> - Applies a selected polynomial to the sinogram used to
 		reconstruct the observed reconstruction.</li>
 </ul>
@@ -129,7 +129,7 @@ and/or source codes.</p>
 <h2>
 	DistanceMapLib Java Library<sup><small>1</small></sup>
 </h2>
-<a href="DistanceMapLib.html">DistanceMapLib</a>
+<a href="DistanceMapPages/DistanceMapLib.html">DistanceMapLib</a>
 - Methods for computing 2D and 3D Euclidean and geodesic transforms that
 support physical dimensions. This library also includes a geometry based
 simulation of mercury injection capillary pressure(MICP) measurements in
@@ -147,23 +147,23 @@ is available for download
 <p>All methods support asymmetric pixels/voxel sizes and physical
 	dimensions.</p>
 <ul>
-	<li><a href="ExactEuclidean.html" target="_self">Exact
+	<li><a href="DistanceMapPages/ExactEuclidean.html" target="_self">Exact
 			Euclidean</a> - Exact Euclidean distance map of 2D and 3D segmented
 		images using Danielsson&#39;s algorithm.</li>
-	<li><a href="EuclideanSpheres.html" target="_self">Euclidean
+	<li><a href="DistanceMapPages/EuclideanSpheres.html" target="_self">Euclidean
 			Spheres</a> - Draw single and multiple Euclidean spheres.</li>
-	<li><a href="Geodesic.html" target="_self">Geodesic Distance</a> -
+	<li><a href="DistanceMapPages/Geodesic.html" target="_self">Geodesic Distance</a> -
 		Geodesic distances, tortuosity and shortest path plugins for 2D and 3D
 		segmented images using distance propagation</li>
-	<li><a href="FloodFill.html" target="_self">FloodFill 3D</a> - A
+	<li><a href="DistanceMapPages/FloodFill.html" target="_self">FloodFill 3D</a> - A
 		simple gray scale flooder.</li>
-	<li><a href="HybridFloodFill.html" target="_self">HybridFlood</a>
+	<li><a href="DistanceMapPages/HybridFloodFill.html" target="_self">HybridFlood</a>
 		- Geometry based simulation of non-wetting imbibition in an image of a
 		random porous medium.</li>
-	<li><a href="HybridFloodSearch.html" target="_self">HybridFlood
+	<li><a href="DistanceMapPages/HybridFloodSearch.html" target="_self">HybridFlood
 			Search</a> - Bisection Search to find the &quot;Breakthrough&quot; pore
 		radius or porosity in an image of a random porous medium.</li>
-	<li><a href="HybridFloodScan.html" target="_self">HybridFlood
+	<li><a href="DistanceMapPages/HybridFloodScan.html" target="_self">HybridFlood
 			Scan</a> - Floods an image of a random porous medium at incrementally
 		decreasing pore radius or porosity.</li>
 </ul>
@@ -191,7 +191,7 @@ is available for download
 <h2>Excel VBA Projects</h2>
 
 <ul>
-	<li><a href="XrayCalculatorExcel.html" target="_self">NIST_XCOM.xlam</a>
+	<li><a href="CT_ReconPages/XrayCalculatorExcel.html" target="_self">NIST_XCOM.xlam</a>
 		- An Excel Add-in for NIST-XCOM derived photon cross-sections and
 		other X-ray calculations. It's pretty handy for routine calculations
 		and testing ideas. <strong>NIST_XCOM.xlam&nbsp;</strong> is available
@@ -199,7 +199,7 @@ is available for download
 		href="https://github.com/LazzyIzzi/MuMassCalculatorExcel/blob/main/NIST_XCOM.xlam"
 		target="_blank">here</a>. This add-in file size after download should
 		be 1,100,188 bytes and 1,101,824 bytes on disk.</li>
-	<li><a href="CarShowHelper.html" target="_self">CarShowHelper</a>
+	<li><a href="CarShowHelperPages/CarShowHelper.html" target="_self">CarShowHelper</a>
 		- An Excel application for managing car shows. A menu-driven record
 		keeper for registration, classification, judging, and tally that
 		maintains a ever-green contact list of show participants. <strong>CarShowHelper3.0_Beta&nbsp;</strong>

@@ -1,0 +1,120 @@
+<title>CT Scanner Setup</title>
+<link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
+<h1>CT Scanner Setup</h1>
+<h3>Requires ImageJ 1.53k or higher. See the Home page for CT_Tools download and installation instructions.</h3>
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
+<h4>
+	Scanner Setup is a 1D attenuation model that displays x-ray intensity
+	distributions at important points along the ray path. The plugin
+	provides a non-modal dialog to aid in selecting optimal CT scanner
+	operating conditions to improve signal-to-noise and reduce <a
+		href="BeamHardeningTutorial.html" target="_self">beam hardening</a>
+	artifact.
+</h4>
+
+<h3>The User Interface</h3>
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../CT_ReconImages//ScannerSetup/BHworkbenchInitial.png"
+			width="700" />
+		<figcaption>
+			<strong>ImageJ Plugin CT Scanner Setup, Initial</strong>
+		</figcaption>
+	</figure>
+</center>
+<ul>
+	<li>Target - The anode material of a conventional X-ray source.</li>
+	<li>KV - The accelerating potential of a conventional X-ray
+		source.</li>
+	<li>ma - The beam current of a conventional X-ray source.</li>
+	<li>Filter Material - Usually a metal foil placed just downstream
+		of the X-ray source.</li>
+	<li>Filter Thickness(cm) - The thickness of the filter in
+		centimeters.</li>
+	<li>Sample Name Filter - Clips the materials list choices to those
+		beginning with the characters in this textbox. Clear to restore the
+		full list.</li>
+	<li>Sample Name Choices -Pick a material from this list imported
+		from <a href="MaterialsEditor.html" target="_self">DefaultMaterials.csv</a>
+		in the plugins/DialogData folder.
+	</li>
+	<li>Sample Formula - Pre-populated from the name choice. Edit to
+		change the sample formula.</li>
+	<li>Sample Thickness(cm) - Pre-populated from the name choice.
+		Edit to change the sample thickness.</li>
+	<li>Sample Density(gm/cc) - Pre-populated from the name choice.
+		Edit to change the sample density.</li>
+	<li>Detector Name Filter - Clips the choices to those beginning
+		with the characters in this textbox. Clear to restore the full list.</li>
+	<li>Detector Name Choices -Pick a material from this list.</li>
+	<li>Detector Formula - Pre-populated from the name choice. Edit to
+		change the detector formula.</li>
+	<li>Detector Thickness(cm) - Pre-populated from the name choice.
+		Edit to change the detector thickness.</li>
+	<li>Detector Density(gm/cc) - Pre-populated from the name choice.
+		Edit to change the detector density.</li>
+	<li>Plot Minimum(keV) - Sets the X-ray Spectra plot minimum
+		energy. The maximum energy is the accelerating potential(KV).</li>
+	<li>Plot Inc(keV - Sets the energy step size for the polychromatic
+		scan. Large steps go faster. Small steps have better spectral
+		resolution.</li>
+	<li>keV Angstroms Buttons - Selects the plot x-axis scale</li>
+	<li>Update Plot - Recalculate the plots and results.</li>
+	<li>OK - Recalculate, update and exit leaving plot and results
+		windows open</li>
+	<li>Cancel - Exit closing plots and results windows.</li>
+	<li>Help - Brings up this page.</li>
+</ul>
+
+<p>The top plot shows the relationship between sample thickness and
+	attenuation. It should look like a nearly straight line if the incident
+	photon beam is approximately monochromatic.</p>
+<p>The middle plot shows intensity vs X-ray energy at five sampling
+	points along the beam path.
+<ul>
+	<li>Blue, the source spectrum.</li>
+	<li>Red, the source spectrum after the filter.</li>
+	<li>Green, the source spectrum after the filter and sample.</li>
+	<li>Gray, source spectrum after the filter detected. "Io"</li>
+	<li>Black, the source spectrum after the filter and sample
+		detected. "I"</li>
+</ul>
+<p>The window at the bottom shows the results for each trial
+	configuration.</p>
+
+<h3>The ImageJ plugin</h3>
+<p>
+	The <strong>Scanner Setup</strong> plugin helps to fine-tune the
+	pre-hardening technique.
+<ul>
+	Pro:
+	<li>It guides selection of the operating conditions that should
+		optimize contrast and attenuation measurements for your sample.</li>
+	<li>It provides an interactive way to minimize the severity of
+		beam hardening.</li>
+</ul>
+<ul>
+	Con:
+	<li>The detector is "ideal" in that it returns at each energy the
+		fraction of counts absorbed by the scintillator screen. Energy
+		dependent fluorescent yield, collection efficiency, gain and other
+		characteristics of real detectors are neglected.</li>
+	<li>The x-ray source intensity is calculated using the Kramers
+		equation and neglects characteristic emission lines and source
+		configuration.</li>
+	<li>Specimen scatter and fluorescence are neglected.</li>
+	<li>Due to the above characteristics, it may not be a good
+		predictor of your scanner's performance.</li>
+</ul>
+
+For a typical use, see the
+<a href="CtScannerSetupExample.html" target="_blank">
+	CT_ScannerSetupExample</a>
+page.
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+

@@ -1,0 +1,45 @@
+<title>X-ray Lookup MuLin</title>
+<link rel="icon" type="image/x-icon" href="Images/Index/LazzyIzzi.jpg">
+
+<h1>X-ray Lookup MuLin</h1> 
+<h3>Requires ImageJ 1.53k or higher. See the Home page for CT_Tools download and installation instructions.</h3>
+
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
+<h3>This plugin provides a non-modal dialog that allows the user to look up the X-ray energy that will produce an experimentally observed cross-section for atoms and compounds while working with other images.</h3>
+
+<center><figure class="easyimage easyimage-full"><img alt="LookUp Gui" src="../CT_ReconImages//XrayLookup/QuartzMuLinLookup.png" width="400" />
+<figcaption><strong>X-ray Lookup MuLin Dialog.</strong></figcaption>
+</figure></center>
+
+<ul>
+<li>Import tabulated densities - Uncheck to ignore tabulated densities. </li>
+<li>Material Name Choices - A pull down list of materials. Click to select or double-click and type a character to clip the list to names to those that begin with that character.</li>
+<li>Material Name - Auto-populated from the list choice.  Edit to change the name.</li>
+<li>Formula - Auto-populated from the list choice.  Edit to change the formula.</li>
+<li>Density - Auto-populated from the list choice.  Edit to change the density.</li>
+<li>Observed cm-1 - Enter the linear attenuation from a material in your CT slice.</li>
+<li>Get keV - Click to get the X-ray energie(s) without exiting.</li>
+<li>OK - Click to get the X-ray energie(s) and exit.</li>
+</ul>
+
+
+<center><figure class="easyimage easyimage-full"><img alt="LookUp Gui" src="../CT_ReconImages//XrayLookup/QuartzMuLinLookupResult.png" width="500" />
+<figcaption><strong>X-ray Lookup MuLin Results.</strong></figcaption>
+</figure></center>
+
+
+
+<h3>X-ray Lookup MuLin Summary</h3>
+<ul>
+	<li>It is not reliable above 500keV.</li>
+	<li>It may return more than one energy if the material contains absorption edges.</li> 
+	<li>Some of the energy solutions are easily eliminated if they are outside the x-ray source's operational range.</li>
+	<li>It gives the correct X-ray energy from the input linear attenuation of a known material provided that the reconstruction algorithm used to produce the CT slice is quantitative.</li>
+	<li>Solutions near absorption edge energies should be treated with caution since near-edge attenuation can be sensitive to an atom's chemical environment.</li>
+	<li>To test the confidence of the reported energies, check the solutions returned at the standard deviations of the image data.</li>
+</ul>
+
+
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
