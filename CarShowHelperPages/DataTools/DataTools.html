@@ -61,9 +61,9 @@
 		</figcaption>
 	</figure>
 </center>
-<p>Import/Export Table appends the columns of a source table to the appropriate columns of a destination table. The source table can be any excel table with column headers. "Year", "Make", "Model" in the figure are column headers. The figure shows a typical use, importing the registration data collected by an on-line registration website (in this case a Joomla CMS back-end report) into the "Registration" sheet using the following steps:</p>
+<p>Import/Export Table appends the columns of a source table to the appropriate columns of a destination table. The source table can be any excel table with column headers. "Year", "Make", "Model" in the figure are examples of column headers. The figure shows a typical use, importing the registration data collected by an on-line registration website (in this case a Joomla CMS back-end report) into the "Registration" sheet using the following steps:</p>
 <ol>
-<li>Use Excel tools to copy your data into a new workbook. Copy/Paste, open a csv file etc.</li>
+<li>Use Excel tools to copy your data into a new workbook. Use Copy/Paste, open a csv file etc.</li>
 <li>If necessary, add column headers to each column. </li>
 <li>If the data is not in an Excel table, convert it to a table by clicking a cell in the data. Select Excel's INSERT tab and click the "Table" icon. A dialog will appear with the data range automatically selected and the "My table has headers" checked. Click OK. Excel will show the Table Tools in the ribbon.  Note the default name of the new table shown in the ribbon. You can change it if you like.</li>
 <li>Run Import/Export Table</li>
@@ -92,7 +92,10 @@
 		</figcaption>
 	</figure>
 </center>
-<p>The Edit Show Table dialog looks a lot like the CarShowTools->Registration dialog. The main difference is that it targets a selected registration, contacts, or archive table.  "CarShowTools->Registration" searches the contacts table and posts to the Registration table. Edit Show Table searches and posts to the target table. Edit Show Table is mainly used to add or correct data such as non-required contact information in a car show table.  There is usually a lot of contact data on paper day-of-show registration forms that can be added after the show.</p>
+
+<p>The Edit Show Table dialog looks a lot like the
+<a href="../Registration.html"target="_self"><em><strong>CarShowTools>Registration</strong></em></a>
+ dialog. The main difference is that it targets a selected registration, contacts, or archive table.  "CarShowTools->Registration" searches the Contacts table and posts to the Registration table. Edit Show Table searches and posts to the selected target table. Edit Show Table is mainly used to add or correct data such as non-required contact information in a car show table.  There is usually a lot of contact data on paper day-of-show registration forms that can be added after the show.  In the figure we are editing car 112 in the Registration table.</p>
 
 <a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
 <hr>
@@ -130,12 +133,12 @@
 	</figure>
 </center>
 
-<p>Car Show Helper does not validate e-mail addresses. The email addresses provided by registrants are sometimes incorrect, illegible, blocked, or fail due to other reasons. Simple Mail Merge(below) can create a bulk e-mail list for your mailing package. The mailing package will usually return a list of invalid email addresses.</p>
+<p>Car Show Helper does not validate e-mail addresses. The email addresses provided by registrants are sometimes incorrect, illegible, blocked, or fail due to other reasons. <a href="#SimpleMailMerge"><strong>Simple Mail Merge</strong></a> (below) can create a bulk e-mail list for your mailing package. The mailing package will usually return a list of invalid email addresses.</p>
 <ol>
-<li>Copy the invalid email addresses to a columnar range of cells. The invalid e-mail range can be in a Car Show Helper sheet or in a separate workbook. </li>
+<li>Copy the invalid email addresses to a columnar range of cells in a Car Show Helper sheet or in a separate workbook. </li>
 <li>Run  Mark Bad E-Mail Addresses</li>
-<li>Click in the Range box at the right of the text box.</li>
-<li>Select the invalid e-mail range and click OK.</li>
+<li>Click in the Range box at the right edge of the text box.</li>
+<li>Use the mouse to select the invalid e-mail cells and click OK.</li>
 <li>The invalid e-mails in the contacts list will be marked by a lovely shade of pink. Edit or delete them as needed.</li>
 </ol>
 
@@ -157,7 +160,7 @@
 
 <p>Marks possible duplicates in the selected sheet with colors from pale yellow to pure red depending on the number of identical matching Year, Make, Model, Edition, First Name, and Last Name cells. Determining and deleting actual duplicates is left to the user. The Mask column in StdHdrTab in the Settings sheet sets the columns used to determine duplicates.</p>
 
-<p>Run Reset Sheet Colors to remove the Marker colors.</p>
+<p>Run "Reset Sheet Colors" to remove the Marker colors.</p>
 <a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
 <hr>
 
@@ -176,7 +179,7 @@
 </center>
 
 <p>There is no dialog box for Auto Update Contact Info, but it does post the above warning.</p>
-<p>Registrants may change their contact information between shows. If a contact's first name and lastName are the same then replace the email, street, city, email, phone with the more recent non-blank data.</p>
+<p>Registrants may have changed their contact information between shows. If a contact's first name and lastName are the same then replace the email, street, city, email, phone with the more recent non-blank data. <em>Caution! A person's name may not be unique. For example A son named after his father may live at a different address. There is a society for people named "Jim Smith" </em>.</p>
 
 
 
@@ -222,14 +225,14 @@
 </center>
 
 <p>
-	Simple Mail Merge creates a new workbook with a filtered contacts list for bulk e-mail, snail-mail, or both.
+	Simple Mail Merge creates a new workbook containing a filtered list of of contact information for bulk e-mail, USPS mail, or both.
 </p>
 <ul>
 	<li>Data Source - pull-down list of Car Show Registration, Contacts, and Archive tables.</li>
 	<li>Max Age (yrs) - ignore contacts older than Max Age. If they haven't been to your show in 10 years you may want to delete the contact.</li>
 	<li>Exclude Your Club - Optional, select a club. Don't waste resources sending messages to you own people?</li>
-	<li>Filter List by Car Make - Check the Makes who's owners you want to contact.</li>
-	<li>Remove Duplicates - Recommend checking this.</li>
+	<li>Filter List by Car Make - Check the Makes who's owners you want to contact. The example in the figure will list only GM owners. </li>
+	<li>Remove Duplicates - Recommended.</li>
 	<li>List Options - bulk e-mail, snail-mail, or both.</li>
 </ul>
 
@@ -252,7 +255,7 @@
 </center>
 
 <p>
-	Changes the Class Table Setting to the PracticeClassTab. Creates in the Registration sheet the requested number of fictive car show registrants in the PRACTICE club. Does not Assign judging points. See "Simulate Votes" below. Appending to existing registrants of another class table is not recommended.
+	Changes the Class Table Setting to the PracticeClassTab. Creates in the Registration sheet the requested number of fictive car show registrants in the PRACTICE club. Does not Assign judging points, see <a href="#SimulateVotesWarning"><strong>Simulate Votes</strong></a> below. Appending to existing registrants of another class table is not recommended.
 </p>
 
 
@@ -298,7 +301,7 @@
 </center>
 
 <p>
-	Simulates votes/points based on the judging table. Overwrites any existing judging results. Useful in learning how Car Show Helper Tally works.  You can make your own fictive shows using Make Practice Data and Simulate Votes. The votes are pseudo-random in that they attempt to mimic the point or vote statistics of a real show., 
+	Simulates votes/points based on the judging table. Overwrites any existing judging results. Useful in learning how Car Show Helper Tally works.  You can make your own fictive shows using <a href="#MakePracticeData"><strong>Make Practice Data</strong></a> and Simulate Votes. The votes are pseudo-random in that they attempt to mimic the point or vote statistics of a real show., 
 </p>
 
 
@@ -329,7 +332,7 @@
 	<li>Number of Bins - chop the calculated distances into this many measurements.  More bins increases noise, fewer bins decreases noise. Recommend a smaller number of bins for a small show.</li>
 	<li>Plot title - self explanatory.</li>
 	<li>Max Distance - put all of the distances greater than Max Distance into one bin. For example, if 300 cars come from within 50 miles and one car comes from 2000 miles, and there are 20 bins,  then  there will be 100 miles/bin. All of the cars will be in the 0-100 mile bin and one car will be in the 2000 mile bin. Setting Max bin to 50 will give 19 bins between 0 and 50 miles and 1 bin for any car greater than 50 miles.</li>
-	<li>Show Pot in new Sheet - self explanatory.</li>
+	<li>Show Plot in new Sheet - self explanatory.</li>
 </ul>
 
 <center>
@@ -379,7 +382,7 @@
 	</figure>
 </center>
 
-<p>The show title and essential judging data are on the Dash Card. Owner information is limited to city, state and club affiliation.
+<p>The show title and essential judging data are on the Dash Card. Owner information is limited to city, state and club affiliation.</p>
 
 <a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
 <hr>
@@ -401,7 +404,7 @@
 <p>Many shows use a portion of a paper show flyer as a registration slip. Print Registration Slips provides some compatability with the paper registration process by creating paper slips for paperless on-line registered cars in a formatted Excel sheet named "Print then Delete". Use Excel's Print Previewer to view the draft output. Delete the page after printing.</p>
 <ul>
 	<li>Print in Serial order - Car numbers increase in the downward page direction.</li>
-	<li>Print Ordered for Cutting - Car numbers increase in the page direction. For example, at 7 slips per page, 70 cars will need 10 pages to print. The first car will beat the top of page 1, the second car will beat the top of page 2 etc.  Car 11 will be in the second row on page 1, car 12 will be in the second row on page 2 etc.  If you put the ten sheets in a paper cutter and slice off the top row, the car on the cut slips will be 1,2,3,4,5,6,7,8,9,10. </li>
+	<li>Print Ordered for Cutting - Car numbers increase in the page direction. For example, at 7 slips per page, 70 cars will need 10 pages to print. The first car will be at the top of page 1, the second car will be at the top of page 2 etc.  Car 11 will be in the second row on page 1, car 12 will be in the second row on page 2 etc.  If you put the ten sheets in a paper cutter and slice off the top row, the cars on the cut slips will be 1,2,3,4,5,6,7,8,9,10. </li>
 	<li>Number of slips per page - self explanatory</li>
 </ul>
 
@@ -416,7 +419,7 @@
 	</figure>
 </center>
 
-<p>The registration slips were printed in cut order, 7 slips per page requiring 15 pages for all of theslips in our make-believe show. Car 100 is in the top row. Car 101 is in the top row on the second page etc. Slicing off the top row gives  slips for cars 100 to 114. Car 115 is in the second row on the first page.</p>
+<p>The registration slips were printed in cut order, 7 slips per page requiring 15 pages for all of the slips in our make-believe show. Car 100 is in the top row. Car 101 is in the top row on the second page etc. Slicing off the top row gives  slips for cars 100 to 114. Car 115 is in the second row on the first page.</p>
 
 <a href="#DataToolsMenu"><strong>Jump To Data Tools Menu</strong></a>
 <hr>
