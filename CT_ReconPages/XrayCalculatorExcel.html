@@ -3,42 +3,113 @@
 
 <h1>X-ray Calculator Excel</h1>
 <h3>Requires Excel 2013 or better. It was tested running
-	Windows-11. I don't know if it will work on a Mac.</h3>
+	Windows-10. I don't know if it will work on a Mac.</h3>
 <h2>
 	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
 </h2>
 
 
-<h3>The MuMassCalculator.xlam AddIn provides functions and macros
+<h3>The NIST_XCOM.xlam Add-In and NIST_XCOM.xlsm Workbook provide functions and macros
 	for getting the attenuation properties of atoms and compounds.</h3>
-<p>
-	Installation: <strong>NIST_XCOM.xlam&nbsp;</strong>is available for
-	download <a
-		href="https://github.com/LazzyIzzi/MuMassCalculatorExcel/blob/main/NIST_XCOM.xlam"
-		target="_blank">here</a>. Place it in a folder where Excel can find
-	it, on a PC usually
-	C:\Users\YourUserName\AppData\Roaming\Microsoft\AddIns\ <br>Start
-	Excel. In the DEVELOPER tab click the Add-Ins icon. In the Dialog check
-	NIST_XCOM. Click OK. <br>An ADD-INS tab should appear in the
-	ribbon. <br>
-	<em>Special Note: Downloading Excel add-ins and macro enabled
-		workbooks can be dangerous due to the possibility of embedded malware.
-		Newer versions of Excel provide significant protection. Please take
-		appropriate precautions before enabling any downloaded Excel workbook.
-		This add-in file size after download should be 1,100,188 bytes and
-		1,101,824 bytes on disk.</em>
-</p>
+	
+<p>LazzyIzzi is not currently associated with NIST but was a guest researcher there many years ago. These Excel files are not a NIST product but most of the data within them were downloaded from the NIST <a
+		href="https://www.nist.gov/pml/xcom-photon-cross-sections-database"
+		target="_blank">XCOM</a> database and are used with permission. It should be noted that NIST retains copyright on the XCOM data and reserves the right to charge for its use in the future.  See the XCOM website for more information.</p>	
+<hr>
+<h3>XLAM or XLSM, which one is better for you?</h3>	
+<ul>
+<li>Use the Add-In xlam file to make the functions and macros part of your Excel application.
+	<ul>
+	<li>Pro: The X-ray functionality will be available is all workbooks created after the Add-In is installed</li>
+	<li>Con: Dependent workbooks will not work if the Add-In is not present or has been  uninstalled.</li>
+	</ul></li>
+<li>Use the Workbook xlsm file to use the functions and macros without altering your Excel environment.
+	<ul>
+	<li>Pro: The X-ray functionality will always be present in individual workbooks created by copying the xlsm. </li>
+	<li>Con: Each copy will duplicate all of the NIST data and will require more storage. </li>
+	</ul></li>
+</ul>
 
+<hr>
+<H3>Add-In Functionality</H3>
+
+Macros:
+<ul>
+<li>GetSpectrum - Lists and optionally plots the tabulated NIST mass absorption coefficients vs X-ray energy.</li>
+<li>BeamHardening- Uses a 1D model to estimate/optimize a CT scanner setup that will produce an acceptable level of beam hardening.</li>
+<li>Help- Brings up this page.</li>
+</ul>
+
+Functions:
+<ul>
+<li>GetAtomAbsEdgeJump(AtomSymbol,Edge,AttnType)</li>
+<li>GetAtomAbsEdgeMev(AtomSymbol,Edge)</li>
+<li>GetAtomGmPerCC(AtomSymbol)</li>
+<li>GetAtomGmPerMol(AtomSymbol)</li>
+<li>GetAtomicNum(AtomSymbol)</li>
+<li>GetAtomMuMass(AtomSymbol,MeV,AttnType)</li>
+<li>GetAtomName(AtomSymbol)</li>
+<li>GetAtomRadiusPm(AtomSymbol)</li>
+<li>GetFormulaGmPerMol(Formula)</li>
+<li>GetFormulaMeVfromMuLin(Formula,MuLin,gmPerCC)</li>
+<li>GetFormulaMuMass(Formula,MeV,AttnType)</li>
+<li>GetAtomEmission(AtomSymbol,Line,Unit)</li>
+<li>MuLin_To_MolPerM3(MuLin,MuMass,gmPerMol)</li>
+<li>GetFormulaMeVfromMuLinRatio(Formula1,MuLin1,gmPerCC1,Formula2,MuLin2,gmPerCC2)</li>
+<li>Spectrum_Kramers(KV,mA,Anode,keV)</li>
+</ul>
+Where
+<UL>
+<li>Atom Symbols = H, He, Cu etc.</li>
+<li>Formula = Atom1:Count1:Atom2:Count2...  e.g. Ca:1:C:1:O:3 for CaCO<sub>3</sub>, Calcite
+<li>Edge = K, L1, L2, L3, M1, M2, M3,M4, M5, N1, N2, N3, N4, N5.</li>
+<li>AttnType = Coh, Incoh, PE, PrProdN, PrProdE, TotAttn</li>
+<li>Line = Ka1, Ka2, Kb1, La1, La2, Lb1, Lb2, Lg1, Ma1</li>
+<li>Unit = eV, keV, MeV, Angstroms.</li>
+</UL>
+
+<hr>
+<h3>Add-In(xlam) Installation:</h3> 
+<em>Special Note: Downloading Excel add-ins and macro enabled
+	workbooks can be dangerous due to the possibility of embedded malware.
+	Newer versions of Excel provide significant protection. Please take
+	appropriate precautions before enabling any downloaded Excel workbook.
+	This add-in file size after download should be 1,100,188 bytes and
+	1,101,824 bytes on disk.</em>
+<ol>
+<li>Download  <a
+	href="https://github.com/LazzyIzzi/MuMassCalculatorExcel/blob/main/NIST_XCOM.xlam"
+	target="_blank"><strong>NIST_XCOM.xlam&nbsp;</strong></a>. </li>
+<li>Place it in a folder where Excel can find it, on a PC usually C:\Users\YourUserName\AppData\Roaming\Microsoft\AddIns\</li>
+<li>Start Excel, Use File->Options->Customize Ribbon and check the Developer and Add-Ins boxes, click OK</li>
+<li>In the DEVELOPER tab click the Add-Ins icon. </li>
+<li>In the AddIns Dialog check NIST_XCOM. Click OK.</li>
+<li>Click the ADD-INS tab. The GetSpectrum, BeamHardening, and Help items should be present in the Toolbar Commands menu.</li>
+</ol>
+
+To uninstall the Add-In click the developer tab and then the Add-Ins icon. In the Add-Ins dialog uncheck NIST_XCOM and click OK.
+
+<hr>
+<h3>Workbook(xlsm) Installation:</h3> 
+The Workbook does not require installation.
+<ul>
+<li>Download it and open it in Excel</li>
+<li>Click the Enable Content button. A menu dialog box should appear.</li>
+</ul>
+	
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CT_ReconImages//Excel/NIST_XCOM_Local_Properties.png"
-			width="300" />
+		<img alt="" src="../CT_ReconImages//Excel/WorkbookMenu.png" width="200" />
 		<figcaption>
-			<strong>NIST_XCOM.xlam File Size on disk</strong>
+			<strong>X-ray Macros Menu.</strong>
 		</figcaption>
 	</figure>
 </center>
+The xlsm file has slightly over 100 data sheets.  The default behavior is to keep them hidden (most of then are also locked). The Show/Hide menu items allows you to view the sheets if necessary. <em>If the Workbook should encounter an error, the menu will be unloaded.  Use <strong>Ctrl+Shift+M</strong> to reload the menu.</em>
 
+
+<hr>
+<h3>Using the Functions</h3>
 <p>To use the functions, Select an output cell(s), Click the
 	FORMULAS tab and then click the Insert Function icon. Fill in the required data and click OK.
 <center>
@@ -75,15 +146,15 @@
 </center>
 
 <h3>Excel Array Functions</h3>
-<p>GetFormualMevFromMuLin and GetFormualMevFromMuLinRatio functions
+<p><strong>GetFormualMevFromMuLin</strong> and <strong>GetFormualMevFromMuLinRatio</strong> functions
 	return arrays. This is noted in their input dialogs. Select at least two
 	contiguous row cells for output before calling the function. <strong>Do Not</strong>
-	click OK in the function dialog. Use Ctrl-Shift-Enter to execute the
+	click OK in the function dialog. Use <strong>Ctrl-Shift-Enter</strong> to execute the
 	function. The first value returned is the number of solutions. The contiguous row cells should be the number of solutions + 1.</p>
-
-<h3>Excel Macros</h3>
-<p>To use the macros, Click the ADD-INS tab, GetSpectrum and
-	BeamHardening should appear in the Toolbar Commands ribbon.
+<hr>
+<h3>Using the  Macros</h3>
+<p>Click the ADD-INS tab(xlam) or use the Menu(xlsm) and click GetSpectrum or
+	BeamHardening.
 <H4>Get Spectrum</H4>
 <P>Use the radio buttons to select Atom or Formula</P>
 
