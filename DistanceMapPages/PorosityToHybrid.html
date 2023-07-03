@@ -1,0 +1,32 @@
+<title>Porosity To Hybrid</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+
+<h1>Porosity To Hybrid</h1> 
+<h3>Requires DistanceMapLib.jar</h3> 
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<h3>This plugin performs converts a stack image of porosity to a hybrid image.</h3>
+<p><strong>Porosity To Hybrid</strong> requirements:
+<ul>
+	<li>32-Bit 3D stacks</li>
+	<li>Same units of length in 3 dimensions. Different values of length for each dimension are supported, i.e. voxels may be anisotropic.</li>
+	<li>The length unit must be chosen such that all three of the voxel's dimensions are equal to or greater than 1 unit. </li>
+</ul>
+
+<h4>What's a Porosity Image?</h4>
+A porosity image<sup><small>1</small></sup> is an image of the pore space in a porous medium obtained using a 3D imaging modality. The voxel values in a porosity image are the volume fraction of non-matrix material. Voxels of solid matrix are zero, voxels of resolved pore are 1, and voxels containing unresolved pore and matrix have values between 0 and 1.  A specimen's matrix material can be removed experimentally by dissolution for example, or digitally by subtracting images before and after introduction of a contrast agent to the accessible pore space. The synthetic 300 cube image below was created by drawing random overlapping "pore" <a href="../DistanceMapPages/EuclideanSpheres.html" target="_self">Euclidean Spheres</a> on a random field of values between 0 and 1. 
+
+<h4>What's a Hybrid Image?</h4>
+A Hybrid image is a porosity image where the values of voxels in the resolved pore space(values=1) have been replaced by their distance to the nearest matrix-containing(0&lt;value&lt;1) voxel using a Euclidean distance mapping <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.322.7605&rep=rep1&type=pdf"
+		target="_blank">(Danielsson's)</a> algorithm. The unresolved and solid voxel values are not altered.
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/PorosityToHybrid/PorosityToHybridMontage.png" width="800" />
+<figcaption><strong>Initial synthetic Porosity stack(left), Porosity To Hybrid dialog(center), output Hybrid stack(right). </strong></figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/PorosityToHybrid/HybridStatistics.png" width="200" />
+<figcaption><strong>Porosity To Hybrid Statistics</strong></figcaption></figure></center>
+
+<p>The statistics report porosity results as voxels, volumes and volume fractions.  The Hybrid statistics are the maximum and minimum unresolved voleme fractions and the maximum and minimum resolved pore distances. The statistics are written to the Hybrid image's properties and can be viewed using ImageJ's Image->Show Info command.</p>
+
+ 
+<small>1. Preparing experimental porosity images is a tricky business. Specimen size, length scale selection, imaging system definition(image size and resolution) and signal-to-noise, and voxel classification require considerable care. Calibration against know porosity materials is often essential.</small>
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>

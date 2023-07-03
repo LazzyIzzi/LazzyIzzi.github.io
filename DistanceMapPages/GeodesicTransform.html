@@ -1,0 +1,96 @@
+<title>Geodesic Transform</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+ 
+<h1>Geodesic Transform and associated plugins</h1> 
+<h3>Requires DistanceMapLib.jar</h3> 
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+<h3>Geodesic Transform creates 2D and 3D geodesic distance maps by ordered propagation. See the <a href="DistanceMapLib.html" target="_self">DistanceMapLib</a> page for more information.</h3>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/Geodesic Distance_3D_Example.png" width="800" />
+<figcaption><strong>Binarized Image(left), Geodesic Map Dialog(center), resulting GDT from left slice(right)</strong></figcaption></figure></center>
+
+<p>Geodesic Distance operates on 2D and 3D images that have been "binarized" into "zero" and "not-zero"(gray scale) domains.
+<ul>
+	<li><strong>Value To Process</strong> - Choose either "Map 0" or "Map !0" to select the range of image pixel values to map.</li>
+	<li><strong>Process to run</strong> - Select "Geodesic Distance" or "Tortuosity".</li>
+	<li><strong>Output</strong> - The pull down menu provides several options:.
+	<ul>
+		<li>3D new Image - creates a 3D GDT new output stack.</li>
+		<li>3D in Place - converts the current stack to a 32-bit 3D GDT</li>
+		<li>2D new Image - creates a new stack of 32-bit 2D GDTs</li>
+		<li>2D in Place - converts the current stack to a new stack of 32-bit 2D GDTs</li>
+		<li>2D this slice new image - creates a 2D GDT of the current slice</li>	
+	</ul></li>
+	<li><strong>Seed</strong> - Compute distances from the following locations.
+	<ul>
+		<li>Left Slice - the GDT seed points are the entire left side of the 3D volume</li>
+		<li>Right Slice - </li>
+		<li>Top Slice - </li>
+		<li>Bottom Slice - </li>
+		<li>Front Slice - </li>
+		<li>Back Slice - </li>
+		<li>Point(s) - Use the ImageJ Roi Point tool to define one or more GDT seed points.</li>
+	</ul></li>
+	<li><strong>Use Pixel Sizes</strong> - Use the pixel/voxel dimensions when computing distances.
+</ul>
+
+<br>For tortuosity from a volume surface, the tortuosity is the GDT distance from the surface divided by the straight line distance from the surface.
+<br>For tortuosity from Point(s) sources,the tortuosity is the GDT distance from the nearest source point  divided by the straight line distance from the nearest source point.
+<br> Tortuosity using the "Point(s)" option is relatively slow because the GDT is run twice.
+
+Click <strong>OK</strong> to begin processing.
+
+<h3>3D Tortuosity Example</h3>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/Tortuosity_3D.png" width="300" />
+<figcaption><strong>Front slice from 3D ortuosity from left volume face 1(dark blue) to 1.75(white)</strong><br>Note the high tortuosity of voxels near but not directly connected to the seed face.</figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/Tortuosity_3D.gif" width="400" />
+<figcaption><strong>Tortuosity Visualization</strong> <small>made with Volume Viewer 2.01</small></figcaption></figure></center>
+
+<hr>
+
+<h3>Geodesic Path 2D </h3>
+<p>Computes the shortest path between a selected point(s) and the seed location. It operates on 2D GDT images or stacks made with the Geodesic Transform plugin.</p>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/Geodesic Distance_2D_Path_Example.png" width="900" />
+<figcaption><strong>Geodesic Path 2D workflow</strong><br>Left to right: A left edge 2D GDT slice with a point selection, The dialog, Image with the shortest 2D path in overlay ,Roi Manager</figcaption></figure></center>
+
+<ol>
+	<li>Select a 2D GDT image or stack.</li>
+	<li>Use ImageJ's Point tool to select one or more(shift+click) points in the GDT domain. Points outside the GDT domain are ignored. </li>
+	<li>Run Geodesic Path 2D from the plugins->Flood_Tools menu.</li>
+	<li>Select one or both output choices. Click OK</li>
+</ol>
+
+
+<hr>
+
+<h3>Geodesic Path 3D </h3>
+<p>Computes the shortest path between a selected point(s) and the seed location. It operates on 3D GDT images or stacks made with the Geodesic Transform plugin.</p>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/Geodesic Distance_3D.png" width="250" />
+<figcaption><strong>Front 256x512 Slice from a 3D GDT from bottom slice. Distance scale 0(black) to 600(white)</strong><br>Points near the top of six arbitrary slices in the stack were selected. </figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/GeodesicPath3DDialog.png" width="250" />
+<figcaption><strong>Geodesic Path 3D Dialog</strong></figcaption></figure></center>
+
+<ol>
+	<li>Select a 3D GDT stack.</li>
+	<li>Use ImageJ's Point tool to select one or more(shift+click) points in the GDT domain. Points outside the GDT domain are ignored. </li>
+	<li>Run Geodesic Path 3D from the plugins->Flood_Tools menu.</li>
+	<li>Select one or both output choices. Click OK</li>
+</ol>
+
+If the <strong>Add Path(s) to Roi Manager</strong> box is checked the indexed 3D path points are added to the Roi Manager.
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/GeodesicPath3D_RoiManager.png" width="200" />
+<figcaption><strong>Geodesic Path 3D ROIs</strong></figcaption></figure></center>
+
+If the <strong>Show Path(s) in new 8 bit Image</strong> box is checked a new 8 bit image is created with the path voxels set to 100 plus the point selection index. Use <strong>Image->Stacks->3D Project</strong> or the <a href="https://imagej.nih.gov/ij/plugins/volume-viewer.html" target="_blank"><strong>Volume Viewer</strong></a> plugin to visualize the 3D paths. 
+
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/Geodesic/DryBereaSandstone-GDT_Paths_Visualise.gif" width="350" />
+<figcaption><strong>Shortest Paths visualization</strong><br> Volume Viewer 2.01</figcaption></figure></center>
+
+
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
