@@ -2,12 +2,13 @@
 <link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
 
 <h1>FloodFill</h1> 
-<h3>Requires DistanceMapLib.jar</h3> 
+<h3>Requires ImageJ 1.53k or higher, DistanceMapLib.jar, ImageJAddins.jar.</h3> 
+<br>See the Home page for CT_Tools download and installation instructions.
 <h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 <h3>This plugin performs a 3D flood of connected voxels within a selected range of values.</h3>
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/FloodFill/FloodFillMontage.jpg" width="600" />
-<figcaption><strong>Initial noisy stack with point flood origin(left), Flood 3D Dialog(center), Connected voxels(right). </strong></figcaption></figure></center>
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/FloodFill/FloodFillMontage.png" width="700" />
+<figcaption><strong>Left: Stack with resolved pores(1=white), unresolved pores(0&lt;gray&lt;1), and red point flood origin<br>Center: Flood 3D Dialog<br>Right: Flooded voxels including unresolved pores with greater than 0.55 porosity.</strong></figcaption></figure></center>
 
 <p>FloodFill 3D operates on 8-bit gray, 16-Bit and 32-Bit stacks.
 <ul>
@@ -18,7 +19,7 @@
 	<li>Check the Show Flood Count button to report the number of voxels flooded.</li>
 </ul>
 
-<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/FloodFill/FloodFillResult.jpg" width="500" />
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/FloodFill/FloodFillResult.jpg" width="200" />
 <figcaption><strong>Flood Fill 3D Results. </strong></figcaption></figure></center>
 
 <p>There are lots of flood fillers, this one is not special. I include it because the brushfire code in DistanceMapLib is so simple. A modified version powers the Geodesic Transform.

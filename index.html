@@ -10,7 +10,9 @@
 
 <br>Questions, comments, bug reports? Contact
 <a href="mailto: Lazzyizzi27@gmail.com">Lazzyizzi27@gmail.com</a>.
-<br>Last Updated 7/3/2023</p>
+<br>Last Updated 7/14/2023</p>
+
+All libraries and plugins are compiled with Java8 to maintain consistency with legacy ImageJ.
 
 <center><h3><a href="https://github.com/LazzyIzzi/" target="_blank">GitHub repositories</a></h3></center>
 <h3>Java Libraries</h3>
@@ -18,34 +20,36 @@
 	<li><strong>MuMassCalculatorLib</strong> - A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100).
 	
 		<ul>
-			<li>MuMassCalculator is not a NIST product but most of the data within it were downloaded from the NIST <a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database" target="_blank">XCOM</a> database and are <u>used with permission</u>. It should be noted that NIST retains copyright on the XCOM data and reserves the right to charge for its use in the future.  See the XCOM website for more information.</li>
+			<li>MuMassCalculator is not a NIST product but most of the data within it were downloaded from the NIST <a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database" target="_blank">XCOM</a> database and are <u>used with permission</u>. It should be noted that NIST retains copyright on the XCOM data and reserves the right to charge for its use in the future.  LazzyIzzi is not currently associated with NIST but was a guest researcher there many years ago. See the XCOM website for more information.</li>
 			<li>Additional MuMassCalculatorLib methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers</a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
 			<li>Click <a href="CT_ReconPages/MuMassCalculatorLib.html">here</a> for a brief tutorial on mass and linear attenuation.</li>
 			<li>Click <a href="MuMassCalculatorDocs/index.html">here</a> to view MuMassCalculatorLib's JavaDocs.</li>
 			<li>Click <a href="https://github.com/LazzyIzzi/MuMassCalculator/releases/tag/v1.1.0" target="_blank">here</a> to download MuMassCalculatorLib. Scroll down to the bottom of the linked page to download the jar file and/or source codes.</li>
-			<li>Installation - Place the jar file in the plugins folder and restart ImageJ. See the CT_Tools ImageJ plugins for MuMassCalculatorLib use examples.</li>
-	 		<li>LazzyIzzi is not currently associated with NIST but was a guest researcher there many years ago.</li> 
+			<li>Installation Developers- Download the jar file to your IDE's preferred location and add to your build path.</li>
+			<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the CT_Tools ImageJ plugins for MuMassCalculatorLib use examples.</li>
 	 		
 	</ul>
-	<li><strong>DistanceMapLib</strong> - A library for computing 2D and 3D Geodesic and Euclidean Distances that support physical dimensions and anisotropic pixels/voxels.
+	<li><strong>DistanceMapLib</strong> - A library for computing 2D and 3D Geodesic and Euclidean Distances. Both support physical dimensions and anisotropic pixels/voxels.
 		<ul>
 			<li>This library also includes a geometry based simulation of mercury injection capillary pressure(MICP) measurements in a random porous network.</li>
 			<li>Click <a href="DistanceMapPages/DistanceMapLib.html">here</a> for a brief tutorial on Euclidean and geodesic transforms. </li>
 			<li>Click <a href="FloodFillDocs/index.html">here</a> to view DistancMapLib's JavaDocs.</li>
 			<li>Click <a href="https://github.com/LazzyIzzi/DistanceMapLib/releases" target="_blank">here</a> to download DistanceMapLib.
-			<li>Installation - Place the jar file in the plugins folder and restart ImageJ. See the Flood_Tools ImageJ plugins for DistanceMapLib use examples.</li>
+			<li>Installation Developers- Download the jar file to your IDE's preferred location and add to your build path.</li>
+			<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the Flood_Tools ImageJ plugins for DistanceMapLib use examples.</li>
 		</ul>
 	</li>
 	<li><strong>ImageJ Addins</strong> - A library that currently contains only one Add-In, GenericDialogAddin, to make it easier to write interactive <a href="https://imagej.net/ij/index.html" target="_blank">ImageJ</a> Generic Dialogs.
 	<ul>
-		<li>Add-Ins are not plugins. They do not extend ImageJ's classes. 
-		<li>All of the methods of the generic dialog components are available to the programmer, For example, the AddIn makes it easy to turn a numeric field red if the user's value is out of bounds or NaN.</li>
+		<li>ImageJ Addins are intended to be used only in conjunction with ImageJ's GenericDialog classes.  Add-Ins are not plugins. They do not extend ImageJ's classes. They do not have a user interface. 
+		<li>ImageJ Addins make all of the methods of the generic dialog components available to the programmer, For example, the AddIn makes it easy to turn a numeric field red if the user's value is out of bounds or NaN.</li>
 		<li>Allows the programmer to refer to dialog components by name rather than by its position in the dialog.</li>
 		<li>Makes code more readable and easier to maintain.</li>
 		<li>Click <a href="GenericDialogAddinDocs/index.html">here</a> to view ImageJAddins's JavaDocs.</li>
 		<li>Click <a href="GenericDialogAddin.html">here</a> for ImageJAddins examples.</li>
-		<li>Click <a href="https://github.com/LazzyIzzi/ImageJAddins/releases/tag/v1.0.0-beta" target="_blank">here</a> to download ImageJAddins.
-		<li>Installation - Place the jar file in the plugins folder and restart ImageJ. See the AddIns examples or CT_Tools plugins for use examples .</li>
+		<li>Click <a href="https://github.com/LazzyIzzi/ImageJAddins/releases/tag/v1.0.0-beta" target="_blank">here</a> to download ImageJAddins.jar.
+		<li>Installation ImageJ Developers- Download the jar file to your IDE's preferred location and add to your imageJ project build path.</li>
+		<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the AddIns examples or CT_Tools plugins for use examples .</li>
 	</ul></li>
 </ul>
 
@@ -86,9 +90,8 @@
 			<li><a href="DistanceMapPages/FloodFill.html" target="_self">FloodFill 3D</a> - A simple gray scale flooder.</li>
 			<li><a href="DistanceMapPages/PorosityToHybrid.html" target="_self">Porosity To Hybrid</a> - Converts a porosity image to a hybrid porosity image.</li>
 			<li><a href="DistanceMapPages/HybridFloodFill.html" target="_self">HybridFlood</a> - Geometry based simulation of non-wetting imbibition in an image of a random porous medium.</li>
-			<li><a href="DistanceMapPages/HybridFloodSearch.html" target="_self">HybridFlood Search</a> - Bisection Search to find the &quot;Breakthrough&quot; pore radius or porosity in an image of a random porous medium.</li>
-			<li><a href="DistanceMapPages/HybridFloodScan.html" target="_self">HybridFlood Scan</a> - Floods an image of a random porous medium at incrementally
-				decreasing pore radius or porosity.</li>
+			<li><a href="DistanceMapPages/HybridFloodSearchScan.html" target="_self">HybridFlood Search and Scan</a> - Bisection Search to find the &quot;Breakthrough&quot; pore radius or &quot;Breakthrough&quot; porosity in an image of a random porous medium, or flooded volume by scanning at fixed radius steps.</li>
+			<li><a href="DistanceMapPages/AddPoreLiner.html" target="_self">Add Pore Liner</a> - Lines all resolved pores with a layer of unresolved porosity.</li>
 			<li>Installation: Flood_Tools bundled with DistanceLib
 			<ol>
 				<li>Download <a href="https://github.com/LazzyIzzi/ImageJPlugins_Flood_Tools/releases/tag/v1.1.0" target="_blank">ImageJ_Flood_ToolsBundle_Java8.jar</a> to the ImageJ/plugins folder.</li>

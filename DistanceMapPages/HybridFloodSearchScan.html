@@ -1,0 +1,70 @@
+<title>Hybrid Flood Search and Scan</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+
+<h1>Hybrid Flood Search and Hybrid Flood Scan Plugins</h1> 
+<h3>Requires ImageJ 1.53k or higher, DistanceMapLib.jar, ImageJAddins.jar.</h3> 
+<br>See the Home page for CT_Tools download and installation instructions.
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
+<h3>Both plugins perform a 3D simulation of the non-wetting imbibition process in a <a href="../DistanceMapPages/PorosityToHybrid.html" target="_self">hybrid porosity image</a> by calling <a href="../DistanceMapPages/HybridFloodFill.html" target="_self">HybridFlood</a> from the front slice to the back slice over a range of pore radii.</h3>
+<ul>
+<li>Hybrid Flood Search - Performs a bisection search to identify the maximum flood radius that contacts the back slice, sometimes called the "breakthrough" radius or "critical length". </li>
+<li>Hybrid Flood Scan - Floods a range of radii with fixed decreasing radius that more accurately mimics an <a href="../DistanceMapPages/DistanceMapLib.html#HybridFloodFill" target="_self">MICP</a> experiment.</li>
+<li>Both plugins update the same table and plot so that regions of interest in the Radius vs volume plot can be examined at higher radius resolution.</li>
+<li>Plot data are marked with black below breakthrough and with red above breakthrough.</li>
+
+</ul>
+
+<hr> 
+
+<h2>Hybrid Flood Search</h2>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/HybridFloodSearchScan/HybridFloodSearchDialog.png" width="300" />
+<figcaption><strong>The Hybrid Flood Search Dialog. </strong></figcaption></figure></center>
+<p>A summary of the range of lengths in the resolved and unresolved pore spaces is at the top of the Dialog.
+<ul>
+<li>Connectivity - select a connection strategy</li>
+<li>Stop at Search delta - the accuracy of the breakthrough radius.</li>
+<li>Save Images - Save the flood images at each search radius.</li>
+<li>Show Breakthrough Image - Display the image at the maximum flood radius that contacts the back slice</li>
+<li>Show Plot -  Plots the results data.</li>
+</ul>
+
+<p>Like HybridFlood, HybridFloodSearch operates only on 32-Bit stacks and supports anisotropic voxel dimensions. The search first tests if breakthrough occurs between the pore size limits. If a breakthrough threshold exists then a bisection search is done to identify the critical length.</p>
+<p>Select a connectivity from the menu and enter a length change limit for the search. Check the options as needed.  "Show Breakthrough Image" and "Show Plot" are recommended. Click "OK" to start the search.
+
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/HybridFloodSearchScan/HybridFloodSearchData.png" width="800" />
+<figcaption><strong>Sorted bisection search Results. </strong></figcaption></figure></center>
+
+<p>The search continues until the largest pore radius that produces "Breakthrough" is obtained. If "Show Breakthrough Image" is checked the flood image at breakthrough is opened in a new window.</p>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/HybridFloodSearchScan/HybridFloodSearchPlot.png" width="600" />
+<figcaption><strong>Volume vs Radius Plot. Breakthrough is marked with red.</strong></figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/HybridFloodSearchScan/HybridFloodSearchBreakthrough.png" width="400" />
+<figcaption><strong>Volume rendering of breakthrough image</strong></figcaption></figure></center>
+
+<hr> 
+<h2>Hybrid Flood Scan</h2>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/HybridFloodSearchScan/HybridFloodScanDialog.png" width="300" />
+<figcaption><strong>The Hybrid Flood Scan Dialog. </strong></figcaption></figure></center>
+<p>A summary of the range of lengths in the resolved and unresolved pore spaces is at the top of the Dialog.
+<ul>
+<li>Connectivity - select a connection strategy</li>
+<li>Flood Minimum pixel value - the lower radius limit to flood.</li>
+<li>Flood Maximum pixel value - the upper radius limit to flood..</li>
+<li>Flood Increment - The step size between min and max</li>
+<li>Save Images -  save the flood image at each flood step, useful for producing flood animations.</li>
+<li>Show Plot -  Plots the results data.</li>
+</ul>
+
+Click OK to add the flood data to the results table and plot
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/HybridFloodSearchScan/HybridFloodScanPlot.png" width="600" />
+<figcaption><strong>Volume vs Radius Plot with added scan data. Above breakthrough is marked with red.</strong></figcaption></figure></center>
+
+
+
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>

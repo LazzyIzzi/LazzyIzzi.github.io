@@ -1,0 +1,43 @@
+<title>Add Pore Liner</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+
+<h1>Add Pore Liner</h1> 
+<h3>Requires ImageJ 1.53k or higher, DistanceMapLib.jar.</h3> 
+<br>See the Home page for CT_Tools download and installation instructions.
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
+
+<h3>This plugin lines all pores with a layer of unresolved porosity.</h3>
+
+<p><strong>Add Pore Lining</strong> requires a 32-Bit 3D Hybrid Porosity image:
+
+
+<h4>What's a Hybrid Porosity Image?</h4>
+A Hybrid image is a porosity image where the values of voxels in the resolved pore space(values=1) have been replaced by their distance to the nearest matrix-containing(0&lt;value&lt;1) voxel using a Euclidean distance mapping <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.322.7605&rep=rep1&type=pdf"
+		target="_blank">(Danielsson's)</a> algorithm. The unresolved and solid voxel values are not altered.
+<h4>What's a Porosity Image?</h4>
+A porosity image<sup><small>1</small></sup> is an image of the pore space in a porous medium obtained using a 3D imaging modality. The voxel values in a porosity image are the volume fraction of non-matrix material. Voxels of solid matrix are zero, voxels of resolved pore are 1, and voxels containing unresolved pore and matrix have values between 0 and 1.  A specimen's matrix material can be removed experimentally by dissolution for example, or digitally by subtracting images before and after introduction of a contrast agent to the accessible pore space. 
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/PorosityToHybrid/PoreLiningMontage.png" width="800" />
+<figcaption><strong>Initial Hybrid Porosity(left), Add Pore Liner dialog(center), Lined Hybrid Porosity with a small Roi(right). </strong></figcaption></figure></center>
+
+
+<ul>
+<li>Minimum porosity - The lower bound on the porosity values to be added to the lining 0&lt;min&lt;max </li>
+<li>Maximum porosity - The upper bound on the porosity values to be added to the lining min&lt;max&lt;1</li>
+<li>Pore Lining Thickness - The thickness of the lining layer in image units </li>
+</ul>
+
+Voxels within the specified distance to the pore surface are set to random porosity values between min and max.
+
+<center><h4>Detail of the small red ROI in the Lined image</h4></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/PorosityToHybrid/BeforePoreLining.png" width="500" />
+<figcaption><strong>Roi Before Pore Lining</strong><br>All pore voxels are resolved (value&gt; 1)</figcaption></figure></center>
+
+<center><figure class="easyimage easyimage-full"><img alt="" src="../DistanceMapImages/PorosityToHybrid/AfterPoreLining.png" width="500" />
+<figcaption><strong>Roi After Pore Lining</strong>
+<br> Pore voxels within 2um of the solid(0) are replaced with unresolved porosity (blue 0.2&lt;porosity&lt; 0.5)
+<br> The resolved pore distances have been recalculated (red).</figcaption></figure></center>
+ 
+<small>1. Preparing experimental porosity images is a tricky business. Specimen size, length scale selection, imaging system definition(image size and resolution) and signal-to-noise, and voxel classification require considerable care. Calibration against know porosity materials is often essential.</small>
+<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
