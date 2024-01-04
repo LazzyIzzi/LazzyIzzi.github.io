@@ -16,10 +16,11 @@
 	Download GenericDialogAddin from <a href="https://github.com/LazzyIzzi/ImageJAddins/releases/tag/v1.0.0-beta"
 		target="_blank">here</a>.</h3>
 
-<h2>New! GenericDialogAddin.addSpinner() method to add "+" and "-" buttons and an increment to a GenericDialog.addNumericField() component</h2>
-
-
+<h2>GenericDialogAddin.addSpinner() method to add "+" and "-" buttons and an increment to a GenericDialog.addNumericField() component</h2>
 Jump to <a href="#addSpinnerExample"><strong>addSpinner</strong></a> example.<br>
+<h2>New! ProgressBars class to display multiple progress bars in a window</h2>
+Jump to <a href="#progressBars"><strong>ProgressBars description</strong></a><br>
+Jump to <a href="#progressBarsExample"><strong>ProgressBars example</strong></a><br>
 
 <hr>
 <h3>Background</h3>
@@ -558,6 +559,72 @@ public class GenericDialog_SpinnerExample implements PlugIn, DialogListener
 			}			
 		}	
 		return dialogOK;
+	}
+}
+
+</strong></pre>
+
+<hr>
+<h3 id="progressBars">ProgressBars</h3>
+
+<p>How often have you watched a progress bar while waiting for some process to complete, just to have it start over again with the next step in a multi-step process?  The ProgressBars class let's you be nice to your users by showing the status both sub-processes and the overall progress. It can show where the overall process is spending its time.</p> 
+<p>In the figure below shows three processes. Process 0 depends on the progress of Process 1.  Process 1 has just completed one cycle and Process 0 shows how many runs of Process1 are completed. Process 2 will run after Process 0 has completed.</p>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="ProgressBars.png" width="400" />
+		<figcaption>
+			<strong>The ProgressBars Window</strong>
+		</figcaption>
+	</figure>
+</center>
+
+
+<h3 id="progressBarsExample">ProgressBars Example</h3>
+<p>The code below was used to create the above figure. </p>
+<ol>
+	<li>In ImageJ, select Plugins->New->Plugin.</li>
+	<li>Replace the code with the code below.</li>
+	<li>File->Save the plugin as Test_ProgressBarAddin.java</li>
+	<li>File->Compile and Run</li>
+</ol>
+<pre><strong>
+import java.awt.Color;
+import ij.IJ;
+import ij.plugin.PlugIn;
+import jhd.ImageJAddins.ProgressBars;
+
+public class Test_ProgressBarAddin implements PlugIn
+{
+
+	final Color myColor = new Color(240,230,190);//slightly darker than buff
+
+	@Override
+	public void run(String arg)
+	{
+		ProgressBars progBars = new ProgressBars("Nested Processes");
+		progBars.add("Process 0", 350, 20, 0, 20);
+		progBars.add("Process 1", 350, 20, 0, 200);			
+		progBars.add("Process 2", 350, 20, 0, 200);			
+		progBars.setBackground(myColor);
+		progBars.show();
+		
+		for(int j=0;j<=20;j++)
+		{
+			for(int i=0;i<=200;i++)
+			{
+				progBars.setValue("Process 1",i);
+				IJ.wait(5);
+			}
+			progBars.setValue("Process 0",j);
+		}
+
+		for(int i=0;i<=200;i++)
+		{
+			progBars.setValue("Process 2",i);
+			IJ.wait(5);
+		}
+		progBars.close();
 	}
 }
 

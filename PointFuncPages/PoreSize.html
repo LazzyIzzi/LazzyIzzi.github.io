@@ -1,0 +1,75 @@
+<title>Pore Size</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+
+<h2>Pore Size</h2>
+
+<h2>Experimental!  This plugin was used to explore the utility and limitations of using the volume to surface ratio to compute the distribution of sizes of equivalent spheres.  It is purely experimental and is not intended for any production use.</h2>
+
+<h3>Requires ImageJ 1.53k or higher, Statistics.jar, ImageJAddins.jar.</h3> 
+<br>See the Home page for PointFunctions/PoreSize download and installation instructions.
+
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
+<h3>ImageJ plugin for the computing equivalent spherical Pore Size Distribution using the volume/surface ratio within multiple random sub-volumes.</h3>
+
+<p>In a two-component system, the Pore Size Distribution represents the probability density of finding a pore of radius R in the interval R&plusmn;dR in the selected component.</p>
+<ul>
+<li>The plugin scans random cubic sub-volumes and computes the equivalent sphere radius distribution from the selected component's interface area and volume.</li>
+<li>The maximum sub-volume size is half the smallest image dimension</li>
+<li>The plugin requires an image that has been segmented into zero and non-zero components.</li>
+<li>The image can be a 2D image, a stack of 2D images, or a 3D image. 2D images use area to perimeter ratio.</li>
+<li>Anisotropic pixels and voxels are supported.
+<li>The pixel units and lengths must remain constant in the image (no irregular spacings).</li>
+<li>Volume to surface ratio is converted to a radius by a calibration against <a href="DistanceMapPages/EuclideanSpheres.html" target="_blank">Euclidean Spheres</a>.</li>
+
+</ul>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../PointFuncImages//PoreSizeDialog.png"
+			width="300" />
+		<figcaption>
+			<strong>Pore Size Distribution Dialog</strong>
+		</figcaption>
+	</figure>
+</center>
+
+<ul>
+<li>Value to process - Select the zero or non-zero component to measure</li>
+<li>Calculate - Options are Current Slice, All Slices 2D, All Slices 3D. All Slices 2D is useful for stacks that vary in a non-spatial dimension such as time or concentration etc. This option reports its results in a stack plot and a table of profile values for each slice.</li>
+<li>Probe Size - The edge dimension of the scan cube.</li>
+<li>Number of Samples - Select the number of random cubes. More samples decreases noise.</li>
+<li>Show Progress - Displays a progress bar while executing.</li>
+
+</ul>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../PointFuncImages//DryBerea175.png"
+			width="300" />
+		<figcaption>
+			<strong>3D stack of Berea Sandstone showing slice 175</strong>
+		</figcaption>
+	</figure>
+</center>
+
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../PointFuncImages//PoreSizePlot.png"
+			width="400" />
+		<figcaption>
+			<strong>Pore Size Distribution Plot</strong>
+		</figcaption>
+	</figure>
+</center>
+
+<h3>Utility and Limitations</h3>
+<p>The plugin gives appropriate results for test volumes containing relatively uniform random overlapping Euclidean spheres when the sub-volume size is larger than the typical sphere size.  Similar results were obtained for image of well-sorted sandstones. The plugin did not perform well in more diverse collections of pore sizes.  In that case, a larger sub-volume is required greatly increasing execution time and decreased pore-size resolution. In the limit of the sub-volume equaling the entire volume the pore radius collapses to a single value. In the example above, the large pore in slice 175 required a large sub-volume to obtain a reasonable result. Small sub-volumes fit mostly within the pore and contained little interface area returned very unrealistic pore radii.</p>
+
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+

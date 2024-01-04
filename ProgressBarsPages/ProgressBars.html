@@ -1,0 +1,189 @@
+<title>Progress Bars</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+
+<h2>Progress Bars</h2>
+<p>LazzyIzzi got tired of writing the same JProgressBar code over and over</p>
+
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
+
+<h3>A class to simplify creating and managing one or more progress bars in a single window.</h3>
+
+<p>The ProgressBars class wraps the methods of the JProgressBar class. </p>
+<ul>
+<li>Has a simple syntax.</li>
+<li>Helps profile code during development.</li>
+<li>Informs the end user of the progress of each step in a multi-step process or one or more independent processes.</li>
+<li>Please refer to the <a href="../ProgressBarsDocs/index.html" target="_blank"> ProgressBars javadocs</a> for a
+		detailed description of the methods in the library.</li>
+<li><strong>ProgressBars.jar</strong> is available for download <a href="https://github.com/LazzyIzzi/ProgressBars"
+		target="_blank">here</a>.</li>
+
+</ul>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../ProgressBarsImages//ProgressBars.png"
+			width="400" />
+		<figcaption>
+			<strong>Progress bar window</strong>
+		</figcaption>
+	</figure>
+</center>
+<h3>Progress bars ImageJ plugin example.</h3>
+<ol>
+<li>Download ProgressBars.jar and place it in the ImageJ plugins folder.</li>
+<li>Start or restart imageJ.</li>
+<li>In ImageJ, use Plugins>New>Plugin to create a new plugin text window.</li>
+<li>Select and delete the plugin window text.</li>
+<li>Copy the code below and paste it into the plugin text window.</li>
+<li>Save the plugin as Test_ProgressBars.java</li>
+<li>Select File>Compile and Run.</li>
+</ol>
+
+<pre>
+	<strong>
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JProgressBar;
+
+import ij.IJ;
+import ij.plugin.PlugIn;
+import jhd.ProgressBars.*;
+
+public class Test_ProgressBars implements PlugIn
+{
+	final Color myColor = new Color(240,230,190);//slightly darker than buff
+
+	@Override
+	public void run(String arg)
+	{
+		//ProgressBars(java.lang.String windowTitle)
+		ProgressBars progBars = new ProgressBars("Progress Bars Example");
+		
+		//add(java.lang.String progBarTitle, int progressbarWidth, int progressbarHeight, int minBarValue, int maxBarValue)
+		progBars.add("Main Process", 350, 20, 0, 1);
+		progBars.add("Sub Process", 350, 20, 0, 1);			
+		progBars.add("Wrap Up", 350, 20, 0, 1);
+					
+		progBars.setBackground(myColor);
+		progBars.show();
+		
+		//public void setMaxBarValue(java.lang.String name, int value)
+		progBars.setMaxBarValue("Main Process", 20);
+		progBars.setMaxBarValue("Sub Process", 200);
+		progBars.setMaxBarValue("Wrap Up", 200);
+		
+		//Example "get" calls, not required, values will appear in the ImageJ Log window 		
+		ArrayList&lt;JProgressBar> pbList = progBars.getProgBars();	
+		for(JProgressBar pb : pbList)
+		{
+			IJ.log(pb.getName() + ", "+ pb.getMaximum());
+		}
+		
+		JProgressBar[] pbArr = progBars.getProgBarsAsArray();	
+		for(JProgressBar pb : pbArr)
+		{
+			IJ.log(pb.getName() + ", "+ pb.getMaximum());
+		}
+		
+		// running the example processes (simple loops) and updating the appropriate progress bars
+		//setValue(java.lang.String name, int value)
+		for(int j=0;j&lt;=20;j++)
+		{
+			for(int i=0;i&lt;=200;i++)
+			{
+				progBars.setValue("Sub Process",i);
+				IJ.wait(5);
+			}
+			progBars.setValue("Main Process",j);
+		}
+
+		for(int i=0;i&lt;=200;i++)
+		{
+			progBars.setValue("Wrap Up",i);
+			IJ.wait(5);
+		}
+		progBars.close();
+	}
+}
+</strong>
+</pre>
+
+
+<h3>Progress bars application example.</h3>
+<ol><li>Download ProgressBars.jar to a location where it will be visible to your IDE.</li>
+<li>Create a new Java "main" project</li>
+<li>Create a class named something like progressBarsExample.</li>
+<li>Copy the code below and paste it into the progressBarsExample.java file</li>
+<li>Add ProgressBars.jar to the progressBarsExample project's build path.</li>
+<li>Run the executable.</li>
+</ol>
+<pre>
+	<strong>
+import jhd.ProgressBars.*;
+import java.awt.Color;
+//import java.util.ArrayList;  //uncomment to use arraylst code
+import javax.swing.JProgressBar;
+
+public class testProgBars
+{
+
+	public static void main(String[] args)
+	{
+		final Color myColor = new Color(240,230,190);//slightly darker than buff
+		ProgressBars progBars = new ProgressBars("Progress Bars Example");
+		progBars.add("Main Process", 350, 20, 0, 1);
+		progBars.add("Sub Process", 350, 20, 0, 1);			
+		progBars.add("Wrap Up", 350, 20, 0, 1);			
+		progBars.setBackground(myColor);
+		progBars.show();
+		
+		progBars.setMaxBarValue("Main Process", 20);
+		progBars.setMaxBarValue("Sub Process", 200);
+		progBars.setMaxBarValue("Wrap Up", 200);
+		
+		//uncomment to use arraylst code		
+//		ArrayList&lt;JProgressBar&gt; pbList = progBars.getProgBars();	
+//		for(JProgressBar pb : pbList)
+//		{
+//			System.out.println(pb.getName() + ", "+ pb.getMaximum());
+//		}
+		
+		JProgressBar[] pbArr = progBars.getProgBarsAsArray();	
+		for(JProgressBar pb : pbArr)
+		{
+			System.out.println(pb.getName() + ", "+ pb.getMaximum());
+		}
+
+		for(int j=0;j&lt;=20;j++)
+		{
+			for(int i=0;i&lt;=200;i++)
+			{
+				progBars.setValue("Sub Process",i);
+				try {Thread.sleep(5);}
+				catch (InterruptedException e) { }
+			}
+			progBars.setValue("Main Process",j);
+		}
+
+		for(int i=0;i&lt;=200;i++)
+		{
+			progBars.setValue("Wrap Up",i);
+			try {Thread.sleep(5);}
+			catch (InterruptedException e) { }
+		}
+		progBars.close();
+	}
+
+}
+</strong>
+</pre>
+
+
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
