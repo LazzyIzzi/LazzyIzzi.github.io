@@ -109,7 +109,7 @@ Filter: 0.01cm Cu
 <br>
 Detector: 0.01cm CsI.</li>
 <li>The tag image was projected using the <a
-		href="CTsimulator.html" target="_self">TagImage To Parallem Brems Sinogram</a> plugin.</li>
+		href="CTsimulator.html" target="_self">TagImage To Parallel Brems Sinogram</a> plugin.</li>
 <li>The sinogram was reconstructed using  the <a href="CtRecon.html" target="_self">CT Recon Parallel Beam</a> plugin.</li>
 <li>The CT_Recon's "Reconstruct Test Slice" and the ImageJ live line-plot tool were used to obtain a flat profile across the tube wall(red
 line).</li>
@@ -182,7 +182,7 @@ In this example we know the composition and density of the materials.  We can ob
 
 
 <br>
-<P>This scaling method is probably unique the two material systems. <a href="#example3">Example-3</a> shows that scaling will not always produce a clear result but can be used to evaluate and minimize attenuation error.</P>
+<P>This scaling method is probably unique for two material systems. <a href="#example3">Example-3</a> shows that scaling will not always produce a clear result but can be used to evaluate and minimize attenuation error.</P>
 <a href="#top">Back to top</a>
 <hr>
 
@@ -236,7 +236,7 @@ The images look the same as <a href="#example1">Example-1</a> and are not shown 
   </tr>
  </table></Center>
 
-<p>In this example we get an effective energy that is consistent with Example-1 after scaling. We note that the R<sup>2</sup> of the fit is not very sensitive the effective energy estimate. A higher order fit at the high attenuation data may give a slightly better result. In general, lower order fits are less sensitive to noise.</p>
+<p>In this example we get an effective energy that is consistent with the Example-1 scaled result. We note that the R<sup>2</sup> of the fit is not very sensitive the effective energy estimate. A higher order fit at the high attenuation data may give a slightly better result. In general, lower order fits are less sensitive to noise.</p>
 <a href="#top">Back to top</a>
 
 
@@ -258,12 +258,12 @@ The simulated example image was created using ImageJ drawing tools and the <a
 		<img alt="" src="../CT_ReconImages//LinearizationExample/Al_CastingWithIronAndBrassPinsExample.png"
 			width="275" />
 		<figcaption>
-			<strong>Simulated slice of Aluminum Casting with<br>round iron(light gray) and rectangular brass(white) pins</strong>			
+			<strong>Simulated slice of Aluminum Casting with<br>round iron(light gray) and rectangular red-brass(white) pins</strong>			
 		</figcaption>
 	</figure>
 </center>
 <p>
-We use the <a href="CtScannerSetup.html" target="_self">Scanner Setup</a> plugin and the strongly absorbing brass pins to select scanning conditions that should produce different levels of beam hardening.
+We use the <a href="CtScannerSetup.html" target="_self">Scanner Setup</a> plugin and the strongly absorbing red-brass pins to select scanning conditions that should produce different levels of beam hardening.
 </p>
 <Center>
 	<table>
@@ -322,7 +322,7 @@ In this example,
 <h4>How close is the attenuation to the model at each setup when reconstructed with and without the CT-Recon plugin slider?</h4>
 
 First, a few sample calculations.  With the CT_Recon slider set to 0, we use <a href="XrayCalculatorExcel.html" target="_self">NIST_XCOM.xlam</a> and 
-<a href="https://support.microsoft.com/en-us/office/define-and-solve-a-problem-by-using-solver-5d1a388f-079d-43ac-a7eb-f63e45925040" target="_self">Solver</a> Excel Addins to identify the X-ray energy that minimizes the RMS %Err without any beam hardening correctionand obtain 147keV and 9.6% error.
+<a href="https://support.microsoft.com/en-us/office/define-and-solve-a-problem-by-using-solver-5d1a388f-079d-43ac-a7eb-f63e45925040" target="_self">Solver</a> Excel Addins to identify the X-ray energy that minimizes the RMS %Err without any beam hardening correction and obtain 147keV and 9.6% error.
 
 <center>
 	<figure class="easyimage easyimage-full">

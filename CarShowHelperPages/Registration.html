@@ -15,11 +15,11 @@
 
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CarShowHelperImages/CarShowTools/Registration.png"
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Registration4.png"
 			width="500" />
 		<figcaption>
 			<Strong>Car Show Helper Registration Dialog<br> "*"
-				indicates a required field.
+				indicates a required field. Pink back color indicates an invalid input.
 			</Strong>
 		</figcaption>
 	</figure>
@@ -33,9 +33,9 @@ Possible solutions:
 <ul>
 	<li>Divide registration among several several computers assigning
 		a range of car numbers to each user, e.g. 1-99 to user1 100-199 to
-		user2 etc. and merge the registration sheet after registration is
+		user2 etc. and merge the registration sheets after registration is
 		closed.</li>
-	<li>Use the Data Tools->Import/Export to load the results of
+	<li>Use the Data Tools->Append Tables to load the results of
 		on-line pre-registration. Encourage or require on-line pre-registration</li>
 </ul>
 
@@ -53,9 +53,9 @@ Possible solutions:
 		<li>Left click the "?" button to search the contacts sheet cars
 			with the current car number</li>
 		<li>Right click the "?" button get the next available car number.</li>
-		<li>The Car No. field turns red if a car is already registered
+		<li>The Car No. field turns pink if a car is already registered
 			with the current car number. If the Register button is clicked, the existing registered car
-			will be overwritten</li>
+			will be overwritten.</li>
 	</ul>
 	<li>Year - The year of manufacture.</li>
 	<li>Make - The manufacturer</li>
@@ -70,23 +70,37 @@ Possible solutions:
 	<li>Address - The street address</li>
 	<li>City -</li>
 	<li>State - Enter or select from pull-down list</li>
-	<li>Zip - Zip codes are used by the Data Tools->Plot Travel
-		Distances tool.</li>
+	<li>Zip - Enter the Zip code. (Zip codes are also used by the Data Tools->Plot Travel
+		Distances tool.)</li>
 	<li>Club Membership - The club list is editable in the Misc Data
-		sheet.</li>
-	<li>e-Mail - email address field will turn red if improperly
-		formed. Email addresses are not validated.</li>
-	<li>Phone - phone numbers are formatted for you</li>
+		sheet. Use Tools->Show Data Sheets to reveal the Misc Data sheet.</li>
+	<li>e-Mail - email address field will turn pink if improperly
+		formed. Car Show Helper does not test if an email address actually works.</li>
+	<li>Phone - phone numbers are formatted for you, but are not tested.</li>
 	<li>$ Received - registration fees etc.</li>
 	<li>Exit - close the dialog</li>
 	<li>Update Contact - replace the selected contact information with
 		new or edited data</li>
-	<li>Clear - clears the form</li>
-	<li>Register - Adds the registrant information to the registration
-		sheet. Grayed if required data is absent, red if registrant is a
-		duplicate. If clicked, the existing registered car will be
-		overwritten.</li>
-	<li>Search Results - a text field showing ther results of a car
+	<li>Clear Form- clears the registration form.</li>
+	<li>Print Dash Card - Check to print a dash card for a day-of-show registrant using the default printer. See 	<a href="../CarShowHelperPages/DataTools/DataTools.html#PrintDashCards"><strong>Print Dash Cards</strong></a> to view a sample dash card.</li>
+
+	<li>Register - Adds a car to the registration sheet. Posts incomplete or duplicate warnings if the form is incomplete.
+			<figure class="easyimage easyimage-full">
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Registration4BadFields.png"
+			width="300" />
+		<figcaption>
+			<Strong>Incomplete or Invalid Fields Warning</Strong>
+		</figcaption>
+	</figure>
+			<figure class="easyimage easyimage-full">
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Registration4DupCar.png"
+			width="300" />
+		<figcaption>
+			<Strong>Typical Duplicate Car Warning</Strong>
+		</figcaption>
+	</figure>
+		</li>
+	<li>Search Results List- a ListBox showing the results of a car
 		number or last name search of the contacts list.</li>
 	<li>Delete Contact - removes the selected contact from the
 		contacts list, e.g. an owner has sold or replaced a car that is in the

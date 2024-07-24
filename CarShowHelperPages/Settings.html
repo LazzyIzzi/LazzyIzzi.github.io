@@ -8,14 +8,15 @@
 
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CarShowHelperImages/CarShowTools/Settings.png" width="400" />
+		<img alt="" src="../CarShowHelperImages/CarShowTools/Settings4.png" width="400" />
 		<figcaption>
 			<Strong>Car Show Helper Settings Dialog.</Strong>
 		</figcaption>
 	</figure>
 </center>
 
-<p>Car Show Helper supports several commonly used car show types. The Settings dialog configures Car Show Helper for each step of your show. You can even change the configuration mid-show!  Click the links to see examples of user dialogs that the Settings control.</p>
+<H3>The Settings dialog configures Car Show Helper for all steps of your show.<br><em> The Settings dialog shows only required fields based on your selections.</em></h3>
+
 
 <ol>
 	<li><a href="Registration.html" target="_self"><em><strong>Registration</strong></em></a> -  
@@ -23,33 +24,34 @@
 			<li>Car Numbers -
 				<ul>
 					<li>Use Old - Use for shows where cars are assigned permanent numbers. Imports old car numbers saved in the Contacts worksheet.</li>
-					<li>Use New - Automatically create a new car number for each car at registration. PopUp First Car Number, begin new car numbers with this value (reserve lower car numbers for other uses). </li>
-					<li>Enter Manually - Manually create a new car number for each car at registration.</li>
+					<li>Use New - Automatically creates the next higher car number for each car at registration. You may also enter a car number manually.</li> 
 				</ul>
-			</li>
-			<li>Class Table - User-defined Class tables are stored in the hidden <strong>Classes</strong> worksheet. Select a Class table for Registration. The Class Table is ignored for popular vote shows.</li>
-			<li>Use Pre-assigned Classes - Check this box to import a car's class saved in the Contacts worksheet.</li>
+			<li>First Car Number, begin new car numbers with this value (reserve lower car numbers for other uses). </li>
+					<!---<li>Enter Manually - Manually create a new car number for each car at registration.</li>--->
+			<li>Class Table - Select a Class table for Registration. User-defined Class tables are stored in the hidden <strong>Classes</strong> worksheet. See <a href="../CarShowHelperPages/ClassTools/ClassTools.html#EditClassTable"><strong>Edit Class Table</strong></a> to modify and save your own car classification tables. The Class Table is ignored for popular vote shows.</li>
+			<li>Use Contacts Sheet Classes - Check this box to import a car's class saved in the Contacts worksheet.</li>
 		</ul>
 	</li>
-	<li><a href="Judging.html" target="_self"><em><strong>Judging</strong></em></a> -
+	<li><a href="Judging.html" target="_self"><em><strong>Judging</strong></em></a> - Car Show Helper supports several commonly used car show types.
 				<ul>
 					<li>Popular Vote - Built-in, enter the votes per ballot in the popup box.</li>
 					<li>Popular Vote By Class - Built-in, Requires a Class table selection. Participants can vote for one car in each class.</li>
-					<li>Judging Tables - lists user-defined Judging tables stored in the hidden <strong>Judging</strong> worksheet. Select add or deduct points.</li>
+					<li>Judging Tables - User-defined Judging tables stored in the hidden <strong>Judging</strong> worksheet. Select add or deduct points.</li>
 				</ul>
 
-	<li><a href="Tally.html" target="_self"><em><strong>Tally</strong></em></a> -
+	<li><a href="Tally.html" target="_self"><em><strong>Tally</strong></em></a> - Tally supports several judging methods
 		<ul>
-			<li>Favorites - Show winners are the ones with the most points.  Enter the how many will get trophies in the popup. </li>
+			<li>Favorites - Show winners are the ones with the most points.  Enter the how many will get trophies in the popup. (The figure uses a judging sheet so the Favorites option is hidden.)</li>
 			<li>Most Points - Use with Popular Vote By Class. Show winners are the ones with the most points in each class.</li>
-			<li>Points Ranges - Use with shows where cars compete against fixed standards and not each other</li>
+			<li>Points Ranges - Use with shows where cars compete against fixed standards and not each other. You can change the ranges setting if a Tally produces an inappropriate number of trophy winners. Click <strong>Guess Pts Ranges</strong> to get a rough guess for points ranges. Some refinement will probably be needed based on your judging standards.</li>
 		</ul>
 	</li>
 	<li>Trophies -
 		<ul>
-			<li>Use 1st, 2nd, 3rd -</li>
-			<li>Use First, Second, Third -</li>
+			<li>Use 1st, 2nd, 3rd</li>
+			<li>Use First, Second, Third</li>
 			<li>Use Gold, Silver, Bronze - Recommended for Points Ranges shows.</li>
+			<li>Show All Cars - <strong>Tally</strong> normally hides cars that do not win a trophy. Check this box to show the points and awards for all registered cars in the Tally results.</li>
 		</ul>
 	</li>
 </ol>

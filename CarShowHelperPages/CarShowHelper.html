@@ -9,10 +9,18 @@
 
 
 <h3>The CarShowHelper Excel Application was created to accurately
-	record and manage the data needed to run a car show.</h3>
+	record and manage the data needed to run a car show.</h3> 
+<h4>Beta release 4.0.2 is essentially the same as the version 3 in appearance but is a restomod under the hood for improved user experience.</h4>
+<ul>
+	<li>Version 4 is faster and more stable</li>
+	<li>Dialogs are clarified, have more control tips.</li>
+	<li>On-line help is available. Some Dialogs contain embedded help.</li>
+	<li>Bad user inputs either disable the "OK" button or are highlighted in pink in the Dialog.</li>
+	<li>An editor was added for car classification tables.</li>
+</ul>
 
 <p>
-	Installation: <strong>CarShowHelper3.0.1_Beta.xlsm&nbsp;</strong>is available for
+	Installation: <strong>CarShowHelper4.0.1_Beta.xlsm&nbsp;</strong>is available for
 	download <a
 		href="https://github.com/LazzyIzzi/CarShowHelper-Excel/releases/tag/v3.0.1-beta"
 		target="_blank">here</a>. 
@@ -20,17 +28,17 @@
 		workbooks can be dangerous due to the possibility of embedded malware.
 		Newer versions of Excel provide significant protection. Please take
 		appropriate precautions before enabling any downloaded Excel workbook.
-		This file size after download should be 4,296,705 bytes and
-		4,300,800 bytes on disk.</em>
+		</em>
 </p>
 
 
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CarShowHelperImages/CSH_MainPage.png" width="800" />
+		<img alt="" src="../CarShowHelperImages/CSH_MainPage4.png" width="800" />
 		<figcaption>
 			<Strong>Car Show Helper Registration Sheet with Main Menu at
 				top and a simple judging form.</Strong>
+				<br><small>with synthetic practice data</small>
 		</figcaption>
 	</figure>
 </center>
@@ -50,18 +58,18 @@
 
 <h3>Car Show Tools Menu</h3>
 <ol type="1">
-	<li><a href="Settings.html" target="_self"><em><strong>Settings</strong></em></a> - Select Classification Type, Car
-		Numbering, Judging Sheet, Tally method, Trophy Names</li>
-	<li><a href="NewShow.html" target="_self"><em><strong>New Show</strong></em></a> - Prepare registration sheet for new
+	<li><a href="NewShow.html" target="_self"><strong>New Show</strong></a> - Prepare registration sheet for new
 		show. Options for the old show; archive, export to contacts, clear.</li>
-	<li> <a href="Registration.html" target="_self"><em><strong>Registration</strong></em></a>- Displays registration form,
+	<li><a href="Settings.html" target="_self"><strong>Settings</strong></a> - Select Classification Type, Car
+		Numbering, Judging Sheet, Tally method, Trophy Names</li>
+	<li> <a href="Registration.html" target="_self"><strong>Registration</strong></a>- Displays registration form,
 		assigns car numbers, classifies, searches contacts for auto-fill.</li>
-	<li><a href="Judging.html" target="_self"><em><strong>Judging</strong></em></a> - Displays user-defined judging sheet
+	<li><a href="Judging.html" target="_self"><strong>Judging</strong></a> - Displays user-defined judging sheet
 		for manual data entry with error checking.</li>
-	<li><a href="Awards.html" target="_self"><em><strong>Awards</strong></em></a> - Optional, Assigns user-defined
+	<li><a href="Awards.html" target="_self"><strong>Awards</strong></a> - Optional, Assigns user-defined
 		special awards e.g. "Best of Show" to selected cars. Removes special
 		awards cars from regular tally.</li>
-	<li><a href="Tally.html" target="_self"><em><strong>Tally</strong></em></a> - Sorts and filters the Registration
+	<li><a href="Tally.html" target="_self"><strong>Tally</strong></a> - Sorts and filters the Registration
 		sheet to display show winners. Exports/prints show winner report minus
 		personal info.</li>
 </ol>
@@ -70,15 +78,18 @@
 <ol type="1">
 	<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#RenameAward"><strong>Rename Award</strong></a> - Renames a user defined special
 		award. Updates registration sheet.</li>
-	<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#CreateClassTable"><strong>Create Class Table</strong></a> (advanced) - Special tool
-		for creating a car classification schedule. A schedule is selectable
-		in the Settings menu.</li>
+	<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#EditClassTable"><strong>Edit Class Table</strong></a> -  A dialog 
+		for editing a car classification table. A car classification table must have the name extension ".ClassTab" to be selectable
+		in the Settings Class Table menu.</li>
 	<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#DeleteClassTable"><strong>Delete Class Table</strong></a> - Removes an unwanted
 		classification schedule and deletes it from the Settings menu.</li>
-	<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#RenameClass"><strong>Rename Class</strong></a>
+		<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#ShowClassCount"><strong>Show Class Count</strong></a>
+	 - Shows the number of cars currently registered in each class.</li>
+		
+	<!-- <li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#RenameClass"><strong>Rename Class</strong></a>
 	 - Edit a car main and sub-class,
 		start and end year, and description in the active classification
-		schedule. Updates registration sheet.</li>
+		schedule. Updates registration sheet.</li>--->
 	<li><a href="../CarShowHelperPages/ClassTools/ClassTools.html#CombineClasses"><strong>Combine Classes</strong></a>
 	 - Combines two car classes in
 		the active classification schedule into one with a new main and
@@ -92,37 +103,30 @@
 </ol>
 <h3>Data Tools Menu</h3>
 <ol type="1">
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#ImportExportTable"><strong>Import/Export Table</strong></a> - A general purpose
-		import tool for copying external spreadsheet data into CarShowHelper,
-		for example, reports generated by on-line registration.</li>
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#EditShowTable"><strong>Edit Show Table</strong></a> - Edit registration or
-		contacts sheet entries.</li>
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#UpdateRegistrationWarning"><strong>Update Registration Info</strong></a> -
+		Completes/updates blank/old fields in registration and contacts sheets
+		if Year, Make, Model, FirstName, and LastName are the same in both.</li>
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#UpdateContactWarning"><strong>Update Contact Info</strong></a> - Automatically
+		removes high duplicate score entries from the contacts sheet. Use with
+		caution.</li>
 	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#BeautifyTable"><strong>Beautify Table</strong></a> - Apply standard formatting to
 		a registration or contacts sheet.</li>
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#EditShowTable"><strong>Edit Show Table</strong></a> - Edit registration or
+		contacts sheet entries.</li>
 	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#MarkBadEmailAddresses"><strong>Mark Bad E-mail Addresses</strong></a> - Checks
 		registration or contacts sheet for incorrectly formed email addresses.
 		It does not validate addresses.</li>
 	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#MarkPossibleTableDuplicates"><strong>Mark Possible Table Duplicates</strong></a> - Color scores
 		registration or contacts sheet for possible duplicates.</li>
-	<li><strong>Reset Sheet Colors</strong> - Restores default sheet
-		colors.</li>
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#AutoUpdateContactWarning"><strong>Auto Update Contact Info</strong></a> - Automatically
-		removes high duplicate score entries from the contacts sheet. Use with
-		caution.</li>
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#SyncRegistrationAndContacts"><strong>Sync Registration and Contacts</strong></a> -
-		Completes/updates blank/old fields in registration and contacts sheets
-		if Year, Make, Model, FirstName, and LastName are the same in both.</li>
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#SimpleMailMerge"><strong>Simple Mail Merge</strong></a> - Creates a filtered email
-		and/or USPS mailing list suitable for Microsoft Office Mail merge.</li>
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#MakePracticeData"><strong>Make Practice Data</strong></a> (learning) - Appends
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#MakePracticeData"><strong>Make Practice Data</strong></a> - Appends
 		simulated registrants to the registration sheet. Zip codes are
 		authentic. The Club field is set to PRACTICE</li>
-	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#SimulateVotesWarning"><strong>Simulate Votes</strong></a> (learning) - Simulates judging
-		scores using typical judging statistics. Use to score practice data to
-		learn how to use CarShowHelper.</li>
 	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#MakeCarNumbers"><strong>Make Car Numbers</strong></a> - Appends sequential car
 		numbers to the "Car No" field beginning with Setting/First Car No. or
 		the highest registered car number.</li>
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#SimulateVotesWarning"><strong>Simulate Votes</strong></a> - Simulates judging
+		scores using typical judging statistics. Use to score practice data to
+		learn how to use CarShowHelper.</li>
 	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#PlotTravelDistances"><strong>Plot Travel Distances</strong></a> - Uses contacts sheet
 		Zip codes to compute the "as the crow flies" distance to any Zip code.
 		Evaluate how far prior registrants are from a proposed show location.</li>
@@ -131,12 +135,19 @@
 	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#PrintRegSlips"><strong>Print Registration Slips</strong></a> - Prints traditional
 		registration slips to provide some compatibility with paper show
 		systems.</li>
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#AppendTables"><strong>Append Tables</strong></a> - A general purpose
+		import tool for copying external spreadsheet table,for example, reports generated by on-line registration, into a CarShowHelper table.
+		.</li>
+	<li><a href="../CarShowHelperPages/DataTools/DataTools.html#SimpleMailMerge"><strong>Simple Mail Merge</strong></a> - Creates a filtered email
+		and/or USPS mailing list suitable for Microsoft Office Mail merge.</li>	
+	<li><strong>Hide Data Sheets</strong> - Shows only the
+		Registration and Contacts sheets.</li>
 	<li><strong>Show Data Sheets</strong> - Normally only
 		Registration and Contacts sheets are visible. UnHides hidden Classes,
 		Archive, Judging, Makes&amp;Models, Zip Data, Misc Data, and Settings
 		worksheets.</li>
-	<li><strong>Hide Data Sheets</strong> - Shows only the
-		Registration and Contacts sheets.</li>
+	<li><strong>Reset Sheet Colors</strong> - Restores default sheet
+		colors.</li>
 </ol>
 <!-- 
 <h2>Sample Images from CSH</h2>
