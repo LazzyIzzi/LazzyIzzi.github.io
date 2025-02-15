@@ -97,7 +97,8 @@ All libraries and plugins are compiled with Java8 to maintain consistency with l
 		<li><a href="CT_ReconPages/MaterialTagger.html" target="_self">Material Tagger</a> - Creates "Tag Images" by segmenting an image into its material components.</li>
 		<li><a href="CT_ReconPages/MaterialsEditor.html" target="_self">Materials Editor</a> - Manages the Image Tags data File.</li>
 		<li><a href="CT_ReconPages/CTsimulator.html" target="_self">Image Projectors</a> - Re-project images of linear attenuation or configure a virtual conventional X-ray source CT-scanner to create parallel or fan-beam sinograms. Be sure to review the Image Projectors page "Additional Information" for performance limitations.</li>
-		<li><a href="CT_ReconPages/CtRecon.html" target="_self">CT Recon ParallelBeam</a> - Reconstructs a parallel-beam sinogram to help determine if the result met expectations.</li>
+		<li><a href="CT_ReconPages/CtRecon.html" target="_self">CT Recon ParallelBeam</a> - <i>deprecated, has Windows dependencies</i>  - Reconstructs a parallel-beam sinogram to help determine if the result met expectations.</li>
+		<li><a href="CT_ReconPages/DFI_Recon.html" target="_self">DFI_JTransforms</a> - Reconstructs single and stacks of parallel-beam sinogram to help determine if the result meets expectations.</li>
 		<li><a href="CT_ReconPages/XrayLookupMuLin.html" target="_self">X-ray MuLin Lookup</a> - Reports X-ray energie(s) that will produce a material's measured linear attenuation.</li>
 		<li><a href="CT_ReconPages/XrayLookupRatio.html" target="_self">X-ray Ratio Lookup</a> - Reports X-ray energie(s) consistent with the measured attenuations of two different materials.</li>
 		<li><a href="CT_ReconPages/Linearization.html" target="_self">Linearization Fitter</a> - Interactively plots observed vs model sinograms attenuations calculated from a reconstructed and a tag image at a given X-ray energy. Reports 1-6 degree polynomial fits. The X-ray energy that gives the best fit is the effective energy for the measurement.</li>
@@ -134,7 +135,7 @@ All libraries and plugins are compiled with Java8 to maintain consistency with l
 			<li><a href="PointFuncPages/TwoPoint.html" target="_self">Two-Point Correlation</a> - probability that two points separated by a distance D will lie in the same image component.</li>
 			<li><a href="PointFuncPages/LinealPath.html" target="_self">Lineal Path Function</a> - probability that a line of length L will lie completely in the same image component.</li>
 			<li><a href="PointFuncPages/ChordLength.html" target="_self">Chord Length Distribution</a> - probability density of finding a chord of length L in the interval L&plusmn;dL in t the selected image component.</li>
-			<li><a href="PointFuncPages/PoreSize.html" target="_self">Pore Size Distribution</a> - probability density of finding a pore of radius R in the interval R&plusmn;dR in the selected component.</li>
+			<li><a href="PointFuncPages/PoreSize.html" target="_self">Pore Size Distribution</a> - <i>experimental</i> probability density of finding a pore of radius R in the interval R&plusmn;dR in the selected component.</li>
 <li>Installation: Point Functions bundle
 			<ol>
 				<li>Download <a href="https://github.com/LazzyIzzi/ImageJPlugins_PointFunctions/releases/tag/v1.0.0-alpha" target="_blank">ImageJ_PointFunctionsBundle.jar</a> to the ImageJ/plugins folder.</li>

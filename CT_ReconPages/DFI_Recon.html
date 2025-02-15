@@ -1,0 +1,79 @@
+<title>DFI JTransforms</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+<h1>DFI JTransforms Parallel Beam</h1>
+<h3>Requires ImageJ 1.53k or higher, ImageJAddins.jar</h3>
+<br>See the Home page for CT_Tools download and installation instructions.
+
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
+<h4>
+	DFI_JTransforms a pure Java
+	executable for reconstructing 180 degree parallel-beam sinogram(s) using
+	<a href="https://www.science.org/doi/10.1126/science.237.4821.1439"
+		target="_blank">direct Fourier inversion</a>(DFI). The Java open source <a href="https://github.com/wendykierp/JTransforms"
+		target="_blank">JTransforms-3.1-with-dependencies.jar</a> library is used for the FFTs. Download it to the plugins folder before using this plugin.
+</h4>
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../CT_ReconImages//CtRecon/DFI_JTransforms_Montage.png" width="800" />
+		<figcaption>
+			<strong>Sinogram(Left), DFI_JTransforms User interface(Center),
+				Reconstructed Slice(Right))</strong>
+		</figcaption>
+	</figure>
+</center>
+
+
+<h3>Description</h3>
+<p>
+	Input sinograms are parallel-beam projected opacity <a
+		href="MuMassCalculatorLib.html">(tau)</a> values acquired at equally
+	spaced angles between 0 and 180 degrees of specimen rotation. Sinograms
+	of this type can be obtained either by experiment or by digitally
+	scanning test images with the parallel projector plugins described on
+	the <a href="CTsimulator.html" target="_self">Scan Simulators</a> page.
+	Sinogram images have dimensions of length(cm) in the horizontal(x)
+	dimension and angle(theta) in the vertical(y) dimension. The DFI
+	algorithm first computes the 1D FT of each of the rows(angles) in the
+	sinogram. The f(r,theta) polar transforms are interpolated onto a 2D
+	Cartesian f(x,y) grid to form the 2D FT of the image. The output image
+	is computed from the inverse 2D FT of the interpolated transform. DFI
+	is inherently noisier than other reconstruction techniques and produces
+	significant artifacts if the input sinogram data does not cover the
+	full 0-180 degree angular range. However, it has a significant speed
+	advantage that makes it well suited for digital simulations.
+</p>
+
+<h3>Using DFI_JTransforms dialog</h3>
+<H4>Dialog Components</H4>
+<ul>
+	<li>Beam Hardening - Applies a second order beam hardening correction
+		to the sinogram attenuations <big>&tau;</big><sub><small>corr</small></sub> = (1-W)(<big>&tau;</big><sub><small>obs</small></sub>)
+	+ (W)(<big>&tau;</big><sup><small>2</small></sup><sub><small>obs</small></sub>). The slider adjusts the weight between
+		the first and second order terms. Crude but effective on many
+		relatively homogeneous specimens. Reconstructions may require
+		<a href="Linearization.html" target="_self">rescaling</a> to obtain correct linear attenuation values.</li>
+	
+	<li>Extension Width - Minimize artifacts arising from a portion of
+		the specimen rotating outside the field of view by pasting "wings"
+		onto the sinogram edges that decay smoothly from the edge attenuation
+		value to zero. Pick a shape that works best for your sinogram.</li>
+	<li>Axis Shift - A scan's axis of rotation is not always exactly
+		centered on a pixel. Select a fractional shift and
+		reconstruct a test slice to see if there is any improvement.The image data is shifted by
+		interpolation so some loss of resolution may occur.</li>
+	<li>Show Run Time - Check this box to see the time required for each portion of the reconstruction process. </li>
+	<li>Show ROI - Draws an ROI around the  field of view inside the extension wings. </li>
+	<li>Reconstruct Test Slice - Opens a "TestSlice" reconstructed
+		image. Change a setting and click again to observe the result.</li>
+	<li>OK(reconstruct) - Creates a new image or image stack with the
+		final reconstruction(s)</li>
+</ul>
+
+
+<h2>
+	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
+</h2>
+
