@@ -16,11 +16,11 @@
 		href="https://www.nist.gov/pml/xcom-photon-cross-sections-database"
 		target="_blank">XCOM</a> database and are used with permission. It should be noted that NIST retains copyright on the XCOM data and reserves the right to charge for its use in the future.  See the XCOM website for more information.</p>	
 <hr>
-<h3>XLAM or XLSM, which one is better for you?</h3>	
+<h3>XLAM or XLSM, which one is better for you? Do not install XLAM if you are using XLSM.</h3>	
 <ul>
 <li>Use the Add-In xlam file to make the functions and macros part of your Excel application.
 	<ul>
-	<li>Pro: The X-ray functionality will be available is all workbooks created after the Add-In is installed</li>
+	<li>Pro: The X-ray functionality will be available in all workbooks created after the Add-In is installed</li>
 	<li>Con: Dependent workbooks will not work if the Add-In is not present or has been  uninstalled.</li>
 	</ul></li>
 <li>Use the Workbook xlsm file to use the functions and macros without altering your Excel environment.
@@ -36,8 +36,10 @@
 Macros:
 <ul>
 <li>GetSpectrum - Lists and optionally plots the tabulated NIST mass absorption coefficients vs X-ray energy.</li>
-<li>BeamHardening- Uses a 1D model to estimate/optimize a CT scanner setup that will produce an acceptable level of beam hardening.</li>
-<li>Help- Brings up this page.</li>
+<li>BeamHardening - Uses a 1D model to estimate/optimize a CT scanner setup that will produce an acceptable level of beam hardening.</li>
+<li>Show Data Sheets - Unhides the NIST data, one sheet per element, about 100 sheets total.</li>
+<li>Hide Data Sheets -Unshows the NIST data.</li>
+<li>Help- Brings up this page. Requires an internet connection.</li>
 </ul>
 
 Functions:
@@ -74,18 +76,74 @@ Where
 	workbooks can be dangerous due to the possibility of embedded malware.
 	Newer versions of Excel provide significant protection. Please take
 	appropriate precautions before enabling any downloaded Excel workbook.</em>
+	
+<p>
+Adding NIST_XCOM.xlam macros to the Excel "Home" toolbar<br>
+Do NOT do the steps below if you are using  NIST_XCOM.XLSM<br>
+
+
+<p>Download  <a href="https://github.com/LazzyIzzi/MuMassCalculatorExcel/blob/main/NIST_XCOM.xlam"
+	target="_blank"><strong>NIST_XCOM.xlam&nbsp;</strong></a>
+<br>Install the NIST_XCOM in the default Add-ins Folder, in Windows it's usually C:\Users\<em>YourUserName</em>\AppData\Roaming\Microsoft\AddIns.
+<br>Run the macros from the Developer tab "Macros" ribbon item.</p>
+
+<p> To make the Macros visible in the Home tab Ribbon...
+The usual intuitive Microsoft 25 step process</p>
+	
 <ol>
-<li>Download  <a
-	href="https://github.com/LazzyIzzi/MuMassCalculatorExcel/blob/main/NIST_XCOM.xlam"
-	target="_blank"><strong>NIST_XCOM.xlam&nbsp;</strong></a>. </li>
-<li>Place it in a folder where Excel can find it, on a PC usually C:\Users\YourUserName\AppData\Roaming\Microsoft\AddIns\</li>
-<li>Start Excel, Use File->Options->Customize Ribbon and check the Developer and Add-Ins boxes, click OK</li>
-<li>In the DEVELOPER tab click the Add-Ins icon. </li>
-<li>In the AddIns Dialog check NIST_XCOM. Click OK.</li>
-<li>Click the ADD-INS tab. The GetSpectrum, BeamHardening, and Help items should be present in the Toolbar Commands menu.</li>
+	<li>To add "Developer" to the main toolbar</li>
+		<ol type="a">
+			<li>Click  "File"  in the main menu</li>
+			<li>Click "Options" at the bottom left</li>
+			<li>Click "Customize Ribbon"</li>
+			<li>Check the "Developer" box</li>
+			<li>Click OK</li>
+		</ol>
+	<li>To add NIST_XCOM to the project references</li>
+		<ol type="a">
+			<li>Click the new "Developer" tab in the main menu</li>
+			<li>Click "Excel To add-ins"</li>
+			<li>Check the NIST_XCOM Reference</li>
+			<li>Click OK</li>
+		</ol>
+	<li>To add "BeamHardening" and "GetSpectrum"  Macros to main "Home" ribbon</li>
+		<ol type="a">
+			<li>Click  "File"  in the main menu</li>
+			<li>Click "Options" at the bottom left</li>
+			<li>Click "Customize Ribbon"</li>
+			<li>In the "Customize the Ribbon"  menu select "Main Tabs"</li>
+			<li>Click the twisty next to "Home"</li>
+			<li>Click the "New Group" button</li>
+			<li>Click the "Rename" button</li>
+			<li>Enter "X-ray" in the "Display Name" box</li>
+			<li>Click OK</li>
+			<li>Click(select) "X-ray (Custom)" in the "Home" list</li>
+			<li>In the "Choose commands from" menu, select "Macros"</li>
+			<li>Select "BeamHardeningMacro"</li>
+			<li>Click "To add"
+			<li>Select "GetSpectrumMacro"</li>
+			<li>Click "To add"</li>
+			<li>Click OK</li>
+		</ol>
+	<li>Uninstall NIST_XCOM in the project references</li>
+		<ol type="a">
+			<li>Click the "Developer" tab in the main menu</li>
+			<li>Click "Excel To add-ins"</li>
+			<li> Uncheck the NIST_XCOM Reference</li>
+			<li>Click OK</li>
+		</ol>
 </ol>
 
-To uninstall the Add-In click the developer tab and then the Add-Ins icon. In the Add-Ins dialog uncheck NIST_XCOM and click OK.
+
+
+When you open a workbook
+<ol>
+	<li>Click on the Home tab</li>
+	<li>Click on either BeamHardeningMacro or GetSpectrumMacro in the Ribbon to load the macros.</li>
+	<li>Click OK on the security warnings.</li>
+</ol>
+
+	
 
 <hr>
 <h3>Workbook(xlsm) Installation:</h3> 
@@ -97,7 +155,7 @@ The Workbook does not require installation.
 	
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CT_ReconImages//Excel/WorkbookMenu.png" width="200" />
+		<img alt="" src="../CT_ReconImages//Excel/WorkbookMenu.png" width="250" />
 		<figcaption>
 			<strong>X-ray Macros Menu.</strong>
 		</figcaption>
@@ -143,7 +201,7 @@ The xlsm file has slightly over 100 data sheets.  The default behavior is to kee
 	</figure>
 </center>
 
-<h3>Excel Array Functions</h3>
+<h3>Excel Array Functions (older versions of Excel)</h3>
 <p><strong>GetFormualMevFromMuLin</strong> and <strong>GetFormualMevFromMuLinRatio</strong> functions
 	return arrays. This is noted in their input dialogs. Select at least two
 	contiguous row cells for output before calling the function. <strong>Do Not</strong>
@@ -160,7 +218,7 @@ The xlsm file has slightly over 100 data sheets.  The default behavior is to kee
 	atoms or formulas over a selected energy range.</p>
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CT_ReconImages//Excel/GetSpectrum_Atom.png" width="250" />
+		<img alt="" src="../CT_ReconImages//Excel/GetSpectrum_Atom.png" width="300" />
 		<figcaption>
 			<strong>Get Spectrum for an atom.</strong>
 		</figcaption>
@@ -170,7 +228,7 @@ The xlsm file has slightly over 100 data sheets.  The default behavior is to kee
 	Name.</p>
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CT_ReconImages//Excel/GetSpectrum_Formula.png" width="250" />
+		<img alt="" src="../CT_ReconImages//Excel/GetSpectrum_Formula.png" width="350" />
 		<figcaption>
 			<strong>Get Spectrum for a Formula.</strong>
 		</figcaption>
@@ -203,8 +261,20 @@ The xlsm file has slightly over 100 data sheets.  The default behavior is to kee
 		target="_blank"><em><strong>Scanner_Setup</strong></em></a> page for a
 	description of how this Macro works.
 </p>
+
+<center>
+	<figure class="easyimage easyimage-full">
+		<img alt="" src="../CT_ReconImages//Excel/BeamHardeningDialog.png"
+			width="300" />
+		<figcaption>
+			<strong>Beam Hardening Dialog.</strong>
+		</figcaption>
+	</figure>
+</center>
+
+
 <ol>
-	<li>Select BeamHardening from the ADD-INS Toolbar Commands.</li>
+	<li>Select BeamHardening from the Command Menu.</li>
 	<li>Edit the Source, Sample, Detector, and Plot Range fields.</li>
 	<li>Click Update Plot. The effective energy, sample tau,
 		BeamHardening %, and photon efficiency % appear in the plot title.</li>
@@ -219,7 +289,7 @@ The xlsm file has slightly over 100 data sheets.  The default behavior is to kee
 
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CT_ReconImages//Excel/BeamHardening_Initial.png" width="600" />
+		<img alt="" src="../CT_ReconImages//Excel/BeamHardening_Initial.png" width="500" />
 		<figcaption>
 			<strong>The Spectral distributions for the Settings.</strong>
 		</figcaption>
@@ -228,9 +298,9 @@ The xlsm file has slightly over 100 data sheets.  The default behavior is to kee
 
 <center>
 	<figure class="easyimage easyimage-full">
-		<img alt="" src="../CT_ReconImages//Excel/BeamHardening_Optimized.png" width="600" />
+		<img alt="" src="../CT_ReconImages//Excel/BeamHardening_Optimized.png" width="500" />
 		<figcaption>
-			<strong>The Optimized Spectral distributions a 10% Target
+			<strong>The Optimized Spectral distributions a 12% Target
 				BH.</strong>
 		</figcaption>
 	</figure>

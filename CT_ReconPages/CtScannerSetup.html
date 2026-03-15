@@ -13,8 +13,39 @@
 	provides a non-modal dialog to aid in selecting optimal CT scanner
 	operating conditions to improve signal-to-noise and reduce <a
 		href="BeamHardeningTutorial.html" target="_self">beam hardening</a>
-	artifact.
+	artifact.	
 </h4>
+
+<h3>How to use CT Scanner Setup</h3>
+The specimen absorbance (tau), beam hardening, and photon use are dependent of source KV, filter selection, and detector configuration.
+<ul>
+<li>The sample absorbance(tau) should be about 2 </li>
+	<ul>
+		<li> tau =2 give best Signal to Noise in the shortest amount of time</li>
+		<li> Higher KV lowers incident tau.</li>
+	</ul>
+<li>The beam hardening should be minimized by prefiltering the incident beam.
+	<ul>
+		<li> Prefiltering increases the average energy</li>
+		<li> Prefiltering lowers incident tau.</li>
+		<li> Prefiltering lowers incident intensity.</li>
+		<li> Some beam hardening can be corrected by post-processing.</li>
+	</ul>
+<li>The detector response usually decreases with increasing average X-ray energy.</li>
+	<ul>
+		<li> The detector is modeled as a thin x-ray absorber</li>
+		<li> You are usually stuck with the detector you bought.</li>
+		<li> Have fun seeing how a different detector configurtions might improve your results.</li>
+	</ul>
+</ul>
+
+To optimize the quality of CT data, adjust the source KV, filter material thickness, and, if possible, detector scintillator material and thickness to obtain tau=2, acceptable beam hardening, and efficient use of incident x-ray intensity.   
+
+<p>Looking at the Attenuation vs Thickness plot, the blue line should be relatively straight</p>
+<p>Looking at the X-ray Spectra plot, the blue "Io" and black "I" spectra should be similar in shape.</p>
+
+Note: <a href="../CT_ReconPages/XrayCalculatorExcel.html" target="_self"> The Excel version of Scanner Setup</a> uses the Solver to identify optimal solutions.
+
 
 <h3>The User Interface</h3>
 <center>
@@ -63,6 +94,7 @@
 		scan. Large steps go faster. Small steps have better spectral
 		resolution.</li>
 	<li>keV Angstroms Buttons - Selects the plot x-axis scale</li>
+	<li>Checkboxes show or hide selected spectra </li>
 	<li>Update Plot - Recalculate the plots and results.</li>
 	<li>OK - Recalculate, update and exit leaving plot and results
 		windows open</li>
@@ -76,10 +108,10 @@
 <p>The middle plot shows intensity vs X-ray energy at five sampling
 	points along the beam path.
 <ul>
-	<li>Blue, the source spectrum.</li>
+	<li>Magenta, the source spectrum.</li>
 	<li>Red, the source spectrum after the filter.</li>
 	<li>Green, the source spectrum after the filter and sample.</li>
-	<li>Gray, source spectrum after the filter detected. "Io"</li>
+	<li>Blue, source spectrum after the filter detected. "Io"</li>
 	<li>Black, the source spectrum after the filter and sample
 		detected. "I"</li>
 </ul>
