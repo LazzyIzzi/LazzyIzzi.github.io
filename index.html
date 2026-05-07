@@ -3,179 +3,37 @@
 
 <h2 id="Top"></h2>
 
-<center><h2>Welcome to LazzyIzzi's GitHub Website.</h2></center>
-<h3>The projects below fall into three categories:</h3>
-<ol>
-<li><strong><a href="#JavaLibraries">Java Libraries</a> - Used for X-ray attenuation calculations, distance transforms, and user interface utilities.</strong></li>
-<li><strong><a href="#ImagejPlugins">ImageJ plugins</a> - Provide example user interfaces to the above libraries with an emphasis on improving quantitative analysis using computed tomography.</strong></li>
-<li><strong><a href="#ExcelVBAprojects">Excel VBA projects</a> - Workbooks and addins for X-ray calculations and <a href="CarShowHelperPages/CarShowHelper.html" target="_self">running a car show.</a></strong></li>
-</ol>
+<center><h2>Welcome to LazzyIzzi's GitHub Website.</h2>
+<h3>Project Categories:</h3></center>
+<strong>
+<ul>ImageJ plugins
+	<li style="padding: 10px;"><a href="CT_Tools.html" target="_self">CT_Tools</a> is a <a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database" target="_blank">NIST-XCOM</a> based package of plugins that provide a GUI for routine X-ray absorption calculations, and beam-hardening correction tools. <br>It also contains parallel and fan-beam projectors and a parallel-beam reconstructor for computed tomography. <br>CT_Tools is built on the MuMassCalculator library (see below). <br>The parallel reconstructor is built on Piotr Wendykier's <a href="https://github.com/wendykierp/JTransforms"
+								target="_blank">JTransforms 3.1</a> which must be downloaded separately. <br> To download CT_Tools.jar click <a href="https://github.com/LazzyIzzi/MuMassCalculator/releases/tag/v1.1.0" target="_blank">here</a>.</li>
+								
+	<li style="padding: 10px;"><a href="JTransforms.html" target="_self">IJ_JTransforms</a> is a package of plugins for Fourier, Sine, Cosine and Hartley, forward and inverse, 1D, 2D and 3D transforms of images, image stacks and plot data. These plugins were also built on JTransforms.</li>
+								
+	<li style="padding: 10px;"><a href="FloodTools.html" target="_self">FloodTools</a> a package of plugins for 3D porous media characterization, connectivity, and MICP simulation.  <br>FloodTools is built on  DistanceLib (see below). <br>To download FloodTools.jar click <a href="https://github.com/LazzyIzzi/ImageJPlugins_Flood_Tools/releases" target="_blank">here</a>.</li>
+			
+	<li style="padding: 10px;"><a href="PointFunctions.html" target="_self">PointFunctions</a>  PointFunctions for  1 and 2 point probability, lineal path, and chord length, and cumulative pore size distributions. <br>To download PointFunctions.jar click <a href="https://github.com/LazzyIzzi/ImageJPlugins_PointFunctions/releases/tag/v1.0.0-alpha" target="_blank">here</a>.</li>
+</ul>			
+		
+<ul>Java Libraries
+	<li style="padding: 10px;"><a href="MuMassCalculator.html" target="_self">MuMassCalculator</a> - Contains the NIST attenuation data and does the actual X-ray calculations. <br>To download MuMassCalculatorLib click Here.</li></li>
+	
+	<li style="padding: 10px;"> <a href="DistanceLib.html" target="_self">DistanceLib</a> - 2D and 3D Geodesic and Euclidean distance transforms, shortest path, and sphere drawing. Supports anisotropic pixels and voxels.  To download DistanceLib click Here.</li></li>
+	
+	<li style="padding: 10px;"> <a href="PointFunctions.html" target="_self">PointFunctions</a> - 2D and 3D n-point probability functions. <br>To download PointFunctionsLib.jar click Here.</li>
+	
+	<li style="padding: 10px;"><a href="ImageJAddins/GenericDialogAddin.html" target="_self">GenericDialogAddin</a> - For ImageJ plugin programmers only. A class for making ImageJ GenericDialogs more interactive. Lets you modify a GenericDialog in response to user inputs. For example, color an number field red if a value is out of range, or update Choices in response to a user's input. After adding a component to a dialog, GenericDialogAddin adds names to the dialog item and returns a field containing the items components. Your DialogListener can use the names to identify event sources and modify Dialog Components.
+</ul>
+	
+<ul>Excel VBA projects
+	<li style="padding: 10px;"><a href="CT_ReconPages/XrayCalculatorExcel.html" target="_self">NIST_XCOM.xlsm and NIST_XCOM.xlam</a> for X-ray calculations as well as a CT scanner setup solver tool.  <br>To download NIST_XCOM.xlsm or NIST_XCOM.xlam click Here.</li>
+	<li style="padding: 10px;"><a href="CarShowHelperPages/CarShowHelper.html" target="_self">CarShowHelper.xlsm</a> for running a car show. CSH has forms for registering, classifying, judging, and tally. It supports in popular vote, and judged shows.  CSH maintains a contacts list, and can print registration slips and dash cards. <br>To download CarShowHelper click Here.</li>
+</ul>
+</strong>
+
 <h4>All of my projects are covered  by the <a href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT License</a>.  Feel free to use them in your projects. I hope that you find them useful.
 <br> All the Best,
-
-<br><a href="AboutLazzyIzzi.html" target="_self"><em>LazzyIzzi</em></a><br></h4>
-
-<br>Questions, comments, bug reports? Contact
 <a href="mailto: Lazzyizzi27@gmail.com">Lazzyizzi27@gmail.com</a>.
-<br>Last Updated 7/22/2024
-
-All libraries and plugins are compiled with Java8 to maintain consistency with legacy ImageJ.
-
-<center><h3><a href="https://github.com/LazzyIzzi/" target="_blank">GitHub repositories</a></h3></center>
-
-
-<h3 id="JavaLibraries">Java Libraries</h3>
-	<ul>
-	<li><strong>MuMassCalculatorLib</strong> - A NIST-XCOM derived library for calculating photon photoelectric absorption, scatter and pair-production cross-sections between 1keV and 100GeV (Z&le;100).
-	
-		<ul>
-			<li>MuMassCalculator is not a NIST product but most of the data within it were downloaded from the NIST <a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database" target="_blank">XCOM</a> database and are <u>used with permission</u>. It should be noted that NIST retains copyright on the XCOM data and reserves the right to charge for its use in the future.  LazzyIzzi is not currently associated with NIST but was a guest researcher there many years ago. See the XCOM website for more information.</li>
-			<li>Additional MuMassCalculatorLib methods include computing the bremsstrahlung output of a conventional x-ray source using the <a href="https://en.wikipedia.org/wiki/Kramers%27_law" target="_blank">Kramers</a> equation and methods for simulating parallel and fan beam sinograms by scanning digital images of linear attenuation using either mono or polychromatic x-rays.</li>
-			<li>Click <a href="CT_ReconPages/MuMassCalculatorLib.html">here</a> for a brief tutorial on mass and linear attenuation.</li>
-			<li>Click <a href="MuMassCalculatorDocs/index.html">here</a> to view MuMassCalculatorLib's JavaDocs.</li>
-			<li>Click <a href="https://github.com/LazzyIzzi/MuMassCalculator/releases/tag/v1.1.0" target="_blank">here</a> to download MuMassCalculatorLib. Scroll down to the bottom of the linked page to download the jar file and/or source codes.</li>
-			<li>Installation Developers- Download the jar file to your IDE's preferred location and add to your build path.</li>
-			<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the CT_Tools ImageJ plugins for MuMassCalculatorLib use examples.</li>
-	 		
-	</ul>
-	<li><strong>DistanceMapLib</strong> - A library for computing 2D and 3D Geodesic and Euclidean Distances. Both support physical dimensions and anisotropic pixels/voxels.
-		<ul>
-			<li>This library also includes a geometry based simulation of mercury injection capillary pressure(MICP) measurements in a random porous network.</li>
-			<li>Click <a href="DistanceMapPages/DistanceMapLib.html">here</a> for a brief tutorial on Euclidean and geodesic transforms. </li>
-			<li>Click <a href="FloodFillDocs/index.html">here</a> to view DistancMapLib's JavaDocs.</li>
-			<li>Click <a href="https://github.com/LazzyIzzi/DistanceMapLib/releases" target="_blank">here</a> to download DistanceMapLib.
-			<li>Installation Developers- Download the jar file to your IDE's preferred location and add to your build path.</li>
-			<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the Flood_Tools ImageJ plugins for DistanceMapLib use examples.</li>
-		</ul>
-	</li>
-		<li><strong>Point Functions</strong> - A library for random Point Function statistics.
-	<ul>
-		<li>The library includes methods for Two-Point, Lineal Path, Chord Length distributions, and an experimental Pore Size distribution.</li>
-		<li>The above methods call public methods like randomPointPair, bresenhamLine, getLine etc.</li>
-		<li>Click <a href="PointFunctionDocs/index.html">here</a> to view Point Function's JavaDocs.</li>
-		<li>See the ImageJ plugins below for example plugins..</li>
-		<li>Click <a href="https://github.com/LazzyIzzi/PointFunctions/releases/tag/v1.0.0-alpha" target="_blank">here</a> to download PointFunctions.jar.
-		<li>Installation ImageJ Developers- Download the jar file to your IDE's preferred location and add to your imageJ project build path.</li>
-		<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the Point Function plugins for use examples.</li>
-	</ul></li>
-			<li><strong>Progress Bars</strong> - A class for creating and managing a window containing one or more progress bars.
-	<ul>
-		<li>Click <a href="ProgressBarsDocs/index.html">here</a> to view Progress Bar's JavaDocs.</li>
-		<li>Click <a href="https://github.com/LazzyIzzi/ProgressBars/releases" target="_blank">here</a> to download ProgressBars.jar.
-		<li>See the <a href="ProgressBarsPages/ProgressBars.html">ProgressBars</a> page for a use example.</li>
-		<li>Installation ImageJ Developers- Download the jar file to your IDE's preferred location and add to your imageJ project build path.</li>
-		<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ.</li>
-	</ul></li>
-	
-
-	
-	<li><strong>ImageJ Addins</strong> - A library that currently contains only GenericDialogAddin, to make it easier to write interactive <a href="https://imagej.net/ij/index.html" target="_blank">ImageJ</a> Generic Dialogs.
-	<ul>
-		<li>ImageJ Addins are intended to be used only in conjunction with ImageJ's GenericDialog classes.  Add-Ins are not plugins. They do not extend ImageJ's classes. They do not have a user interface. 
-		<li>ImageJ Addins make all of the methods of the generic dialog components available to the programmer, For example, the AddIn makes it easy to turn a numeric field red if the user's value is out of bounds or NaN.</li>
-		<li>Allows the programmer to refer to dialog components by name rather than by its position in the dialog.</li>
-		<li>Makes code more readable and easier to maintain.</li>
-		<li>Click <a href="ImageJAddins/GenericDialogAddinDocs/index.html">here</a> to view ImageJAddins's JavaDocs.</li>
-		<li>Click <a href="ImageJAddins/GenericDialogAddin.html">here</a> for ImageJAddins examples.</li>
-		<li>Click <a href="https://github.com/LazzyIzzi/ImageJAddins/releases" target="_blank">here</a> to download ImageJAddins.jar.
-		<li>Installation ImageJ Developers- Download the jar file to your IDE's preferred location and add to your imageJ project build path.</li>
-		<li>Installation ImageJ- Place the jar file in the plugins folder and restart ImageJ. See the AddIns examples or CT_Tools plugins for use examples.</li>
-	</ul></li>
-</ul>
-
-<br><a href="#Top"><strong>Back to top</strong></a>
-<hr>
-<!-- ********************************************************************************************* -->
-
-<h3 id="ImagejPlugins">ImageJ Plugins</h3>
-<ul>
-	<li><strong>CT_Tools</strong> - A collection of MuMassCalculatorLib based <a href="https://imagej.net/ij/index.html" target="_blank">ImageJ</a> plugins that together create a virtual CT system for creating, scanning, reconstructing, and evaluating digital X-ray images.
-	<ul>
-		<li><a href="CT_ReconPages/XraySpectrumPlotter.html" target="_self">X-ray Spectrum Plotter</a> - Plots NIST-XCOM based mass attenuation spectra in cm<sup>2</sup>/gm of a material for total, photoelectric, elastic, inelastic, and pair-production from 1keV to 100GeV.</li>
-		<li><a href="CT_ReconPages/XrayCalculator.html" target="_self">X-ray Calculator</a> - Reports interpolated attenuations at specific energies.</li>
-		<li><a href="CT_ReconPages/CtScannerSetup.html" target="_self">Scanner Setup</a> - A 1-D model that plots the X-ray intensity vs energy at key locations from source to detector. You can change the source energy, filtration, and detector composition and view the spectra and configuration metrics such as beam hardening, sample opacity etc. It provides guidance for setting up an actual scanner to minimize spectral artifacts.</li>
-		<li><a href="CT_ReconPages/MaterialTagger.html" target="_self">Material Tagger</a> - Creates "Tag Images" by segmenting an image into its material components.</li>
-		<li><a href="CT_ReconPages/MaterialsEditor.html" target="_self">Materials Editor</a> - Manages the Image Tags data File.</li>
-		<li><a href="CT_ReconPages/CTsimulator.html" target="_self">Image Projectors</a> - Re-project images of linear attenuation or configure a virtual conventional X-ray source CT-scanner to create parallel or fan-beam sinograms. Be sure to review the Image Projectors page "Additional Information" for performance limitations.</li>
-		<li><a href="CT_ReconPages/CtRecon.html" target="_self">CT Recon ParallelBeam</a> - <i>deprecated, has Windows dependencies</i>  - Reconstructs a parallel-beam sinogram to help determine if the result met expectations.</li>
-		<li><a href="CT_ReconPages/DFI_Recon.html" target="_self">DFI_JTransforms</a> - Reconstructs single and stacks of parallel-beam sinogram to help determine if the result meets expectations.</li>
-		<li><a href="CT_ReconPages/XrayLookupMuLin.html" target="_self">X-ray MuLin Lookup</a> - Reports X-ray energie(s) that will produce a material's measured linear attenuation.</li>
-		<li><a href="CT_ReconPages/XrayLookupRatio.html" target="_self">X-ray Ratio Lookup</a> - Reports X-ray energie(s) consistent with the measured attenuations of two different materials.</li>
-		<li><a href="CT_ReconPages/Linearization.html" target="_self">Linearization Fitter</a> - Interactively plots observed vs model sinograms attenuations calculated from a reconstructed and a tag image at a given X-ray energy. Reports 1-6 degree polynomial fits. The X-ray energy that gives the best fit is the effective energy for the measurement.</li>
-		<li><a href="CT_ReconPages/Linearization.html" target="_self">Apply Linearization</a> - Applies a selected polynomial to the sinogram used to reconstruct the observed reconstruction.</li>
-		<li>Show_CT_Properties - Displays tables of scan, linearization, and reconstruction properties for images created by CT_Tools plugins.</li>
-		<li>Set_Image_ScaleFactor - Sets a scale factor image property for images not created by CT_Tools plugins.</li>
-		<li>Download and Installation: CT_Tools bundled with MuMassCalculator, GenericDialogAddins <a href="https://github.com/LazzyIzzi/ImageJPlugins_CT_Tools/releases" target="_blank">ImageJ_CT_ToolsBundle_Java8.jar</a> to the ImageJ plugins folder.
-			<ol>	
-				<li>From the same location, Download Base_Recon.exe and place it in the plugins folder.</li>
-				<li>Also download DefaultMaterials.csv. Create a "DialogData" folder in the ImageJ plugins folder and put DefaultMaterials.csv in that folder.</li>
-				<li>Launch ImageJ.</li>
-			</ol>
-	</ul>
-	
-	<li><strong>FloodTools</strong> - A collection of DistanceMapLib-based ImageJ plugins implement the distance transforms and model non-wetting invasion percolation. All methods support asymmetric pixels/voxel sizes and physical dimensions.
-		<ul>
-			<li><a href="DistanceMapPages/ExactEuclidean.html" target="_self">Exact Euclidean</a> - Exact Euclidean distance map of 2D and 3D segmented images using Danielsson&#39;s algorithm.</li>
-			<li><a href="DistanceMapPages/EuclideanSpheres.html" target="_self">Euclidean Spheres</a> - Draw single and multiple Euclidean spheres.</li>
-			<li><a href="DistanceMapPages/GeodesicTransform.html" target="_self">Geodesic Transform</a> - Geodesic distances, tortuosity and shortest path plugins for 2D and 3D segmented images using distance propagation</li>
-			<li><a href="DistanceMapPages/FloodFill.html" target="_self">FloodFill 3D</a> - A simple gray scale flooder.</li>
-			<li><a href="DistanceMapPages/PorosityToHybrid.html" target="_self">Porosity To Hybrid</a> - Converts a porosity image to a hybrid porosity image.</li>
-			<li><a href="DistanceMapPages/HybridFloodFill.html" target="_self">HybridFlood</a> - Geometry based simulation of non-wetting imbibition in an image of a random porous medium.</li>
-			<li><a href="DistanceMapPages/HybridFloodSearchScan.html" target="_self">HybridFlood Search and Scan</a> - Bisection Search to find the &quot;Breakthrough&quot; pore radius or &quot;Breakthrough&quot; porosity in an image of a random porous medium, or flooded volume by scanning at fixed radius steps.</li>
-			<li><a href="DistanceMapPages/AddPoreLiner.html" target="_self">Add Pore Liner</a> - Lines all resolved pores with a layer of unresolved porosity.</li>
-			<li>Installation: Flood_Tools bundled with DistanceLib
-			<ol>
-				<li>Download <a href="https://github.com/LazzyIzzi/ImageJPlugins_Flood_Tools/releases" target="_blank">ImageJ_Flood_ToolsBundle_Java8.jar</a> to the ImageJ/plugins folder.</li>
-				<li>Launch ImageJ</li>
-			</ol>
-		</ul>
-		
-	<li><strong>Point Functions</strong> - A collection of DistanceMapLib-based ImageJ plugins implement the distance transforms and model non-wetting invasion percolation. All methods support asymmetric pixels/voxel sizes and physical dimensions.
-		<ul>
-			<li><a href="PointFuncPages/TwoPoint.html" target="_self">Two-Point Correlation</a> - probability that two points separated by a distance D will lie in the same image component.</li>
-			<li><a href="PointFuncPages/LinealPath.html" target="_self">Lineal Path Function</a> - probability that a line of length L will lie completely in the same image component.</li>
-			<li><a href="PointFuncPages/ChordLength.html" target="_self">Chord Length Distribution</a> - probability density of finding a chord of length L in the interval L&plusmn;dL in t the selected image component.</li>
-			<li><a href="PointFuncPages/PoreSize.html" target="_self">Pore Size Distribution</a> - <i>experimental</i> probability density of finding a pore of radius R in the interval R&plusmn;dR in the selected component.</li>
-<li>Installation: Point Functions bundle
-			<ol>
-				<li>Download <a href="https://github.com/LazzyIzzi/ImageJPlugins_PointFunctions/releases/tag/v1.0.0-alpha" target="_blank">ImageJ_PointFunctionsBundle.jar</a> to the ImageJ/plugins folder.</li>
-				<li>Launch ImageJ</li>
-			</ol>
-		</ul>	
-			
-</ul>
-
-<br><a href="#Top"><strong>Back to top</strong></a><br>
-<hr>
-<!-- ********************************************************************************************* -->
-<h3 id="ExcelVBAprojects">Excel VBA projects</h3>	
-<h3> </h3><em>Special Note: Downloading Excel add-ins and macro enabled workbooks can be dangerous due to the possibility of embedded malware. Newer versions of Excel provide significant protection. Please take appropriate precautions before enabling any downloaded Excel workbook.</em>
-<ul>
-	<li><strong>NIST_XCOM.xlam and NIST_XCOM.xlsm</strong> - An Excel Add-in(xlam) and Workbook(xlsm) for NIST-XCOM derived photon cross-sections and other X-ray calculations. The NIST <a href="https://www.nist.gov/pml/xcom-photon-cross-sections-database" target="_blank">XCOM</a> database is <u>used with permission</u>. It should be noted that NIST retains copyright on the XCOM data and reserves the right to charge for its use in the future.  See the XCOM website for more information.
-		<ul>
-			<li>Click <a href="https://github.com/LazzyIzzi/MuMassCalculatorExcel/blob/main/NIST_XCOM.xlam" target="_blank">here</a> to download NIST_XCOM.xlam</li>
-			<li>Installation: Click <a href="CT_ReconPages/XrayCalculatorExcel.html" target="_self"> here</a> for NIST_XCOM.xlam and NIST_XCOM.xlsm installation instructions and usage information. </li>
-		</ul>
-	<li> <strong><a href="CarShowHelperPages/CarShowHelper.html" target="_self"> Car Show Helper</a></strong>- An Excel application for managing car shows. A menu-driven record keeper for registration, classification, judging, and tally that maintains a ever-green contact list of show participants.
-	<ul>
-		<li>Click <a href="https://github.com/LazzyIzzi/CarShowHelper-Excel/releases/tag/v4.0.2_beta" target="_blank">here</a> to download the CarShowHelper Workbook</li>
-		<li>Click <a href="CarShowHelperPages/CarShowHelper.html" target="_self"> here</a> for CarShowHelper usage information. </li>
-		<li>Installation: After verifying that the VBA code in CarShowHelper satisfies your security requirements, open CarShowHelper with Excel and enable the contents(macros).
-	</ul></li>
-</ul>
-
-<br><a href="#Top"><strong>Back to top</strong></a>
-<hr>
-<!-- ********************************************************************************************* -->
-
-<small> 1. Why libraries? The libraries contain no ImageJ
-	dependencies for better performance and can be used anywhere. Many
-	thanks to all who built the ImageJ UI to plug into. <br> 2.
-	Simulating bremsstrahlung sinograms from a digital image requires
-	calculating the linear attenuation of each material in the image at
-	many different energies. Tags are unique integer values assigned to a
-	material and are used to create a look-up table of that material's
-	properties.
-</small>
-<br>
- 
+<br>Last Updated 4/30/2027

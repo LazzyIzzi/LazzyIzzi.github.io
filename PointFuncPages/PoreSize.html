@@ -1,5 +1,7 @@
 <title>Pore Size Distribution</title>
 <link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+<button onclick="history.back()">Back</button>
+<a href="../indexNew.html"><button>Home Page</button></a>
 
 <h2>Pore Size Distribution</h2>
 
@@ -9,10 +11,6 @@
 
 <h3>Requires ImageJ 1.53k or higher, Statistics.jar, ImageJAddins.jar.</h3> 
 <br>See the Home page for PointFunctions/PoreSize download and installation instructions.
-
-<h2>
-	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
-</h2>
 
 <h3>ImageJ plugin for the computing equivalent spherical Pore Size Distribution using the volume/surface ratio within multiple random sub-volumes.</h3>
 
@@ -71,7 +69,4 @@
 <h3>Utility and Limitations</h3>
 <p>The plugin gives appropriate results for test volumes containing relatively uniform random overlapping Euclidean spheres when the sub-volume size is larger than the typical sphere size.  Similar results were obtained for image of well-sorted sandstones. The plugin did not perform well in more diverse collections of pore sizes.  In that case, a larger sub-volume is required greatly increasing execution time and decreased pore-size resolution. In the limit of the sub-volume equaling the entire volume the pore radius collapses to a single value. In the example above, the large pore in slice 175 required a large sub-volume to obtain a reasonable result. Small sub-volumes fit mostly within the pore and contained little interface area returned very unrealistic pore radii.</p>
 
-<h2>
-	<a href="../index.html" target="_self"><em><strong>Home</strong></em></a>
-</h2>
 

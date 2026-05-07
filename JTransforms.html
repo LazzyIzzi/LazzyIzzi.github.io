@@ -1,0 +1,165 @@
+<title>IJ_JTransforms</title>
+<link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+<button onclick="history.back()">Back</button>
+<a href="indexNew.html"><button>Home Page</button></a>
+
+
+
+<h1>ImageJ plugin  IJ_JTransforms</h1> 
+<h3>Requires ImageJ 1.53k or higher, ImageJAddins.jar, <a href="https://github.com/wendykierp/JTransforms" target="_blank">JTransforms-3.1-with-dependencies.jar</a>.</h3> 
+See the Home page for IJ_JTransforms download and installation instructions.
+
+<ul>
+	<li><a href="#Forward FFT"><strong>Forward FFTs</strong></a></li>
+	<li><a href="#Inverse FFT"><strong>Inverse FFTs</strong></a></li>
+	<li><a href="#FFT Operations"><strong>FFT Operations</strong></a></li>
+	<li><a href="#Discrete Transforms"><strong>Discrete Transforms</strong></a></li>
+	<li><a href="#Plot Transforms"><strong>Plot Transforms</strong></a></li>
+	<li><a href="#Plot Operations"><strong>Plot Operations</strong></a></li>	
+</ul>
+
+	
+<h3> Compute the Fourier, Sine, Cosine, and Hartley, forward and inverse tranforms of images, image Stacks, 3D images, and plots.</h3>
+<h3> Compute Fourier correlation, convolution and deconvolution</h3>
+	
+<h3>Easy to use: Clone this project and add your own plugins using the IJJT_fft wrapper class to hide the conversions between ImageJ data formats and JTransforms sequenced format.
+<br>Examples:
+<pre>
+	//instantiate the wrapper class and custom return class
+	IJJT_fft ijft = new IJJT_fft();
+	ComplexArr cpa = ijft.new ComplexArr();	
+	
+	//2D fft of current slice of an image stack
+	Object sliceData  =  imp.getStack().getProcessor(curSlice).getPixels();
+	cpa= ijft.realForward_2D(sliceData,width,height,centered,magPhase);								
+	reImp.getProcessor().setPixels(cpa.re);
+	imImp.getProcessor().setPixels(cpa.im);
+</pre></h3>
+
+<h3><pre>
+	//2D convolution of the current slice of a target stack
+	//with the current slice of a kernel stack
+	int targSlice = targImp.getCurrentSlice();
+	int kernSlice = kernImp.getCurrentSlice();
+	Object oTarg = targImp.getStack().getProcessor(targSlice).getPixels();
+	Object oKern = kernImp.getStack().getProcessor(kernSlice).getPixels();
+	cpa = ijft.fourierOperation_2D("convolve", oTarg, oKern, targWidth, targHeight);
+	corrImp = IJ.createImage(newTitle,targWidth, targHeight, 1, 32);
+	corrImp.getProcessor().setPixels(cpa.re);
+</pre></h3>
+<h3><pre>
+	//3D FFT of a stack
+	Object[] oVolData = imp.getStack().getImageArray();									
+	cpa = ijft.realForward_3D(oVolData, width, height, depth, centered, magPhase);			
+	reImp.getStack().setVoxels(0, 0, 0, width, height, depth, cpa.re);
+	imImp.getStack().setVoxels(0, 0, 0, width, height, depth, cpa.im);
+</pre></h3>
+
+
+<h3>Support: 8, 16, and 32 bit gray scale images. Inputs are converted to double precision. Outputs are converted to 32 bit.</h3>
+<h3>Limitations:
+	<ul>
+		<li>Data dimensions must be even values. <small>Not a JTransforms limitation, restricting methods to even dimension values significantly simplifed this project</small></li>
+		<li>Deconvolution may require advanced techniques for noisy data</li>
+	</ul> </h3>
+
+		
+<hr>
+
+<h3 id="Forward FFT">Forward FFT</h3>
+<center><figure class="easyimage easyimage-full"><img alt="" src="JTransformsImages/FowardFFT.png" width="300" /></center>
+<!--<figcaption><strong>Forward FFT</strong></figcaption></figure>-->
+<h4><ul>
+	<li>Compute centered FFT - Places the DC term at the center of the transform image. Default is DC term at the (0,0) coordinate</li>
+	<li>Show as Magnitude and Phase - Displays FFT as magnitude and phase. Default is real and imaginary.</li>
+	<li>FFT - Selections are "Current Slice 2D", "All Slices 2D", and "All Slices 3D"</li>	
+	<li>Output is a new image(s) with the transform result.</li>
+</ul></h4>
+
+<a href="#top">Back to top</a>
+<hr>
+
+
+<h3 id="Inverse FFT">Inverse FFT</h3>	
+<center><figure class="easyimage easyimage-full"><img alt="" src="JTransformsImages/InverseFFT.png" width="600" /></center>
+<!--<figcaption><strong>Inverse FFT</strong></figcaption></figure></center>-->
+<h4><ul>
+	<li>Real or Magnitude Image - can be an ImageJ image or Stack</li>
+	<li>Imaginary or Phase Image - can be an ImageJ image or Stack</li>
+	<li>FFT - Selections are "Current Slice 2D", "All Slices 2D", and "All Slices 3D".  Select the correct one for the input images.</li>	
+	<li>Input is Centered FFT - Select the correct one for the input images.</li>
+	<li>Input is Magnitude and Phase -Select the correct one for the input images.</li>
+	<li>Output is a new image(s) with the transform result.</li>
+</ul></h4>
+
+<a href="#top">Back to top</a>
+<hr>
+
+
+<h3 id="FFT Operations">FFT Operations</h3>	
+<center><figure class="easyimage easyimage-full"><img alt="" src="JTransformsImages/FFT_Operations.png" width="500" /></center>
+<!--<figcaption><strong>FFT Operations</strong></figcaption></figure></center>-->
+<h4><ul>
+	<li>Target Image/Stack - can be an ImageJ image or Stack, the kernel will be applied to this image</li>
+	<li>Kernel Image/Stack - can be an ImageJ image or Stack. Apply this image to the target</li>
+	<li>Target and Kernel can be the same image, for example, autocorrelation, useful in texture analysis </li>
+	<li>FFT Operations- Selections are "correlate", "convolve", and "deconvolve".</li>	
+	<li>Target and Kernel - Formats for the respective input images. Selections are:
+		<ul>
+			<li>Slice - Slice 2D - Use the current target and kernel slices.</li>
+			<li>Stack - Slice 2D - Apply the current kernel to every slice in a target stack.</li>
+			<li>Stack - Stack 2D - Apply the kernel to the target slice by slice.</li>
+			<li>Stack - Stack 3D - Apply the 3D kernel to the 3D target.</li>
+		</ul>
+	<li>Output is a new image(s) with the operation result.</li>
+</ul></h4>
+
+<a href="#top">Back to top</a>
+<hr>
+
+
+<h3 id="Discrete Transforms">Discrete Transforms</h3>	
+<center><figure class="easyimage easyimage-full"><img alt="" src="JTransformsImages/DiscreteTransforms.png" width="300" /></center>
+<!--<figcaption><strong>Discrete Transforms</strong></figcaption></figure></center>-->
+<h4><ul>
+	<li>Data - Selections are "Current Slice 2D", "All Slices 2D", and "All Slices 3D"</li>
+	<li>Transform - Selections are "Cosine", "Sine", and "Hartley".</li>	
+	<li>Direction - foward or inverse.</li>
+	<li>Image sizes may be odd values</li>
+	<li>Output is a new image(s) with the transform result.</li>
+</ul></h4>
+
+<a href="#top">Back to top</a>
+<hr>
+
+<h3 id="Plot Transforms">Plot Transforms</h3>	
+<center><figure class="easyimage easyimage-full"><img alt="" src="JTransformsImages/Plot_Transforms.png" width="400" /></center>
+<!--<figcaption><strong>Plot Transforms</strong></figcaption></figure></center>-->
+<h4><ul>
+	<li>Plot - Select the plot that has the data to transform.</li>
+	<li>Real Data - Select the data from the selected plot.</li>
+	<li>Imaginary Data - Only visible for inverse Fourier. </li>
+	<li>Transform - Selections are "Fourier", "Cosine", "Sine", and "Hartley"</li>	
+	<li>Direction - Foward or Inverse.</li>
+	<li>Compute Centered Transform - Only visible for Fourier and Hartley Transforms</li>
+	<li>Show as Magnitude and Phase - Only visible for Fourier Transforms</li>
+	<li>Output is a new plot with the operation result.</li>
+</ul></h4>
+
+<a href="#top">Back to top</a>
+<hr>
+
+<h3 id="Plot Operations">Plot Operations</h3>	
+<center><figure class="easyimage easyimage-full"><img alt="" src="JTransformsImages/Plot_Operations.png" width="400" /></center>
+<!--<figcaption><strong>Plot Operations</strong></figcaption></figure></center>-->
+<h4><ul>
+	<li>Target Plot - Select the plot that has the data to operate on.</li>
+	<li>Target Data - Select the data from the target plot.</li>
+	<li>Kernel Plot - Select the plot that has the data to apply to the target.</li>
+	<li>kernel Data - Select the data to apply from the kernel plot.</li>
+	<li>Operation - Selections are "correlate", "convolve", and "deconvolve" </li>
+	<li>Output is a new plot with the operation result.</li>
+</ul></h4>
+	
+<a href="#top">Back to top</a>
+	

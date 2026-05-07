@@ -16,7 +16,8 @@
 	Download GenericDialogAddin from <a href="https://github.com/LazzyIzzi/ImageJAddins/releases/tag/v1.0.0-beta"
 		target="_blank">here</a>.</h3>
 
-<h2>GenericDialogAddin.addSpinner() method to add "+" and "-" buttons and an increment to a GenericDialog.addNumericField() component</h2>
+<h3><figure class="easyimage easyimage-full"><img alt="" src="GenericDialogAddinImages\New.png" width="50" />
+GenericDialogAddin.addSpinner() method to add "+" and "-" buttons and an increment to a GenericDialog.addNumericField() component</h3>
 Jump to <a href="#addSpinnerExample"><strong>addSpinner</strong></a> example.<br>
 
 <hr>
@@ -38,7 +39,9 @@ Jump to <a href="#addSpinnerExample"><strong>addSpinner</strong></a> example.<br
 	that contains references to the component created by the
 	<u>immediately</u> preceding call to a GenericDialog addXxxx method. The Field
 	references give access to the component's methods independent of its
-	creation order in the dialog.</p>	
+	creation order in the dialog.</p>
+<p>Important note: While dialog values are available from the GenericDialogAddin fields, 
+	ImageJ requires use of the .getNextXXXX() methods to make the plugin Macro recordable.</p>	
 <hr>
 
 <h3>A colorful example using GenericDialogAddin Classes</h3>
@@ -83,328 +86,359 @@ Note:
 
 <pre>
 	<strong>
-import java.awt.*;
-import java.awt.event.*;
-import jhd.ImageJAddins.GenericDialogAddin;
-import jhd.ImageJAddins.GenericDialogAddin.*;
-import ij.IJ;
-import ij.plugin.PlugIn;
-import ij.gui.*;
+		package Addin_Examples;
 
-public class GenericDialogAddin_Example implements PlugIn, DialogListener, ActionListener {
+		import java.awt.*;
+		import java.awt.event.*;
+		import jhd.ImageJAddins.GenericDialogAddin;
+		import jhd.ImageJAddins.GenericDialogAddin.*;
+		import ij.IJ;
+		import ij.plugin.PlugIn;
+		import ij.gui.*;
 
-	final String[] makes = {"AlfaRomeo","AMC","Buick","Chevrolet","Chrysler","Ford","Mercury","Pontiac"};
+		public class GenericDialogAddin_Example2 implements PlugIn, DialogListener, ActionListener {
 
-	final String[] AlfaRomeo = {"33","75","90","145","146","147","155","156","158","159","164","166"};
-	final String[] AMC ={"Ambassador","Amitron","AMX","AMX-GT","Budd XR-400","Cavalier","Concord","Eagle"};
-	final String[] Buick = {"Apollo","Cascada","Centurion","Century","Electra","Enclave","Encore","Envision"};
-	final String[] Chevrolet = {"Bel Air","Beretta","Biscayne","Bison","Blazer","Bolt","Brookwood","Bruin","Camaro","Cameo"};
-	final String[] Chrysler = {"Airflow","Airstream","Alpine","Aspen","Avenger","Cirrus","Concorde","Conquest"};
-	final String[] Ford = {"Contour","Corcel","Corsair","Cortina","Cougar","Country Sedan","Country Squire","Courier"};
-	final String[] Mercury = {"Bobcat","Capri","Comet","Cougar","Custom Monterey","Cyclone","Grand Marquis","LN7","Lynx","Marauder"};
-	final String[] Pontiac = {"2+2","2000 Sunbird","2000","6000","Acadian","Astre","Aztek","Bonneville","Catalina","Chieftain","Custom S",};
-	public enum bodyType {CONVERTIBLE,COUPE,HARD_TOP,ROADSTER,SEDAN,SPORTS_CAR,SUV,TRUCK,VAN,WAGON};
-	
+			final String[] makes = {"AlfaRomeo","AMC","Buick","Chevrolet","Chrysler","Ford","Mercury","Pontiac"};
 
-	CheckboxField mowLawnCBF;
-	NumericField houseNumNF;
-	CheckboxField washCarCBF;
-	StringField licenseSF;
-	ChoiceField carMakeCF;
-	ChoiceField carModelCF;
-	ChoiceField bodyTypeCF;
-	SliderField carLengthSF;
-	SliderField carWidthSF;
-	ButtonField clickMeBF,dontClickMeBF;
-	TextAreasField testTextTAF;
-	RadioButtonField makesRBF,modelsRBF;
-	MessageField msg1MF,msg2MF;
-	PathField filePF,dirPF;
-	
-	
-	@Override
-	public void run(String arg) {
-		GenericDialogAddin gda = new GenericDialogAddin();
-		
-		//GenericDialog gd= new GenericDialog("Checkbox Test");
-		GenericDialog gd=  GUI.newNonBlockingDialog("Checkbox Test");
-		
-		gd.addMessage("A useless Dialog to play with");
-		msg1MF = gda.getMessageField(gd,"msg1");		
-		msg1MF.getLabel().setFont(new Font(Font.DIALOG, Font.ITALIC+Font.BOLD, 14));
-		msg1MF.getLabel().setForeground(Color.RED);
-		
-		gd.addMessage("TestMessage2", 	new Font(Font.DIALOG, Font.BOLD, 12), Color.RED);
-		msg2MF = gda.getMessageField(gd,"msg2");				
-		msg2MF.getLabel().setFont(new Font(Font.DIALOG, Font.ITALIC+Font.BOLD, 14));
-		msg2MF.getLabel().setForeground(Color.GREEN);
-		
-		gd.addDirectoryField("Select Directory", IJ.getDir("home")+"gdpExampleDir");
-		dirPF = gda.getPathField(gd,null, null, "dirPath", null);
-		
-		gd.addFileField("Write_to_File", IJ.getDir("home")+"gdpExampleData");
-		filePF = gda.getPathField(gd,null, null, "filePath", null);
-		
-		
-		gd.addCheckbox("Mow_Lawn", true);
-		mowLawnCBF = gda.getCheckboxField(gd,"mowLawCB");
-		
-		gd.addNumericField("House_Number", 1275);
-		houseNumNF = gda.getNumericField(gd,"houseNumLBL", "houseNumNF");
-		houseNumNF.getNumericField().setColumns(12);
-		houseNumNF.getNumericField().setForeground(Color.ORANGE);
-		
-		gd.addCheckbox("Wash_Car", false);
-		washCarCBF = gda.getCheckboxField(gd,"washCarCB");
-		
-		gd.addStringField("Car_License", "BNL X2B");
-		licenseSF = gda.getStringField(gd,"licenseLBL", "licenseTF");
-		licenseSF.getTextField().setColumns(12);
-		
-		gd.addChoice("Car Make", makes, makes[0]);
-		carMakeCF = gda.getChoiceField(gd,"carMakeLBL", "carMakeChoice");
-		carMakeCF.getChoice().setPreferredSize(new Dimension(110,10));
-		
-		gd.addChoice("Car_Model", AlfaRomeo, AlfaRomeo[0]);
-		carModelCF = gda.getChoiceField(gd,"carModelLBL", "carModelChoice");
-		carModelCF.getChoice().setPreferredSize(new Dimension(110,10));
-		
-		gd.addEnumChoice("Body_Type",bodyType.SPORTS_CAR);
-		bodyTypeCF = gda.getChoiceField(gd,"bodyTypeLBL", "bodyTypeChoice");
-		bodyTypeCF.getChoice().setPreferredSize(new Dimension(110,10));
-				
-		gd.addButton("Click Me", this);
-		clickMeBF = gda.getButtonField(gd,"clickMeBtn");
-				
-		gd.addSlider("Car_Length (ft)", 0, 50, 25);
-		carLengthSF = gda.getSliderField(gd,"carLenLBL", "carLengthSB", "carLengthTF");
-		
-		gd.addSlider("Car_Width (ft)", 0, 10, 5);
-		carWidthSF = gda.getSliderField(gd,"carWidthLBL", "carWidthSB", "carWidthTF");
-		
-		gd.addButton("Don't Click Me", this);
-		dontClickMeBF = gda.getButtonField(gd,"dontClickMeBtn");
-		
-		gd.addTextAreas("Text1", "Text2", 5, 15);
-		testTextTAF = gda.getTextAreasField(gd,"textArea1", "textArea2");
-		testTextTAF.getTextArea1().setBackground(new Color(255, 215, 0));
-		testTextTAF.getTextArea2().setBackground(new Color(0, 87, 183));
-		testTextTAF.getTextArea2().setForeground(new Color(255, 255, 255));
-		
-		gd.addRadioButtonGroup("Makes", makes, 0, 3, makes[0]);
-		makesRBF = gda.getRadioButtonField(gd,"makes","makesGroup");
-		makesRBF.getPanel().setBackground(Color.PINK);
-		
-		String make =carMakeCF.getChoice().getSelectedItem();
-		String[] models =carModelCF.getChoices();		
-		gd.addRadioButtonGroup(make +" Models", models, 0, 3, models[0]);
-		modelsRBF = gda.getRadioButtonField(gd,"models","modelsGroup");
-		gd.addDialogListener(this);
-		
-		//gd.repaint();
-		//gd.pack();
-		gd.showDialog();
-		
-		if(gd.wasOKed())
-		{	//Note: each type must be called in its order in the dialog
-			IJ.log("Dialog values using GenericDialog.getNext.... methods");
-			IJ.log("Booleans*****");
-			IJ.log("Mow Lawn=" + gd.getNextBoolean());
-			IJ.log("Wash Car=" + gd.getNextBoolean());
-			IJ.log("Numbers*****");
-			IJ.log("House Number=" + gd.getNextNumber());
-			IJ.log("Car Length=" + gd.getNextNumber());
-			IJ.log("Car Width=" + gd.getNextNumber());
-			IJ.log("Strings*****");			
-			IJ.log("Directory path=" + gd.getNextString());
-			IJ.log("File path=" + gd.getNextString());
-			IJ.log("License Number=" + gd.getNextString());
-			IJ.log("Choices*****");						
-			IJ.log("Car Make=" + gd.getNextChoice());
-			IJ.log("Car Model=" + gd.getNextChoice());
-			IJ.log("Body Type=" + gd.getNextChoice());
-			IJ.log("Texts*****");									
-			IJ.log("Text1=" + gd.getNextText());
-			IJ.log("Text2=" + gd.getNextText());
-			IJ.log("Radio Buttons*****");												
-			IJ.log("Car Make=" + gd.getNextRadioButton());
-			IJ.log("Car Model=" + gd.getNextRadioButton());
+			final String[] AlfaRomeo = {"33","75","90","145","146","147","155","156","158","159","164","166"};
+			final String[] AMC ={"Ambassador","Amitron","AMX","AMX-GT","Budd XR-400","Cavalier","Concord","Eagle"};
+			final String[] Buick = {"Apollo","Cascada","Centurion","Century","Electra","Enclave","Encore","Envision"};
+			final String[] Chevrolet = {"Bel Air","Beretta","Biscayne","Bison","Blazer","Bolt","Brookwood","Bruin","Camaro","Cameo"};
+			final String[] Chrysler = {"Airflow","Airstream","Alpine","Aspen","Avenger","Cirrus","Concorde","Conquest"};
+			final String[] Ford = {"Contour","Corcel","Corsair","Cortina","Cougar","Country Sedan","Country Squire","Courier"};
+			final String[] Mercury = {"Bobcat","Capri","Comet","Cougar","Custom Monterey","Cyclone","Grand Marquis","LN7","Lynx","Marauder"};
+			final String[] Pontiac = {"2+2","2000 Sunbird","2000","6000","Acadian","Astre","Aztek","Bonneville","Catalina","Chieftain","Custom S",};
+			public enum bodyType {CONVERTIBLE,COUPE,HARD_TOP,ROADSTER,SEDAN,SPORTS_CAR,SUV,TRUCK,VAN,WAGON};
 			
-			IJ.log("*******************************************");
-			//Note: types can be called in arbitrary order
-			IJ.log("Dialog values using Field.... methods");
-			IJ.log("Booleans*****");
-			IJ.log("Mow Lawn=" + mowLawnCBF.getCheckBox().getState());
-			IJ.log("Wash Car=" + washCarCBF.getCheckBox().getState());
-			IJ.log("Numbers*****");
-			IJ.log("House Number=" + houseNumNF.getNumber());
-			IJ.log("Car Length=" + carLengthSF.getTextField().getText());
-			IJ.log("Car Width=" + carWidthSF.getTextField().getText());
-			IJ.log("Strings*****");			
-			IJ.log("Directory path=" + dirPF.getTextField().getText());
-			IJ.log("File path=" + filePF.getTextField().getText());
-			IJ.log("License Number=" + licenseSF.getTextField().getText());
-			IJ.log("Choices*****");						
-			IJ.log("Car Make=" + carMakeCF.getChoice().getSelectedItem());
-			IJ.log("Car Model=" + carModelCF.getChoice().getSelectedItem());
-			IJ.log("Body Type=" + bodyTypeCF.getChoice().getSelectedItem());
-			IJ.log("Texts*****");									
-			IJ.log("Text1=" + testTextTAF.getTextArea1().getText());
-			IJ.log("Text2=" + testTextTAF.getTextArea2().getText());
-			IJ.log("Radio Buttons*****");												
-			IJ.log("Car Make=" + makesRBF.getSelectedItem());
-			IJ.log("Car Model=" + modelsRBF.getSelectedItem());
-		}
-	}
 
-	@Override
-	public boolean dialogItemChanged(GenericDialog gd, AWTEvent e)
-	{
-		if(e!=null)
-		{
-			Object src = e.getSource();
-			if(src instanceof Choice)
-			{
-				Choice choice = (Choice)src;
-				switch(choice.getName())
-				{
-				case "carMakeChoice":
-					String carMake = choice.getSelectedItem();
-					IJ.log("Car Make="+carMake);
-					String[] names=null;
-					switch(carMake)
-					{
-					case "AlfaRomeo":names = AlfaRomeo; break;
-					case "AMC":names = AMC; break;
-					case "Buick":names = Buick; break;
-					case "Chevrolet":names = Chevrolet; break;
-					case "Chrysler":names = Chrysler; break;
-					case "Ford":names = Ford; break;
-					case "Mercury":names = Mercury; break;
-					case "Pontiac":names = Pontiac; break;					
-					}
-					carModelCF.setChoices(names);
-					gd.pack();
-					break;
-				case "carModelChoice":
-						IJ.log("Car Model="+choice.getSelectedItem());
-					break;			
-				case "bodyTypeChoice":
-					IJ.log("Body Type="+choice.getSelectedItem());
-				break;			
-				}
-			}
-			else if(src instanceof TextField)
-			{
-				TextField tf= (TextField)src;
-				String text = tf.getText();
-				switch(tf.getName())
-				{
-				case "houseNumNF":
-					IJ.log("houseNum="+text);
-					break;
-				case "licenseTF":
-					IJ.log("license="+text);
-					break;
-				case "carWidthTF":
-					IJ.log("Car Width="+text);								
-					break;
-				case "carLengthTF":
-					IJ.log("Car Length="+text);								
-					break;
-				case "filePath":
-					IJ.log("File Path="+text);								
-					IJ.log ( filePF.getPanel().getName());		
-					IJ.log ( filePF.getTextField().getText());
-					IJ.log ( filePF.getButtonLabel());
-					IJ.log ( filePF.getLabel().getText());
-					break;
-				case "dirPath":
-					IJ.log("Directory Path="+text);								
-					IJ.log ( dirPF.getPanel().getName());		
-					IJ.log ( dirPF.getTextField().getText());
-					IJ.log ( dirPF.getButtonLabel());
-					IJ.log ( dirPF.getLabel().getText());
-					break;
-				}
-			}
-			else if(src instanceof Checkbox)
-			{
-				Checkbox ckbx= (Checkbox)src;
-				String ckbxName = ckbx.getLabel();
-				String state = Boolean.toString(ckbx.getState());
-				IJ.log("Checkbox Name=" +ckbxName);
-				String[] items=null;
-				switch(ckbxName)
-				{
-				case "Wash Car":
-					IJ.log("Mow Lawn="+state);								
-					break;
-				case "Mow Lawn":
-					IJ.log("Wash Car="+state);								
-					break;
-					//if it's a makes radio button, load the models
-				case "AlfaRomeo":items = AlfaRomeo; break;
-				case "AMC":items = AMC; break;
-				case "Buick":items = Buick; break;
-				case "Chevrolet":items = Chevrolet; break;
-				case "Chrysler":items = Chrysler; break;
-				case "Ford":items = Ford; break;
-				case "Mercury":items = Mercury; break;
-				case "Pontiac":items = Pontiac; break;					
-				}
-				if(items!=null)
-				{
-					//modelsRBF.setLabel(ckbxName + " Models");
-					modelsRBF.getLabel().setText(" Models");
-					modelsRBF.setRadioButtons(items, 0, 3);
-					//Resize the dialog so everything fits
-					gd.pack();
-				}
-			}
-			else if(src instanceof TextArea)
-			{
-				TextArea ta = (TextArea)src;
-				String taName = ta.getName();
-				switch(taName)
-				{
-				case "textArea1":					
-					IJ.log("TextArea1="+ta.getText());
-					break;
-				case "textArea2":
-					IJ.log("TextArea2="+ta.getText());
-					break;
-				}
-			}
-		}		
-		return true;
-	}
+			CheckboxField mowLawnCBF;
+			NumericField houseNumNF;
+			CheckboxField washCarCBF;
+			StringField licenseSF;
+			ChoiceField carMakeCF;
+			ChoiceField carModelCF;
+			ChoiceField bodyTypeCF;
+			SliderField carLengthSF;
+			SliderField carWidthSF;
+			ButtonField clickMeBF,dontClickMeBF;
+			TextAreasField testTextTAF;
+			RadioButtonField makesRBF,modelsRBF;
+			MessageField msg1MF,msg2MF;
+			PathField filePF,dirPF;
+			
+			GenericDialog gd= new GenericDialog("Checkbox Test");
 
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		if(e!=null)
-		{
-
-			String cmd = e.getActionCommand();
-			switch(cmd)
-			{
-			case "Click Me":
-				IJ.log("Click Me was clicked");
-				dontClickMeBF.getButton().setEnabled(true);
-				break;
-			case "Don't Click Me":
-				IJ.log("Can't you read?");
-				dontClickMeBF.getButton().setEnabled(false);
-				IJ.log("Label="+dontClickMeBF.getButton().getLabel());
-				IJ.log("ActionCommand="+dontClickMeBF.getButton().getActionCommand());
-				IJ.log("Name="+dontClickMeBF.getButton().getName());
+			@Override
+			public void run(String arg) {
+				GenericDialogAddin gda = new GenericDialogAddin();
 				
-				break;
+				gd.addMessage("A useless Dialog to play with");
+				msg1MF = gda.getMessageField(gd,"msg1");		
+				msg1MF.getLabel().setFont(new Font(Font.DIALOG, Font.ITALIC+Font.BOLD, 14));
+				msg1MF.getLabel().setForeground(Color.RED);
+				
+				gd.addMessage("TestMessage2", 	new Font(Font.DIALOG, Font.BOLD, 12), Color.RED);
+				msg2MF = gda.getMessageField(gd,"msg2");				
+				msg2MF.getLabel().setFont(new Font(Font.DIALOG, Font.ITALIC+Font.BOLD, 14));
+				msg2MF.getLabel().setForeground(Color.GREEN);
+				
+				gd.addDirectoryField("Select Directory", IJ.getDir("home")+"gdpExampleDir");
+				dirPF = gda.getPathField(gd,null, null, "dirPath", null);
+				
+				gd.addFileField("Write_to_File", IJ.getDir("home")+"gdpExampleData");
+				filePF = gda.getPathField(gd,null, null, "filePath", null);
+						
+				gd.addCheckbox("Mow_Lawn", true);
+				mowLawnCBF = gda.getCheckboxField(gd,"mowLawCB");
+				
+				gd.addNumericField("House_Number", 1275);
+				houseNumNF = gda.getNumericField(gd,"houseNumLBL", "houseNumNF");
+				houseNumNF.getNumericField().setColumns(12);
+				houseNumNF.getNumericField().setForeground(Color.ORANGE);
+				
+				gd.addCheckbox("Wash_Car", false);
+				washCarCBF = gda.getCheckboxField(gd,"washCarCB");
+				
+				gd.addStringField("Car_License", "BNL X2B");
+				licenseSF = gda.getStringField(gd,"licenseLBL", "licenseTF");
+				licenseSF.getTextField().setColumns(12);
+				
+				gd.addChoice("Car Make", makes, makes[0]);
+				carMakeCF = gda.getChoiceField(gd,"carMakeLBL", "carMakeChoice");
+				carMakeCF.getChoice().setPreferredSize(new Dimension(110,10));
+				
+				gd.addChoice("Car_Model", AlfaRomeo, AlfaRomeo[0]);
+				carModelCF = gda.getChoiceField(gd,"carModelLBL", "carModelChoice");
+				carModelCF.getChoice().setPreferredSize(new Dimension(110,10));
+				
+				gd.addEnumChoice("Body_Type",bodyType.SPORTS_CAR);
+				bodyTypeCF = gda.getChoiceField(gd,"bodyTypeLBL", "bodyTypeChoice");
+				bodyTypeCF.getChoice().setPreferredSize(new Dimension(110,10));
+						
+				gd.addButton("Click Me", this);
+				clickMeBF = gda.getButtonField(gd,"clickMeBtn");
+						
+				gd.addSlider("Car_Length (ft)", 0, 50, 25);
+				carLengthSF = gda.getSliderField(gd,"carLenLBL", "carLengthSB", "carLengthTF");
+				
+				gd.addSlider("Car_Width (ft)", 0, 10, 5);
+				carWidthSF = gda.getSliderField(gd,"carWidthLBL", "carWidthSB", "carWidthTF");
+				
+				gd.addButton("Don't Click Me", this);
+				dontClickMeBF = gda.getButtonField(gd,"dontClickMeBtn");
+				
+				gd.addTextAreas("Text1", "Text2", 5, 15);
+				testTextTAF = gda.getTextAreasField(gd,"textArea1", "textArea2");
+				testTextTAF.getTextArea1().setBackground(new Color(255, 215, 0));
+				testTextTAF.getTextArea2().setBackground(new Color(0, 87, 183));
+				testTextTAF.getTextArea2().setForeground(new Color(255, 255, 255));
+				
+				gd.addRadioButtonGroup("Makes", makes, 0, 3, makes[0]);
+				makesRBF = gda.getRadioButtonField(gd,"makes","makesGroup");
+				makesRBF.getPanel().setBackground(Color.PINK);
+				
+				String make =carMakeCF.getChoice().getSelectedItem();
+				String[] models =carModelCF.getChoices();		
+				gd.addRadioButtonGroup(make +" Models", models, 0, 3, models[0]);
+				modelsRBF = gda.getRadioButtonField(gd,"models","modelsGroup");
+				gd.addDialogListener(this);
+				
+				gd.showDialog();
+						
+				if(gd.wasOKed())
+				{
+					//The getSelections call is unnecessary here because 
+					//of the final "null" call to dialogItemChanged.
+					//getSelections();
+					IJ.log("Dialog values using GenericDialog.getNext.... methods");
+					IJ.log("Booleans*****");
+					IJ.log("Mow Lawn=" +  mowLawn);
+					IJ.log("Wash Car=" + washCar);
+					IJ.log("Numbers*****");
+					IJ.log("House Number=" + houseNum);
+					IJ.log("Car Length=" + carLength);
+					IJ.log("Car Width=" +carWidth);
+					IJ.log("Strings*****");			
+					IJ.log("Directory path=" + dirPath);
+					IJ.log("File path=" + filePath);
+					IJ.log("License Number=" + licenseNum);
+					IJ.log("Choices*****");						
+					IJ.log("Car Make=" + make1);
+					IJ.log("Car Model=" + model);
+					IJ.log("Body Type=" + type);
+					IJ.log("Texts*****");									
+					IJ.log("Text1=" +text1);
+					IJ.log("Text2=" + text2);
+					IJ.log("Radio Buttons*****");												
+					IJ.log("Car Make=" + carMake);
+					IJ.log("Car Model=" + carModel);
+					
+		//			IJ.log("*******************************************");
+		//			//Note: Addin types can be called in arbitrary order
+		//			//these calls are NOT Macro recordable
+		//			IJ.log("Dialog values using Field.... methods");
+		//			IJ.log("Booleans*****");
+		//			IJ.log("Mow Lawn=" + mowLawnCBF.getCheckBox().getState());
+		//			IJ.log("Wash Car=" + washCarCBF.getCheckBox().getState());
+		//			IJ.log("Numbers*****");
+		//			IJ.log("House Number=" + houseNumNF.getNumber());
+		//			IJ.log("Car Length=" + carLengthSF.getTextField().getText());
+		//			IJ.log("Car Width=" + carWidthSF.getTextField().getText());
+		//			IJ.log("Strings*****");			
+		//			IJ.log("Directory path=" + dirPF.getTextField().getText());
+		//			IJ.log("File path=" + filePF.getTextField().getText());
+		//			IJ.log("License Number=" + licenseSF.getTextField().getText());
+		//			IJ.log("Choices*****");						
+		//			IJ.log("Car Make=" + carMakeCF.getChoice().getSelectedItem());
+		//			IJ.log("Car Model=" + carModelCF.getChoice().getSelectedItem());
+		//			IJ.log("Body Type=" + bodyTypeCF.getChoice().getSelectedItem());
+		//			IJ.log("Texts*****");									
+		//			IJ.log("Text1=" + testTextTAF.getTextArea1().getText());
+		//			IJ.log("Text2=" + testTextTAF.getTextArea2().getText());
+		//			IJ.log("Radio Buttons*****");												
+		//			IJ.log("Car Make=" + makesRBF.getSelectedItem());
+		//			IJ.log("Car Model=" + modelsRBF.getSelectedItem());
+				}
+			}
+			
+			boolean mowLawn,washCar;
+			double houseNum,carWidth,carLength;
+			String dirPath,filePath,licenseNum,make1,model,type,text1,text2,carMake,carModel;
+			
+			private void getSelections() {
+				//Note: each type must be called in its order in the dialog
+				//Introducing additional dialog items can break the order.
+				gd.resetCounters();
+				mowLawn = gd.getNextBoolean();
+				washCar = gd.getNextBoolean();
+				houseNum = gd.getNextNumber();
+				carLength = gd.getNextNumber();
+				carWidth = gd.getNextNumber();
+				dirPath = gd.getNextString();
+				filePath = gd.getNextString();
+				licenseNum = gd.getNextString();
+				make1 = gd.getNextChoice();
+				model = gd.getNextChoice();
+				type = gd.getNextChoice();
+				text1 = gd.getNextText();
+				text2 = gd.getNextText();
+				carMake = gd.getNextRadioButton();
+				carModel = gd.getNextRadioButton();		
+			}
+
+			@Override
+			public boolean dialogItemChanged(GenericDialog gd, AWTEvent e)
+			{
+				if(e!=null)
+				{
+					Object src = e.getSource();
+					if(src instanceof Choice)
+					{
+						Choice choice = (Choice)src;
+						switch(choice.getName())
+						{
+						case "carMakeChoice":
+							String carMake = choice.getSelectedItem();
+							IJ.log("Car Make="+carMake);
+							String[] names=null;
+							switch(carMake)
+							{
+							case "AlfaRomeo":names = AlfaRomeo; break;
+							case "AMC":names = AMC; break;
+							case "Buick":names = Buick; break;
+							case "Chevrolet":names = Chevrolet; break;
+							case "Chrysler":names = Chrysler; break;
+							case "Ford":names = Ford; break;
+							case "Mercury":names = Mercury; break;
+							case "Pontiac":names = Pontiac; break;					
+							}
+							carModelCF.setChoices(names);
+							gd.pack();
+							break;
+						case "carModelChoice":
+								IJ.log("Car Model="+choice.getSelectedItem());
+							break;			
+						case "bodyTypeChoice":
+							IJ.log("Body Type="+choice.getSelectedItem());
+						break;			
+						}
+					}
+					else if(src instanceof TextField)
+					{
+						TextField tf= (TextField)src;
+						String text = tf.getText();
+						switch(tf.getName())
+						{
+						case "houseNumNF":
+							IJ.log("houseNum="+text);
+							break;
+						case "licenseTF":
+							IJ.log("license="+text);
+							break;
+						case "carWidthTF":
+							IJ.log("Car Width="+text);								
+							break;
+						case "carLengthTF":
+							IJ.log("Car Length="+text);								
+							break;
+						case "filePath":
+							IJ.log("File Path="+text);								
+							IJ.log ( filePF.getPanel().getName());		
+							IJ.log ( filePF.getTextField().getText());
+							IJ.log ( filePF.getButtonLabel());
+							IJ.log ( filePF.getLabel().getText());
+							break;
+						case "dirPath":
+							IJ.log("Directory Path="+text);								
+							IJ.log ( dirPF.getPanel().getName());		
+							IJ.log ( dirPF.getTextField().getText());
+							IJ.log ( dirPF.getButtonLabel());
+							IJ.log ( dirPF.getLabel().getText());
+							break;
+						}
+					}
+					else if(src instanceof Checkbox)
+					{
+						Checkbox ckbx= (Checkbox)src;
+						String ckbxName = ckbx.getLabel();
+						String state = Boolean.toString(ckbx.getState());
+						IJ.log("Checkbox Name=" +ckbxName);
+						String[] items=null;
+						switch(ckbxName)
+						{
+						case "Wash Car":
+							IJ.log("Mow Lawn="+state);								
+							break;
+						case "Mow Lawn":
+							IJ.log("Wash Car="+state);								
+							break;
+							//if it's a makes radio button, load the models
+						case "AlfaRomeo":items = AlfaRomeo; break;
+						case "AMC":items = AMC; break;
+						case "Buick":items = Buick; break;
+						case "Chevrolet":items = Chevrolet; break;
+						case "Chrysler":items = Chrysler; break;
+						case "Ford":items = Ford; break;
+						case "Mercury":items = Mercury; break;
+						case "Pontiac":items = Pontiac; break;					
+						}
+						if(items!=null)
+						{
+							//modelsRBF.setLabel(ckbxName + " Models");
+							modelsRBF.getLabel().setText(" Models");
+							modelsRBF.setRadioButtons(items, 0, 3);
+							//Resize the dialog so everything fits
+							gd.pack();
+						}
+					}
+					else if(src instanceof TextArea)
+					{
+						TextArea ta = (TextArea)src;
+						String taName = ta.getName();
+						switch(taName)
+						{
+						case "textArea1":					
+							IJ.log("TextArea1="+ta.getText());
+							break;
+						case "textArea2":
+							IJ.log("TextArea2="+ta.getText());
+							break;
+						}
+					}
+				}
+				//Get the new selections
+				//The OK button click calls dialogItemChanged with a null event!
+				//required call for macro recorder.
+				getSelections();
+				return true;
+			}
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				if(e!=null)
+				{
+
+					String cmd = e.getActionCommand();
+					switch(cmd)
+					{
+					case "Click Me":
+						IJ.log("Click Me was clicked");
+						dontClickMeBF.getButton().setEnabled(true);
+						break;
+					case "Don't Click Me":
+						IJ.log("Can't you read?");
+						dontClickMeBF.getButton().setEnabled(false);
+						IJ.log("Label="+dontClickMeBF.getButton().getLabel());
+						IJ.log("ActionCommand="+dontClickMeBF.getButton().getActionCommand());
+						IJ.log("Name="+dontClickMeBF.getButton().getName());
+						
+						break;
+					}
+				}
 			}
 		}
-	}
-}
+
 	
 </strong>
 </pre>
@@ -422,7 +456,8 @@ public class GenericDialogAddin_Example implements PlugIn, DialogListener, Actio
 	</figure>
 </center>
 
-<p>Unlike swing, Java8 AWT has no spinner. Although its not as pretty, addSpinner provides the same functionality.</p>
+<p>Unlike swing, Java8 AWT has no spinner. Although its not as pretty, addSpinner provides the same functionality.
+	 It lets the user change the spinner click increment, useful for finding a optimal values.</p>
 <ol>
 
 	<li>Download <a

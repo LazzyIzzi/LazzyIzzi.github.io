@@ -1,0 +1,31 @@
+<title>CT_Tools</title>
+<link rel="icon" type="image/x-icon" href="SiteImages/LazzyIzzi.jpg">
+
+<button onclick="history.back()">Back</button>
+<a href="indexNew.html"><button>Home Page</button></a>
+<strong>
+
+<ul>
+	<li style="padding: 10px;"><strong>CT_Tools</strong> - A collection of MuMassCalculatorLib based <a href="https://imagej.net/ij/index.html" target="_blank">ImageJ</a> plugins that together create a virtual CT system for creating, scanning, reconstructing, and evaluating digital X-ray images.
+	<ul>
+		<li style="padding: 10px;"><a href="CT_ReconPages/XraySpectrumPlotter.html" target="_self">X-ray Spectrum Plotter</a> - Plots NIST-XCOM based mass attenuation spectra in cm<sup>2</sup>/gm of a material for total, photoelectric, elastic, inelastic, and pair-production from 1keV to 100GeV.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/XrayCalculator.html" target="_self">X-ray Calculator</a> - Reports interpolated attenuations at specific energies.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/CtScannerSetup.html" target="_self">Scanner Setup</a> - A 1-D model that plots the X-ray intensity vs energy at key locations from source to detector. You can change the source energy, filtration, and detector composition and view the spectra and configuration metrics such as beam hardening, sample opacity etc. It provides guidance for setting up an actual scanner to minimize spectral artifacts.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/MaterialTagger.html" target="_self">Material Tagger</a> - Creates "Tag Images" by segmenting an image into its material components.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/MaterialsEditor.html" target="_self">Materials Editor</a> - Manages the Image Tags data File.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/CTsimulator.html" target="_self">Image Projectors</a> - Re-project images of linear attenuation or configure a virtual conventional X-ray source CT-scanner to create parallel or fan-beam sinograms. Be sure to review the Image Projectors page "Additional Information" for performance limitations.</li>
+		<!--<li style="padding: 10px;"><a href="CT_ReconPages/CtRecon.html" target="_self">CT Recon ParallelBeam</a> - <i>deprecated, has Windows dependencies</i>  - Reconstructs a parallel-beam sinogram to help determine if the result met expectations.</li>-->
+		<li style="padding: 10px;"><a href="CT_ReconPages/DFI_Recon.html" target="_self">DFI_JTransforms</a> - Reconstructs single and stacks of parallel-beam sinogram to help determine if the result meets expectations.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/XrayLookupMuLin.html" target="_self">X-ray MuLin Lookup</a> - Reports X-ray energie(s) that will produce a material's measured linear attenuation.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/XrayLookupRatio.html" target="_self">X-ray Ratio Lookup</a> - Reports X-ray energie(s) consistent with the measured attenuations of two different materials.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/Linearization.html" target="_self">Linearization Fitter</a> - Interactively plots observed vs model sinograms attenuations calculated from a reconstructed and a tag image at a given X-ray energy. Reports 1-6 degree polynomial fits. The X-ray energy that gives the best fit is the effective energy for the measurement.</li>
+		<li style="padding: 10px;"><a href="CT_ReconPages/Linearization.html" target="_self">Apply Linearization</a> - Applies a selected polynomial to the sinogram used to reconstruct the observed reconstruction.</li>
+		<!--<li style="padding: 10px;">Show_CT_Properties - Displays tables of scan, linearization, and reconstruction properties for images created by CT_Tools plugins.</li>
+		<li style="padding: 10px;">Set_Image_ScaleFactor - Sets a scale factor image property for images not created by CT_Tools plugins.</li>-->
+		<li style="padding: 10px;">Download and Installation: Download <a href="https://github.com/LazzyIzzi/ImageJPlugins_CT_Tools/releases" target="_blank">CT_ToolsBundle_Java8.jar</a> to the ImageJ plugins folder. Restart ImageJ.
+			<li style="padding: 10px;">The bundle contains the required dependencies.</li>
+				<!--<li style="padding: 10px;">From the same location, Download Base_Recon.exe and place it in the plugins folder.</li>
+				<li style="padding: 10px;">Also download DefaultMaterials.csv. Create a "DialogData" folder in the ImageJ plugins folder and put DefaultMaterials.csv in that folder.</li>
+				<li style="padding: 10px;">Restart ImageJ.</li>	-->
+	</ul>
+</Strong>

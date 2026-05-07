@@ -1,11 +1,12 @@
 <title>Euclidean Spheres</title>
 <link rel="icon" type="image/x-icon" href="../SiteImages/LazzyIzzi.jpg">
+<button onclick="history.back()">Back</button>
+<a href="../indexNew.html"><button>Home Page</button></a>
 
 <h1>Euclidean Spheres</h1> 
 <h3>Requires ImageJ 1.53k or higher, DistanceMapLib.jar, ImageJAddins.jar.</h3> 
 <br>See the Home page for CT_Tools download and installation instructions.
 
-<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
 <h3>This draws filled Euclidean Spheres centered at a pixel location.</h3>
 
 <p>Voxels within a Euclidean sphere of radius R are defined on a Cartesian grid as &radic;(x<sup>2</sup>+y<sup>2</sup>+z<sup>2</sup>) &lt; R where R is the distance to the center of the neighboring voxel.&nbsp; Euclidean spheres can be used to restore a 3D shape from its medial surface (thinning the medial surface to a medial axis  is a lossy process and is not reversible by sphere drawing). Euclidean spheres are also useful in constructing random porous media.</p>
@@ -32,4 +33,3 @@ The voxels in the image are 1cm in the horizontal X direction and are 1.2cm in t
 
 <small>1. During testing it was observed that the ImageJ Version 1.53k "Orthogonal Views" plugin has a bug that causes small spheres to be drawn incorrectly in orthogonal slices.</small>
 
-<h2><a href="../index.html" target="_self"><em><strong>Home</strong></em></a></h2>
